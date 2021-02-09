@@ -1,18 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-This is a skeleton file that can serve as a starting point for a Python
-console script. To run this script uncomment the following lines in the
-[options.entry_points] section in setup.cfg:
-
-    console_scripts =
-         fibonacci = lexicons_builder.skeleton:run
-
-Then run `python setup.py install` which will install the command `fibonacci`
-inside your current environment.
-Besides console scripts, the header (i.e. until _logger...) of this file can
-also be used as template for Python modules.
-
-Note: This skeleton file can be safely removed if not needed!
+NLP model explorer
 """
 
 import argparse
@@ -29,13 +17,19 @@ _logger = logging.getLogger(__name__)
 
 
 def fib(n):
-    """Fibonacci example function
+    """Explore NLP model
+
+    Will check recursively for iteresting stuff
 
     Args:
-      n (int): integer
+      model (str): model path
 
     Returns:
-      int: n-th Fibonacci number
+      str: a thing
+
+  >>> 1+1
+  2
+
     """
     assert n > 0
     a, b = 1, 1
