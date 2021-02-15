@@ -291,5 +291,5 @@ if __name__ == "__main__":
 
     scrapper = SynonymsGetterLexico()
     g = scrapper.explore_reccursively("book", 2)
-    print(g, file=open("test.ttl", "w"))
+    print(g, file=open("_test.ttl", "w"))
     g.to_text_file("_.txt")
