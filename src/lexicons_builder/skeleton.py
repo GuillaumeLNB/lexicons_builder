@@ -19,7 +19,7 @@ import argparse
 import sys
 import logging
 
-from lexicons_builder import __version__
+# from lexicons_builder import __version__
 
 __author__ = "GLNB"
 __copyright__ = "GLNB"

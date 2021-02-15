@@ -11,8 +11,10 @@ dumps instead of sending requests to the websites.
 """
 
 import argparse
+import inspect
 import logging
 import requests
+import os
 import sys
 
 import fake_useragent
@@ -25,11 +27,12 @@ __copyright__ = "GLNB"
 __license__ = "mit"
 
 _logger = logging.getLogger(__name__)
-
-
-def get_synonyms(word: str, lang: str):
-    """return the """
-    pass
+__location__ = os.path.join(
+    os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe()))
+)
+sys.path.insert(0, os.path.join(__location__, "..", "graphs"))
+# print('SYS PATH', sys.path)
+from graphs import Graph
 
 
 class SynonymsGetter:
@@ -48,11 +51,16 @@ class SynonymsGetter:
     def _get_results_from_website(self, word):
         """This method should be implemented differently for every languages
         and every websites (scrapping method different).
-        It sould return a list of synonyms scrapped from the website"""
-        return []
+        It sould return an iterable of synonyms scrapped from the website"""
+        return set()
 
     def explore_reccursively(
-        self, term_to_look_up: str, previous_terms: dict, deepth: int = 10
+        # self, term_to_look_up: str, previous_terms: dict, deepth: int = 10
+        self,
+        word: str,
+        max_depth: int = 2,
+        current_depth=1,
+        _previous_graph=None,
     ):
         """Will search for terms reccursively from the website
 
@@ -63,55 +71,69 @@ class SynonymsGetter:
                             previously. key=word value=the deepth
             deepth (int): the deepth of the reccursion
         Returns:
-            dict: a dictionnary containing the words that were looked up
-            """
-        if not deepth:
-            return previous_terms
+            a Graph object with the words that were looked up
+        XXX    """
+        # print(f"WORD IS '{word}'\tDEPTH IS '{current_depth}'") # XXX
+
+        if not _previous_graph:
+            # initializing the Graph for the 1st time
+            graph = Graph()
+            # adding the root source
+            graph.add_root_word(word)
         else:
-            ls_new_words = self._get_results_from_website(term_to_look_up)
-            for word in ls_new_words:
-                word = unidecode(word.lower())
-                if word in previous_terms:
+            graph = _previous_graph
+
+        if current_depth - 1 == max_depth:
+            # reccursion ends
+            return graph
+
+        else:
+            new_words = [w for w in self._get_results_from_website(word) if w]
+            for n_word in new_words:
+                n_word = unidecode(n_word.lower())
+                if n_word in graph:
                     continue
-                previous_terms[word] = deepth
-                # merging the 2 dicts
-                previous_terms |= self.explore_reccursively(
-                    word, previous_terms, deepth=deepth - 1
+                graph.add_word(n_word, current_depth, "syn", word)
+                graph = self.explore_reccursively(
+                    n_word,
+                    current_depth=current_depth + 1,
+                    max_depth=max_depth,
+                    _previous_graph=graph,
                 )
-            return previous_terms
+        return graph
 
-    def get_synonyms(
-        self, word: str, deepth: int, indent: int = 4, out_file: str = None
-    ):
-        """Get the synomys from a website and print them to a file
+    # def get_synonyms(
+    #     self, word: str, deepth: int, indent: int = 4, out_file: str = None
+    # ):
+    #     """Get the synomys from a website and print them to a file
 
-        Args:
-            word (str): the word we want synonyms from
-            deepth (int): the deepth of the reccursion
-            indent (int): the indentation in the file
-            out_file (str): the file name were the results will be.
-                            if None, it will create a new file
-                            using f"{self.lang}_{domain}_{word}_{deepth}.txt"
-            """
+    #     Args:
+    #         word (str): the word we want synonyms from
+    #         deepth (int): the deepth of the reccursion
+    #         indent (int): the indentation in the file
+    #         out_file (str): the file name were the results will be.
+    #                         if None, it will create a new file
+    #                         using f"{self.lang}_{domain}_{word}_{deepth}.txt"
+    #         """
 
-        if not out_file:
-            # domain = re.search(r'www\.([A-z\-_])\.[A-z]{2,3}', self.website).group(1)
-            domain = self.website.split(".")[0]
-            out_file = f"{self.lang}_{domain}_{word}_{deepth}.txt"
-        self.out_file = out_file
-        touch(self.out_file)
+    #     if not out_file:
+    #         # domain = re.search(r'www\.([A-z\-_])\.[A-z]{2,3}', self.website).group(1)
+    #         domain = self.website.split(".")[0]
+    #         out_file = f"{self.lang}_{domain}_{word}_{deepth}.txt"
+    #     self.out_file = out_file
+    #     touch(self.out_file)
 
-        words = self.explore_reccursively(word, {}, deepth)
-        # print(words)
-        with open(self.out_file, "w") as f:
-            # print(sorted(set([unidecode(w).lower().strip() for w in words])))
-            # print(words)
-            print(word, file=f)
-            for word in sorted(set([unidecode(w).lower().strip() for w in words])):
-                print(" " * indent * (deepth - words[word]) + word, file=f)
-                # print(word)
-                # input()
-        print(self.out_file)
+    #     words = self.explore_reccursively(word, {}, deepth)
+    #     # print(words)
+    #     with open(self.out_file, "w") as f:
+    #         # print(sorted(set([unidecode(w).lower().strip() for w in words])))
+    #         # print(words)
+    #         print(word, file=f)
+    #         for word in sorted(set([unidecode(w).lower().strip() for w in words])):
+    #             print(" " * indent * (deepth - words[word]) + word, file=f)
+    #             # print(word)
+    #             # input()
+    #     print(self.out_file)
 
     def download_and_parse_page(self, url: str):
         """return the Beautiful soup of the page
@@ -248,6 +270,7 @@ class SynonymsGetterSynonymsCom(SynonymsGetter):
     lang = "en"
 
     def _get_results_from_website(self, word):
+        raise ValueError("The scrpping returns bad results")
         word = unidecode(word.lower())
         url = f"https://www.synonyms.com/synonym/{word}"
         soup = self.download_and_parse_page(url)
@@ -261,4 +284,12 @@ class SynonymsGetterSynonymsCom(SynonymsGetter):
 
 
 if __name__ == "__main__":
-    pass
+    # scrapper = SynonymsGetterSynonymesCom()
+    # g = scrapper.explore_reccursively("rire", 2)
+    # print(g.to_str(), file=open("test.ttl", "w"))
+    # g.to_text_file("_.txt")
+
+    scrapper = SynonymsGetterLexico()
+    g = scrapper.explore_reccursively("book", 2)
+    print(g, file=open("test.ttl", "w"))
+    g.to_text_file("_.txt")
