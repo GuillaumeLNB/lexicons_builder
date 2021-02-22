@@ -24,3 +24,7 @@ ttl file gives more info. If a word comes from several places it should be a val
         <les-synonymes.com>,
         <synonymes.com> ;
     ns1:depth 2 .
+
+
+.. toctree::
+    docs/quickstart.rst
