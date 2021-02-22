@@ -3,7 +3,7 @@ import unittest
 import os
 import sys
 
-sys.path.insert(0, os.path.join("..", "src"))
+sys.path.insert(0, os.path.join("..", "..", "src"))
 # sys.path.insert(1, os.path.join("..", "src", "wordnet_explorer"))
 
 # from rdflib import Graph
@@ -18,7 +18,7 @@ class TestExplorer(unittest.TestCase):
     wrong_words = ("TedsfdfsSt", "f5sdaf5df5")
     wrong_types = (0, type, str)
     model_paths = [
-        "~/models/frWac_non_lem_no_postag_no_phrase_200_skip_cut100.bin",
+        "~/models/frWac_non_lem_no_postag_no_phrase_200_skip_cut100.bin",  # smallest
         "~/models/frWac_no_postag_phrase_500_cbow_cut100.bin",
         "~/models/cz_law.word2vec.model.txt",
         "~/models/nlwiki_20180420_100d.txt",
@@ -50,7 +50,7 @@ class TestExplorer(unittest.TestCase):
     def test_graph_is_empty(self):
         for word in self.wrong_words:
             # the graph contains only the root word -> 2 rdf triplets
-            self.assertEqual(2, len(exp.explore_nlp_model(word, self.model_paths[0])))
+            self.assertEqual(1, len(exp.explore_nlp_model(word, self.model_paths[0])))
 
 
 unittest.main()

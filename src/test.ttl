@@ -1,0 +1,1058 @@
+@prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns2: <urn:default:baseUri:#> .
+@prefix ns3: <http://taxref.mnhn.fr/lod/property/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:default:baseUri:#%5Binformal%5D> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "[informal]" ;
+    ns2:comesFrom <dictionnaire-synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:abuser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "abuser" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:agreer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "agreer" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:amuser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "amuser" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:assommer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "assommer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:attendrissement ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "attendrissement" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:attraper ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "attraper" ;
+    ns2:comesFrom <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:attrister ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "attrister" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:badiner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "badiner" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:baratiner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "baratiner" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:bassiner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "bassiner" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:bercer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "bercer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:berner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "berner" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:bidonner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "bidonner" ;
+    ns2:comesFrom <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:blaguer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "blaguer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:bouder ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "bouder" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:brocarder ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "brocarder" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:cachinnation ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "cachinnation" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:captiver ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "captiver" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#casser%20les%20pieds> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "casser les pieds" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:change ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "change" ;
+    ns2:comesFrom <dictionnaire-synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:charmer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "charmer" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:chialer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "chialer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:contenter ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "contenter" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:contrarier ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "contrarier" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:convenir ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "convenir" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:decevoir ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "decevoir" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:dedaigner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "dedaigner" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:degeler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "degeler" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:delasser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "delasser" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:delecter ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "delecter" ;
+    ns2:comesFrom <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:derider ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "derider" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:desennuyer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "desennuyer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:desopiler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "desopiler" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:dindonner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "dindonner" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:distraire ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "distraire" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:divertir ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "divertir" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:donner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "donner" ;
+    ns2:comesFrom <dictionnaire-synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#donner%20le%20change> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "donner le change" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:duper ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "duper" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:ebattre ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ebattre" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:ebaudir ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ebaudir" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:eclat ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "eclat" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:eclater ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "eclater" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#eclater%20de%20rire> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "eclater de rire" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:egayer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "egayer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:embeter ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "embeter" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:embobiner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "embobiner" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:emotion ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "emotion" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:enchanter ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "enchanter" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:endormir ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "endormir" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:enerver ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "enerver" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:enjoler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "enjoler" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:enjouement ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "enjouement" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:ennuyer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ennuyer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:esclaffer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "esclaffer" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#etat%20mental> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "etat mental" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#etat%20physique> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "etat physique" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:faire ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "faire" ;
+    ns2:comesFrom <dictionnaire-synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#faire%20fi%20de> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "faire fi de" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#faire%20marrer> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "faire marrer" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#faire%20rigoler> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "faire rigoler" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#faire%20rire> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "faire rire" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:fasciner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "fasciner" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:fatiguer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "fatiguer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:flatter ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "flatter" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:flouer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "flouer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:folatrer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "folatrer" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#fou%20rire> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "fou rire" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:gaiete ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "gaiete" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:gambader ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "gambader" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:glousser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "glousser" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:gondoler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "gondoler" ;
+    ns2:comesFrom <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:grimace ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "grimace" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:hilarite ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "hilarite" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:ignorer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ignorer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:impatienter ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "impatienter" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:importuner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "importuner" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:interesser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "interesser" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:ironie ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ironie" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:ironiser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ironiser" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:joie ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "joie" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:jouer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "jouer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:larme ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "larme" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:larmoyer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "larmoyer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:lasser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "lasser" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:le ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "le" ;
+    ns2:comesFrom <dictionnaire-synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:leurrer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "leurrer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:lol ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "lol" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:luire ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "luire" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:lutiner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "lutiner" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:marivauder ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "marivauder" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:marrer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "marrer" ;
+    ns2:comesFrom <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#mener%20en%20bateau> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "mener en bateau" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:mepriser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "mepriser" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#mettre%20en%20train> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "mettre en train" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:moquer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "moquer" ;
+    ns2:comesFrom <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:mystifier ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "mystifier" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:narguer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "narguer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:nasarder ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "nasarder" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:occuper ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "occuper" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:papillonner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "papillonner" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:persiffler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "persiffler" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:plaire ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "plaire" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:plaisanter ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "plaisanter" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:plaisir ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "plaisir" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:pleur ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "pleur" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:pleurer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "pleurer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#pleurer%20de%20rire> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "pleurer de rire" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:poiler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "poiler" ;
+    ns2:comesFrom <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:pouffer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "pouffer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#prendre%20du%20bon%20temps> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "prendre du bon temps" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:promener ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "promener" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:rafale ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "rafale" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:railler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "railler" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:raillerie ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "raillerie" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:raser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "raser" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:ravir ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ravir" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:recreer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "recreer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:refaire ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "refaire" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:regaler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "regaler" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:rejouir ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "rejouir" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:ricanement ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ricanement" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:ricaner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ricaner" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:rictus ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "rictus" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:ridiculiser ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ridiculiser" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:rigolade ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "rigolade" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:rigolbocher ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "rigolbocher" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:rigoler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "rigoler" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:rioter ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "rioter" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:rire ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "rire" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:ris ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "ris" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:risee ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "risee" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:risette ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "risette" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:risquer ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "risquer" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:rouler ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "rouler" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#s%27amuser> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "s'amuser" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#s%27egayer> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "s'egayer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#s%27en%20payer> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "s'en payer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#s%27esclaffer> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "s'esclaffer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#s%27etourdir> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "s'etourdir" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:sanglot ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "sanglot" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:satisfaire ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "satisfaire" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:se ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se" ;
+    ns2:comesFrom <dictionnaire-synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20bidonner> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se bidonner" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20boyauter> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se boyauter" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20derider> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se derider" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20desopiler> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se desopiler" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20dilater%20la%20rate> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se dilater la rate" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20distraire> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se distraire" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20divertir> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se divertir" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20fendre%20la%20peche> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se fendre la peche" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20fendre%20la%20pipe> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se fendre la pipe" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20gausser> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se gausser" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20gondoler> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se gondoler" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20jouer> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se jouer" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20marrer> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se marrer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20moquer> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se moquer" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20poiler> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se poiler" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20rejouir> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se rejouir" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20rire> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se rire" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20tirebouchonner> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se tirebouchonner" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#se%20tordre> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "se tordre" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:seduire ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "seduire" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:serieux ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "serieux" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:sourire ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "sourire" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:souris ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "souris" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:surprendre ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "surprendre" ;
+    ns2:comesFrom <dictionnaire-synonymes.com>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:tanner ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "tanner" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#thymus%20de%20veau> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "thymus de veau" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:tordre ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "tordre" ;
+    ns2:comesFrom <dictionnaire-synonymes.com>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#tourner%20en%20ridicule> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "tourner en ridicule" ;
+    ns2:comesFrom <crisco2.unicaen.fr> ;
+    ns2:depth 1 .
+
+ns2:tricher ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "tricher" ;
+    ns2:comesFrom <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:tromper ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "tromper" ;
+    ns2:comesFrom <crisco2.unicaen.fr>,
+        <leconjugueur.lefigaro.fr>,
+        <les-synonymes.com>,
+        <synonymes.com> ;
+    ns2:depth 1 .
+
+ns2:voile ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "voile" ;
+    ns2:comesFrom <leconjugueur.lefigaro.fr> ;
+    ns2:depth 1 .
+
+ns2:root_word_uri a ns2:root_word ;
+    ns1:prefLabel "amuser",
+        "rire" .
+
+

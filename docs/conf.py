@@ -26,6 +26,10 @@ __location__ = os.path.join(
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 # print(os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "..", "src"))
+sys.path.insert(0, os.path.join(__location__, "..", "src", "wordnet_explorer"))
+sys.path.insert(0, os.path.join(__location__, "..", "src", "scrapper"))
+sys.path.insert(0, os.path.join(__location__, "..", "src", "nlp_model_explorer"))
+sys.path.insert(0, os.path.join(__location__, "..", "src", "graphs"))
 # sys.path.insert(0, os.path.join(__location__, ".."))
 
 # -- Run sphinx-apidoc ------------------------------------------------------
@@ -155,28 +159,28 @@ pygments_style = "sphinx"
 # a list of builtin themes.
 # html_theme = 'alabaster'
 # changed here
-# html_theme = "sphinx_rtd_theme"
+html_theme = "sphinx_rtd_theme"
 # changed here for groundwork
-html_theme = "groundwork"
+# html_theme = "groundwork"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-# html_theme_options = {
-#     # 'sidebar_width': '300px',  # changed here for rtd theme
-#     # 'page_width': '1200px'     # changed here for rtd theme
-# }
+html_theme_options = {
+    # 'sidebar_width': '300px',  # changed here for rtd theme
+    # 'page_width': '1200px'     # changed here for rtd theme
+}
 
 # changed here for groundwork
 
-html_theme_options = {
-    "sidebar_width": "240px",
-    "stickysidebar": True,
-    "stickysidebarscrollable": True,
-    "contribute": True,
-    "github_fork": "useblocks/groundwork",
-    "github_user": "useblocks",
-}
+# html_theme_options = {
+#     "sidebar_width": "240px",
+#     "stickysidebar": True,
+#     "stickysidebarscrollable": True,
+#     "contribute": True,
+#     "github_fork": "useblocks/groundwork",
+#     "github_user": "useblocks",
+# }
 
 
 # Add any paths that contain custom themes here, relative to this directory.

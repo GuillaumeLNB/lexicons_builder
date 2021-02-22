@@ -3,15 +3,15 @@ import unittest
 import os
 import sys
 
-sys.path.insert(0, os.path.join("..", "src"))
-sys.path.insert(1, os.path.join("..", "src", "wordnet_explorer"))
+sys.path.insert(0, os.path.join("..", "..", "src"))
+sys.path.insert(1, os.path.join("..", "..", "src", "wordnet_explorer"))
 
 # from rdflib import Graph
 # logging.getLogger("transformers").setLevel(logging.CRITICAL + 1)
 
 import wordnet_explorer.explorer as exp
 
-sys.path.insert(0, os.path.join("..", "src", "graphs"))
+sys.path.insert(0, os.path.join("..", "..", "src", "graphs"))
 from graphs import Graph
 
 
@@ -67,6 +67,11 @@ class TestWOLF(unittest.TestCase):
         for word in self.words:
             self.assertIsInstance(exp.explore_wolf(word, self.path_2_wolf, 1), Graph)
             self.assertIsInstance(exp.explore_wolf(word, self.path_2_wolf, 0), Graph)
+
+    def test_wrong_path(self):
+        self.assertRaises(
+            FileNotFoundError, exp.explore_wolf, self.words[0], "/wrong/path/2/wolf", 42
+        )
 
 
 unittest.main()

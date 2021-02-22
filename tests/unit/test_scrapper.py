@@ -2,10 +2,11 @@
 import unittest
 import os
 import sys
-
 from unittest.mock import patch
 
-sys.path.insert(0, os.path.join("..", "src"))
+from bs4 import BeautifulSoup
+
+sys.path.insert(0, os.path.join("..", "..", "src"))
 # sys.path.insert(1, os.path.join("..", "src", "wordnet_explorer"))
 
 # from rdflib import Graph
@@ -36,14 +37,20 @@ class TestSynonymsGetter(unittest.TestCase):
 
     def test_explore_reccursively(self):
         g = self.scrapper.explore_reccursively(self.word_test)
-        self.assertTrue(len(g) == 2)
+        self.assertTrue(len(g) == 1)
         # just the root word as the base object cannot
         # get synonyms from websites
+        self.assertRaises(
+            TypeError, self.scrapper.explore_reccursively, self.word_test, "2"
+        )
 
     def test_download_and_parse_page(self):
         with patch("scrapper.scrappers.requests.get") as mocked_request:
             mocked_request.return_value.ok = False
-            self.assertEqual([], self.scrapper.download_and_parse_page("fakeurl.com"))
+            self.assertEqual(
+                BeautifulSoup("", "html.parser"),
+                self.scrapper.download_and_parse_page("fakeurl.com"),
+            )
 
     # with patch("utils.web_utils.requests.get") as mocked_get:
     #     mocked_get.return_value.text = web_page

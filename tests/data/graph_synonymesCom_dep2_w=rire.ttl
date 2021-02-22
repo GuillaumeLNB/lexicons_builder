@@ -1,0 +1,834 @@
+@prefix ns1: <urn:default:baseUri:#> .
+@prefix ns2: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns3: <http://taxref.mnhn.fr/lod/property/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:affliction ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "affliction" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:agreer ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "agreer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:aider ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "aider" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:alacrite ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "alacrite" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:allegresse ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "allegresse" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:amuser ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "amuser" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:animer ns3:isSynonymOf ns1:egayer ;
+    ns2:prefLabel "animer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:apparat ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "apparat" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:attrister ns3:isSynonymOf ns1:egayer ;
+    ns2:prefLabel "attrister" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:avantager ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "avantager" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:badinage ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "badinage" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:bafouer ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "bafouer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:batifoler ns3:isSynonymOf ns1:badiner ;
+    ns2:prefLabel "batifoler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:berner ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "berner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:bidonner ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "bidonner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:blaguer ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "blaguer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:bocarder ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "bocarder" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:bouder ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "bouder" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:bourrasque ns3:isSynonymOf ns1:risee ;
+    ns2:prefLabel "bourrasque" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:bout ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "bout" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:boyauter ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "boyauter" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:brillance ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "brillance" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:brillant ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "brillant" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:brin ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "brin" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:brisure ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "brisure" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:brocard ns3:isSynonymOf ns1:risee ;
+    ns2:prefLabel "brocard" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:brocarder ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "brocarder" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:bruit ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "bruit" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:charrier ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "charrier" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:chiner ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "chiner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:coloris ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "coloris" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:consoler ns3:isSynonymOf ns1:desopiler ;
+    ns2:prefLabel "consoler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:contreverite ns3:isSynonymOf ns1:ironie ;
+    ns2:prefLabel "contreverite" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:couleur ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "couleur" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:coup ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "coup" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:dauber ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "dauber" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:debris ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "debris" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:derider ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "derider" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:derision ns3:isSynonymOf ns1:ironie ;
+    ns2:prefLabel "derision" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:desobstruer ns3:isSynonymOf ns1:desopiler ;
+    ns2:prefLabel "desobstruer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:detonation ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "detonation" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:distraire ns3:isSynonymOf ns1:desopiler ;
+    ns2:prefLabel "distraire" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:divertir ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "divertir" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:eblouissement ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "eblouissement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:eclisse ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "eclisse" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:ecornure ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "ecornure" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:emballement ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "emballement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:embeter ns3:isSynonymOf ns1:desopiler ;
+    ns2:prefLabel "embeter" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:emotion ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "emotion" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:enjouement ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "enjouement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:enquiquiner ns3:isSynonymOf ns1:egayer ;
+    ns2:prefLabel "enquiquiner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:esclaffer ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "esclaffer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:esquille ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "esquille" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#etat%20mental> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "etat mental" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+<urn:default:baseUri:#etat%20physique> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "etat physique" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:etincellement ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "etincellement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#etre%20radieux> ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "etre radieux" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:euphorie ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "euphorie" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:exultation ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "exultation" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:faste ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "faste" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:favoriser ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "favoriser" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:feu ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "feu" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:flamboiement ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "flamboiement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:folatrer ns3:isSynonymOf ns1:badiner ;
+    ns2:prefLabel "folatrer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:fracas ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "fracas" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:fragment ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "fragment" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:fraicheur ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "fraicheur" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:gaiete ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "gaiete" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:gausser ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "gausser" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:glousser ns3:isSynonymOf <urn:default:baseUri:#s%27esclaffer> ;
+    ns2:prefLabel "glousser" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:gouailler ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "gouailler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:grain ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "grain" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:humour ns3:isSynonymOf ns1:ironie ;
+    ns2:prefLabel "humour" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:importuner ns3:isSynonymOf ns1:egayer ;
+    ns2:prefLabel "importuner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:ironiser ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "ironiser" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:joie ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "joie" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:jouer ns3:isSynonymOf ns1:badiner ;
+    ns2:prefLabel "jouer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:jubilation ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "jubilation" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:juvenilite ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "juvenilite" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:liesse ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "liesse" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:lumiere ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "lumiere" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:lustre ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "lustre" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:luxe ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "luxe" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:magnificence ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "magnificence" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:majeste ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "majeste" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:maniere ns3:isSynonymOf ns1:ironie ;
+    ns2:prefLabel "maniere" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:marivauder ns3:isSynonymOf ns1:badiner ;
+    ns2:prefLabel "marivauder" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:marrer ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "marrer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:miroitement ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "miroitement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:moquer ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "moquer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:moquerie ns3:isSynonymOf ns1:ironie ;
+    ns2:prefLabel "moquerie" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:morceau ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "morceau" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:ombre ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "ombre" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:orage ns3:isSynonymOf ns1:risee ;
+    ns2:prefLabel "orage" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:orner ns3:isSynonymOf ns1:egayer ;
+    ns2:prefLabel "orner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:panache ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "panache" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:parodier ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "parodier" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#perdre%20son%20eclat> ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "perdre son eclat" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:persiflage ns3:isSynonymOf ns1:ironie ;
+    ns2:prefLabel "persiflage" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:persifler ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "persifler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:petillement ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "petillement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:plaire ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "plaire" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:plaisanter ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "plaisanter" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:pointe ns3:isSynonymOf ns1:ironie ;
+    ns2:prefLabel "pointe" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:polissonner ns3:isSynonymOf ns1:badiner ;
+    ns2:prefLabel "polissonner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:pompe ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "pompe" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:pouffer ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "pouffer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:radicalement ns3:isSynonymOf ns1:ricanement ;
+    ns2:prefLabel "radicalement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:rafale ns3:isSynonymOf ns1:risee ;
+    ns2:prefLabel "rafale" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:raillerie ns3:isSynonymOf ns1:ironie ;
+    ns2:prefLabel "raillerie" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:raser ns3:isSynonymOf ns1:desopiler ;
+    ns2:prefLabel "raser" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:ravinement ns3:isSynonymOf ns1:ricanement ;
+    ns2:prefLabel "ravinement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:ravir ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "ravir" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:recoupe ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "recoupe" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:recreer ns3:isSynonymOf ns1:desopiler ;
+    ns2:prefLabel "recreer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:rejouir ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "rejouir" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:ricaner ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "ricaner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:richement ns3:isSynonymOf ns1:ricanement ;
+    ns2:prefLabel "richement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:richesse ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "richesse" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:ridiculiser ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "ridiculiser" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:rigolade ns3:isSynonymOf ns1:hilarite ;
+    ns2:prefLabel "rigolade" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:rigoler ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "rigoler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#s%27amuser> ns3:isSynonymOf <urn:default:baseUri:#se%20marrer> ;
+    ns2:prefLabel "s'amuser" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#s%27egayer> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "s'egayer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+<urn:default:baseUri:#sans%20eclat> ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "sans eclat" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:sarcasme ns3:isSynonymOf ns1:ironie ;
+    ns2:prefLabel "sarcasme" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:satiriser ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "satiriser" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:scandale ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "scandale" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:scintillation ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "scintillation" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:scintillement ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "scintillement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#se%20borner> ns3:isSynonymOf <urn:default:baseUri:#se%20bidonner> ;
+    ns2:prefLabel "se borner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#se%20derider> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "se derider" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+<urn:default:baseUri:#se%20donner> ns3:isSynonymOf <urn:default:baseUri:#se%20bidonner> ;
+    ns2:prefLabel "se donner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#se%20gondoler> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "se gondoler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+<urn:default:baseUri:#se%20moquer> ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "se moquer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#se%20moquer%20de> ns3:isSynonymOf ns1:railler ;
+    ns2:prefLabel "se moquer de" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#se%20recreer> ns3:isSynonymOf <urn:default:baseUri:#se%20poiler> ;
+    ns2:prefLabel "se recreer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#se%20regaler> ns3:isSynonymOf <urn:default:baseUri:#se%20divertir> ;
+    ns2:prefLabel "se regaler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#se%20rejouir> ns3:isSynonymOf <urn:default:baseUri:#se%20divertir> ;
+    ns2:prefLabel "se rejouir" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#se%20tordre> ns3:isSynonymOf <urn:default:baseUri:#s%27esclaffer> ;
+    ns2:prefLabel "se tordre" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:seduire ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "seduire" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:tapage ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "tapage" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:taquiner ns3:isSynonymOf ns1:badiner ;
+    ns2:prefLabel "taquiner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:tempete ns3:isSynonymOf ns1:risee ;
+    ns2:prefLabel "tempete" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:tordre ns3:isSynonymOf ns1:sourire ;
+    ns2:prefLabel "tordre" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:tornade ns3:isSynonymOf ns1:risee ;
+    ns2:prefLabel "tornade" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:tourbillon ns3:isSynonymOf ns1:risee ;
+    ns2:prefLabel "tourbillon" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:tourmente ns3:isSynonymOf ns1:risee ;
+    ns2:prefLabel "tourmente" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:vent ns3:isSynonymOf ns1:risee ;
+    ns2:prefLabel "vent" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+ns1:vernis ns3:isSynonymOf ns1:eclat ;
+    ns2:prefLabel "vernis" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 2 .
+
+<urn:default:baseUri:#se%20marrer> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "se marrer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+<urn:default:baseUri:#se%20poiler> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "se poiler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+<urn:default:baseUri:#s%27esclaffer> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "s'esclaffer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+<urn:default:baseUri:#se%20bidonner> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "se bidonner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+<urn:default:baseUri:#se%20divertir> ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "se divertir" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:ricanement ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "ricanement" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:egayer ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "egayer" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:badiner ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "badiner" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:desopiler ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "desopiler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:ironie ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "ironie" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:risee ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "risee" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:hilarite ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "hilarite" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:railler ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "railler" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:root_word_uri a ns1:root_word ;
+    ns2:prefLabel "rire" .
+
+ns1:sourire ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "sourire" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+ns1:eclat ns3:isSynonymOf ns1:root_word_uri ;
+    ns2:prefLabel "eclat" ;
+    ns1:comesFrom <synonymes.com> ;
+    ns1:depth 1 .
+
+

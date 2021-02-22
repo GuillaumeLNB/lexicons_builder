@@ -1,0 +1,11 @@
+gensim==3.8.3
+languagecodes==1.0.7
+touch==0.0.0
+Unidecode==1.1.1
+sphinx_rtd_theme==0.5.1
+parameterized==0.8.1
+fake_useragent==0.1.11
+nltk==3.4.5
+rdflib==5.0.0
+requests==2.18.4
+beautifulsoup4==4.9.3

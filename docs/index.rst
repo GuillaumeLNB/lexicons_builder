@@ -5,7 +5,6 @@ lexicons_builder
 This is the documentation of **lexicons_builder**.
 
 .. note::
-
     This is the main page of your project's `Sphinx`_ documentation.
     It is formatted in `reStructuredText`_. Add additional pages
     by creating rst-files in ``docs`` and adding them to the `toctree`_ below.

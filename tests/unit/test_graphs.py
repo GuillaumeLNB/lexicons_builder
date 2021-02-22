@@ -1,0 +1,108 @@
+#!/bin/python3
+import unittest
+import os
+import sys
+
+import rdflib
+from touch import touch
+from unidecode import unidecode
+from parameterized import parameterized_class
+
+
+sys.path.insert(0, os.path.join("..", "..", "src", "graphs"))
+from graphs import Graph
+
+
+@parameterized_class(
+    ("graph_test_path",),
+    [("../data/dummy_graph.ttl",), ("../data/graph_synonymesCom_dep2_w=rire.ttl",)],
+)
+class TestGraph(unittest.TestCase):
+
+    words = ("test", "poireau", "lire")
+    wrong_words = ("TedsfdfsSt", "f5sdaf5df5")
+    out_file = "_.txt"
+
+    def setUp(self):
+        self.g = Graph()
+        touch(self.out_file)
+
+    def tearDown(self):
+        # return
+        os.remove(self.out_file)
+
+    def test_add_word(self):
+        self.g.add_word("test", 5, "relation1", "target_word")
+
+    def test___contains(self):
+        self.g.add_word("test", 5, "relation1", "target_word")
+        self.assertTrue("test" in self.g)
+        self.assertFalse("notest" in self.g)
+
+    def test_str(self):
+        self.g.add_word("test", 5, "relation1", "target_word")
+        self.assertIsInstance(self.g.to_str(), str)
+        g2 = rdflib.Graph()
+        g2.parse(data=str(self.g), format="ttl")
+
+    def test_word_in_graph(self):
+        self.g.add_word("test", 5, "relation1", "target_word")
+        self.assertTrue(self.g.word_in_graph("test"))
+        self.assertFalse(self.g.word_in_graph("tfdfdfest"))
+
+    def test_to_text_file(self):
+        self.g.parse(self.graph_test_path, format="ttl")
+        self.g.to_text_file(self.out_file)
+        with open(self.out_file) as f:
+            words = sorted([line.strip() for line in f if line.strip()])
+        self.assertEqual(words, self.g.to_list())
+
+    def test_good_words(self):
+        self.g.parse(self.graph_test_path, format="ttl")
+        for word in self.g.to_list():
+            self.assertTrue(word)  # no empty words
+            self.assertTrue(unidecode(word.lower().strip()) == word)  # no
+
+    def test_is_empty(self):
+        self.assertTrue(self.g.is_empty())
+        self.assertRaises(ValueError, self.g._set_root_word_attribute)
+        rw_strings = ["root_word_string_1", "root_word_string_2", "root_word_string_3"]
+        for w in rw_strings:
+            self.g.add_root_word(w)
+            self.assertFalse(self.g.is_empty())
+        self.assertTrue(rw_strings == self.g.to_list())
+
+    def test_add_several_root_words(self):
+        self.g.add_root_word("root_word_string_1")
+        self.g.add_root_word("root_word_string_2")
+        self.g.add_root_word("root_word_string_3")
+        self.g.to_text_file(self.out_file)
+        with open(self.out_file) as f:
+            words = sorted([line.strip() for line in f if line.strip()])
+        self.assertEqual(words, self.g.to_list())
+
+    def test_add_several_root_words_with_previous_graph(self):
+        self.g.parse(self.graph_test_path, format="ttl")
+        self.g.add_root_word("root_word_string_1")
+        self.g.add_root_word("root_word_string_2")
+        self.g.add_root_word("root_word_string_3")
+
+        self.g.to_text_file(self.out_file)
+        with open(self.out_file) as f:
+            words = sorted([line.strip() for line in f if line.strip()])
+        self.assertEqual(words, self.g.to_list())
+        self.test_list_is_sorted()
+
+    def test_list_is_sorted(self):
+        self.assertTrue(sorted(self.g.to_list()) == self.g.to_list())
+
+    def test___len__(self):
+        self.assertFalse(len(self.g))
+        for i in range(1, 10):
+            self.g.add_root_word(f"test_{i}")
+            self.assertEqual(len(self.g), i)
+        self.g.add_word("test", 5, "relation1", "target_word")
+        self.assertEqual(len(self.g), i + 1)
+
+
+unittest.main()

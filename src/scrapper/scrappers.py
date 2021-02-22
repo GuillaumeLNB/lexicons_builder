@@ -16,6 +16,7 @@ import logging
 import requests
 import os
 import sys
+from concurrent.futures import ThreadPoolExecutor
 
 import fake_useragent
 from bs4 import BeautifulSoup
@@ -31,7 +32,6 @@ __location__ = os.path.join(
     os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe()))
 )
 sys.path.insert(0, os.path.join(__location__, "..", "graphs"))
-# print('SYS PATH', sys.path)
 from graphs import Graph
 
 
@@ -42,6 +42,7 @@ class SynonymsGetter:
     ua = (
         fake_useragent.UserAgent().random
     )  # TODO remove that thing from sphinx documentation
+    logging.debug(f"user-Agent is '{ua}'")
 
     def __str__(self):
         if hasattr(self, "website"):
@@ -52,7 +53,7 @@ class SynonymsGetter:
         """This method should be implemented differently for every languages
         and every websites (scrapping method different).
         It sould return an iterable of synonyms scrapped from the website"""
-        return set()
+        return []
 
     def explore_reccursively(
         # self, term_to_look_up: str, previous_terms: dict, deepth: int = 10
@@ -73,7 +74,12 @@ class SynonymsGetter:
         Returns:
             a Graph object with the words that were looked up
         XXX    """
-        # print(f"WORD IS '{word}'\tDEPTH IS '{current_depth}'") # XXX
+        logging.debug(
+            f"Exploring with word '{word}' current depth is '{current_depth}'"
+        )
+
+        if not isinstance(max_depth, int):
+            raise TypeError(f"max_depth type should be int not '{type(max_depth)}'")
 
         if not _previous_graph:
             # initializing the Graph for the 1st time
@@ -89,11 +95,15 @@ class SynonymsGetter:
 
         else:
             new_words = [w for w in self._get_results_from_website(word) if w]
+            logging.info(f"{len(new_words)} found")
             for n_word in new_words:
                 n_word = unidecode(n_word.lower())
                 if n_word in graph:
+                    logging.debug(f"n_word is already in the graph -> skipping it")
                     continue
-                graph.add_word(n_word, current_depth, "syn", word)
+                graph.add_word(
+                    n_word, current_depth, "syn", word, comesFrom=self.website
+                )
                 graph = self.explore_reccursively(
                     n_word,
                     current_depth=current_depth + 1,
@@ -101,39 +111,6 @@ class SynonymsGetter:
                     _previous_graph=graph,
                 )
         return graph
-
-    # def get_synonyms(
-    #     self, word: str, deepth: int, indent: int = 4, out_file: str = None
-    # ):
-    #     """Get the synomys from a website and print them to a file
-
-    #     Args:
-    #         word (str): the word we want synonyms from
-    #         deepth (int): the deepth of the reccursion
-    #         indent (int): the indentation in the file
-    #         out_file (str): the file name were the results will be.
-    #                         if None, it will create a new file
-    #                         using f"{self.lang}_{domain}_{word}_{deepth}.txt"
-    #         """
-
-    #     if not out_file:
-    #         # domain = re.search(r'www\.([A-z\-_])\.[A-z]{2,3}', self.website).group(1)
-    #         domain = self.website.split(".")[0]
-    #         out_file = f"{self.lang}_{domain}_{word}_{deepth}.txt"
-    #     self.out_file = out_file
-    #     touch(self.out_file)
-
-    #     words = self.explore_reccursively(word, {}, deepth)
-    #     # print(words)
-    #     with open(self.out_file, "w") as f:
-    #         # print(sorted(set([unidecode(w).lower().strip() for w in words])))
-    #         # print(words)
-    #         print(word, file=f)
-    #         for word in sorted(set([unidecode(w).lower().strip() for w in words])):
-    #             print(" " * indent * (deepth - words[word]) + word, file=f)
-    #             # print(word)
-    #             # input()
-    #     print(self.out_file)
 
     def download_and_parse_page(self, url: str):
         """return the Beautiful soup of the page
@@ -148,9 +125,12 @@ class SynonymsGetter:
         """
         logging.info(f"getting {url}")
         r = requests.get(url, headers={"User-Agent": self.ua})
+        if r.status_code == 429:
+            logging.error(f"the website responded to 429 Too Many Requests")
         if not r.ok:
             logging.error(f"request is not ok. Status code is {r.status_code}")
-            return []
+            # returning an empty BautifulSoup Object
+            return BeautifulSoup("", "html.parser")
         return BeautifulSoup(r.text, "html.parser")
 
 
@@ -184,8 +164,9 @@ class SynonymsGetterDictionnaireSynonymesCom(SynonymsGetter):
         words = []
         for word in soup.find_all("a", class_="lien3"):
             words.append(word.text.strip().lower())
-        for word in soup.find_all("a", class_="lien2"):
-            words.append(word.text.strip().lower())
+        # lien2 contains the domain of the words eg > nature, animal:
+        # for word in soup.find_all("a", class_="lien2"):
+        #     words.append(word.text.strip().lower())
         return list(set(words))
 
 
@@ -270,17 +251,68 @@ class SynonymsGetterSynonymsCom(SynonymsGetter):
     lang = "en"
 
     def _get_results_from_website(self, word):
-        raise ValueError("The scrpping returns bad results")
         word = unidecode(word.lower())
         url = f"https://www.synonyms.com/synonym/{word}"
         soup = self.download_and_parse_page(url)
         words = []
-        for link in soup.find_all("a", href=True):
-            if not link["href"].startswith("/synonym/") and not link.text.startswith(
-                "What are some"
-            ):
+        for p in soup.find_all("p", class_="syns"):
+            for link in p.find_all("a", href=True):
+                if not link["href"].startswith("/synonym/"):
+                    continue
                 words.append(link.text.strip())
         return list(set(words))
+
+
+scrappers_french = [
+    SynonymsGetterSynonymesCom(),
+    SynonymsGetterDictionnaireSynonymesCom(),
+    SynonymsGetterLesSynonymesCom(),
+    SynonymsGetterLeFigaro(),
+    SynonymsGetterCrisco2(),
+]
+
+
+scrappers_english = [
+    SynonymsGetterLexico(),
+    SynonymsGetterSynonymsCom(),
+]
+
+
+def get_synonyms_from_scrappers(word, lang, depth, merge_graph=True):
+    """
+
+
+    merged graph
+    XXX +threads
+    WARNING: using the scrapping with threads might not work as
+    the rdflib.plugins.sparql.parser.parseQuery function is not thread safe
+    https://github.com/RDFLib/rdflib/issues/765
+    """
+    if lang == "en":
+        scrappers = scrappers_english
+    elif lang == "fr":
+        scrappers = scrappers_french
+    else:
+        raise ValueError(f"lang '{lang}' not implemented yet.")
+
+    # executor = ThreadPoolExecutor()
+    # threads = [
+    #     executor.submit(scrapper.explore_reccursively, word, depth)
+    #     for scrapper in scrappers
+    # ]
+    # res = [t.result() for t in threads]
+
+    # thread safe version
+    res = []
+    for scrapper in scrappers:
+        logging.info(f"scrapping '{scrapper.website}'")
+        res.append(scrapper.explore_reccursively(word, depth))
+    if merge_graph:
+        main_graph = Graph()
+        for graph in res:
+            main_graph += graph
+        return main_graph
+    return res
 
 
 if __name__ == "__main__":

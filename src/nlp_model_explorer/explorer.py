@@ -9,7 +9,6 @@ import os
 import sys
 import logging
 
-from rdflib import Graph
 from gensim.models import KeyedVectors
 
 __location__ = os.path.join(
@@ -17,6 +16,7 @@ __location__ = os.path.join(
 )
 sys.path.insert(0, os.path.join(__location__, "..", "graphs"))
 from graphs import Graph
+
 
 __author__ = "GLNB"
 __copyright__ = "GLNB"
@@ -50,6 +50,9 @@ def explore_nlp_model(
         a rdflib.Graph object containing the nearests terms
     XXX TODO add example
     """
+    logging.debug(
+        f"Exploring the model with word '{word}' current depth is '{current_depth}'"
+    )
 
     if not _previous_graph:
         # initializing the Graph for the 1st time
@@ -64,6 +67,7 @@ def explore_nlp_model(
         return graph
 
     if not _previous_model:
+        logging.info(f"loading nlp model from '{model_path}'")
         # to avoid reading the file each time the function is invoked
         try:
             _previous_model = KeyedVectors.load_word2vec_format(
@@ -71,9 +75,12 @@ def explore_nlp_model(
             )
         except EOFError:
             # the model is in a text format
-            _previous_model = KeyedVectors.load_word2vec_format(
-                model_path, binary=False, unicode_errors="ignore"
-            )
+            try:
+                _previous_model = KeyedVectors.load_word2vec_format(
+                    model_path, binary=False, unicode_errors="ignore"
+                )
+            except Exception as e:
+                raise ValueError(f"Cannot read the model from '{model_path}'")
 
     if word not in _previous_model:
         # the model does not contain the original word
@@ -84,7 +91,7 @@ def explore_nlp_model(
         if graph.word_in_graph(new_word):
             continue
         assert new_word != word
-        graph.add_word(new_word, current_depth, "", word)
+        graph.add_word(new_word, current_depth, "", word, comesFrom=model_path)
         graph = explore_nlp_model(
             new_word,
             model_path,

@@ -13,6 +13,7 @@ from requests.utils import quote
 
 
 import rdflib
+from languagecodes import iso_639_alpha3
 from nltk.corpus import wordnet as wn
 
 try:
@@ -25,7 +26,6 @@ __location__ = os.path.join(
     os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe()))
 )
 sys.path.insert(0, os.path.join(__location__, "..", "graphs"))
-# print('SYS PATH', sys.path)
 from graphs import Graph
 
 
@@ -48,7 +48,7 @@ def explore_wordnet(
 
     Args:
         word (str): the word
-        lang (str): language in ISO 639-2 code (eg: fra for French)
+        lang (str): language in ISO 639-1 code (eg: fr for French)
         current_depth (int): the depth of the reccursion
 
     Returns:
@@ -75,7 +75,8 @@ def explore_wordnet(
         ns2:synsetLink <http://wordnet-rdf.princeton.edu/pwn30/08337324-n> .
     ...
     """
-    # print("\t" * (2 - depth) + f"exploring {word}", flush=True)
+    logging.debug(f"Exploring WORDNET with word '{word}' at depth '{current_depth}'")
+    lang = iso_639_alpha3(lang)  # wordnet needs iso-639-2
     if lang not in wn.langs():
         raise ValueError(
             f"Language '{lang}' not implemented. Implemented languages are : {sorted(wn.langs())}"
@@ -161,7 +162,7 @@ def explore_wolf(
     french_word: str,
     path_to_wolf: str,
     max_depth: int = 5,
-    depth=1,
+    current_depth=1,
     _previous_graph=None,
     _wolf_object=None,
 ):
@@ -181,8 +182,10 @@ def explore_wolf(
 
     Returns:
         a rdflib.Graph-ish object containing the nearests terms
-        """
-    # _wolf_object
+     XXX    """
+    logging.debug(
+        f"Exploring WOLF with word '{french_word}' at depth '{current_depth}'"
+    )
 
     if not _previous_graph:
         # initializing the Graph for the 1st time
@@ -192,7 +195,7 @@ def explore_wolf(
     else:
         graph = _previous_graph
 
-    if depth - 1 == max_depth:
+    if current_depth - 1 == max_depth:
         # reccursion ends
         return graph
 
@@ -214,13 +217,13 @@ def explore_wolf(
                 continue
             assert word != french_word
             # print(f"newword __explore__ is : '{new_word}', word is '{word}'")
-            graph.add_word(word, depth, "", french_word)
+            graph.add_word(word, current_depth, "", french_word)
             # exit()
             graph = explore_wolf(
                 word,
                 path_to_wolf,
                 _wolf_object=_wolf_object,
-                depth=depth + 1,
+                current_depth=current_depth + 1,
                 max_depth=max_depth,
                 _previous_graph=graph,
             )
@@ -230,12 +233,12 @@ def explore_wolf(
                 if graph.word_in_graph(new_word):
                     continue
                 assert new_word != french_word
-                graph.add_word(new_word, depth, "hypernym", french_word)
+                graph.add_word(new_word, current_depth, "hypernym", french_word)
                 graph = explore_wolf(
                     word,
                     path_to_wolf,
                     _wolf_object=_wolf_object,
-                    depth=depth + 1,
+                    current_depth=current_depth + 1,
                     max_depth=max_depth,
                     _previous_graph=graph,
                 )

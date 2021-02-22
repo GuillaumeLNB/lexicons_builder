@@ -1,0 +1,27 @@
+@prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns2: <urn:default:baseUri:#> .
+@prefix ns3: <http://taxref.mnhn.fr/lod/property/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns2:assay ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "assay" ;
+    ns2:comesFrom <lexico.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#put%20a%20strain%20on> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "put a strain on" ;
+    ns2:comesFrom <lexico.com> ;
+    ns2:depth 1 .
+
+ns2:quiz ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "quiz" ;
+    ns2:comesFrom <lexico.com> ;
+    ns2:depth 1 .
+
+<urn:default:baseUri:#try%20out> ns3:isSynonymOf ns2:root_word_uri ;
+    ns1:prefLabel "try out" ;
+    ns2:comesFrom <lexico.com> ;
+    ns2:depth 1 .
+
+ns2:root_word_uri a ns2:root_word ;
+    ns1:prefLabel "test" .

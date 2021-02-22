@@ -1,0 +1,1537 @@
+read
+	afl
+		fal
+		fla
+		laf
+		lea
+	appear in reading
+	augur
+		betoken
+		bode
+		foreshow
+		foretell
+		oracler
+		portend
+		seer
+		spae
+		spaewife
+		vaticinate
+	be read
+	be studious in books
+	bed
+		-bed
+		adjourn
+		alcove
+		arse
+		ass
+		backside
+		bang
+		bash
+		be intimate
+		bedding
+		bedlinen
+		bedroom
+		beds
+		bedside
+		bedspace
+		bedtime
+		behind
+		bench
+		berth
+		bonk
+		bop
+		bottom
+		bottom of the inning
+		bottomland
+		bum
+		bunk
+		buns
+		buttocks
+		cama
+		can
+		cheat
+		chicane
+		chouse
+		clinic
+		clinical
+		cognise
+		cognize
+		complete
+		contend
+		cope
+		cot
+		couch
+		cradle
+		crawl in
+		crease
+		crib
+		crinkle
+		cut
+		decumbiture
+		deposit
+		derriere
+		do
+		do it
+		draw back
+		drive in
+		eff
+		embed
+		fanny
+		fare
+		fill in
+		fill out
+		fork out
+		fork over
+		fork up
+		freighter
+		fundament
+		furrow
+		get along
+		get by
+		get it on
+		get laid
+		go to bed
+		go to sleep
+		grapple
+		hand over
+		have a go at it
+		have intercourse
+		have it away
+		have it off
+		have sex
+		hind end
+		hindquarters
+		hit the hay
+		hit the sack
+		hump
+		hunch
+		hunch forward
+		hunch over
+		in-bed
+		issue
+		jazz
+		jockey
+		keister
+		kip down
+		layer
+		lectual
+		level
+		lie with
+		line
+		love
+		make do
+		make love
+		manage
+		mattress
+		merchant ship
+		merchantman
+		move back
+		nates
+		neck
+		paillasse
+		pallet
+		place to sleep in
+		posterior
+		prat
+		pull away
+		pull back
+		put out
+		raised plot
+		reading
+		reads
+		rear
+		rear end
+		recede
+		resting-place
+		retire
+		retreat
+		riverbed
+		roll in the hay
+		rump
+		sack
+		sack out
+		screw
+		seam
+		seat
+		shaft
+		slam
+		sleep
+		sleep together
+		sleep with
+		sleeping
+		sock
+		spang
+		stern
+		stratum
+		streambed
+		strike out
+		tail
+		tail end
+		tooshie
+		trundle-bed
+		turn in
+		tush
+		underside
+		undersurface
+		valance
+		vein
+		whap
+		whop
+		wrinkle
+		write out
+	bone up on
+	chew out
+	chew someone's ass
+	con
+		bunco
+		cozen
+		embezzle
+		fiddle
+		fool
+		gazump
+		mulct
+		rort
+		scam
+		stiff
+		swindle
+	construe
+		analyze
+		ascertain
+		assure
+		attend
+		catch
+		check
+		come across
+		consider
+		control
+		date
+		determine
+		discover
+		encounter
+		ensure
+		envision
+		escort
+		examine
+		experience
+		explain
+		expound
+		fancy
+		figure
+		find
+		find out
+		get a line
+		get wind
+		get word
+		go out
+		go steady
+		go through
+		hear
+		image
+		insure
+	interpret
+		crack
+		decipher
+		bead
+		decode
+		decrypt
+		delineate
+		follow
+		hound
+		retrace
+		solve
+		spell
+		trace
+		unencrypt
+		unfold
+		gloss
+		paraphrase
+		portray
+		translate
+		understand
+		learn
+		look
+		admire
+		anticipate
+		appearance
+		atmosphere
+		await with pleasure
+		be the spitting image of
+		behold
+		beware
+		blank
+		check out
+		command a view
+		disdain
+		drop in on
+		expression
+		eyeball
+		eyeful
+		fashion
+		geek
+		give someone the brush-off
+		glance
+		glimpse
+		honour
+		improve
+		inspect
+		investigate
+		jack nohi
+		keep an eye on
+		lick one's lips over
+		look down one's nose at
+		peep
+		probe
+		reflect on
+		regard
+		resemble
+		search for
+		see
+		seem
+		send to coventry
+		shufti
+		snub
+		take a dekko
+		take a dekko at
+		take a gander
+		take after
+		take care of
+		turn to
+		vet
+		visit
+		visit with
+		watch
+		meet
+		parse
+		pick up
+		picture
+		project
+		put an interpretation upon
+		realise
+		realize
+		reckon
+		rede
+		render
+		represent
+		resolve
+		run across
+		run into
+		see to it
+		take care
+		take in
+		view
+		visualise
+		visualize
+		witness
+	dsl
+		adsl
+		digital subscriber line
+		lan
+		lis
+		lnp
+		lsr
+		sdl
+	exhibit
+		'exposition
+		abut
+		apiece
+		avow
+		award
+		border
+		bring into view
+		bring out
+		bring to notice
+		butt
+		butt against
+		butt on
+		coin
+		confront
+		debunk
+		demo
+		depict
+		designate
+		dime
+		disinter
+		display
+		edge
+		endanger
+		establish
+		evince
+		exhibition
+		exhibitions
+		exhibits
+		exhume
+		expo
+		exposition
+		exposure
+		exposures
+		face
+		gift
+		give away
+		illustrate
+		indicate
+		admit
+		bespeak
+		come out with
+		demonstrate
+		manifest
+		point to
+		show
+		state
+		introduce
+		lay bare
+		lay open
+		lay out
+		let on
+		let out
+		make known, reveal
+		march
+		offer
+		offer for inspection
+		parade
+		peril
+		piece
+		point
+		point out
+		present
+		present to view
+		presentation
+		process
+		promenade
+		propose
+		raise
+		record
+		register
+		room
+		salute
+		screening
+		scupper
+		set forth
+		shew
+		show off
+		show up
+		showing
+		stage
+		suite
+		table
+		troop
+		uncover
+		unmask
+		unveil
+		unwrap
+		usher
+		video display
+		viewing
+		voucher
+	file
+		accuse
+		agitate
+		appoint
+		archival
+		archive
+		archives
+		archiving
+		archivos
+		bank
+		bear down
+		bill
+		blame
+		buck
+		bundle of papers
+		case
+		case-file
+		charge
+		charge up
+		column
+		commit
+		commove
+		consign
+		cross-file
+		data file
+		docket
+		dossier
+		excite
+		fichier
+		file away
+		file cabinet
+		filename
+		files
+		filing
+		filing cabinet
+		finish
+		folder
+		institutionalise
+		institutionalize
+		lodge
+		march in a file
+		matter
+		numerico
+		perfect
+		place on file
+		polish
+		quannet
+		rasp
+		records
+		refine
+		roster
+		rouse
+		row
+		saddle
+		send
+		shoot down
+		single file
+		smooth
+		tear
+		turn on
+		wedge
+	follows
+		below
+		continued
+		continues
+		followed
+		following
+		hereinafter
+		monitors
+		next
+		remains
+		tracks
+	foresee
+		foreknow
+	have a go at
+	infer
+		approximate
+		argue
+		conclude
+		consider probable
+		deduce
+		deduct
+		descend
+		educe
+		empathise
+		empathize
+		estimate
+		extrapolate
+		gauge
+		generalise
+		generalize
+		guess
+		hazard
+		imagine
+		imply
+		interpolate
+		opine
+		popularise
+		popularize
+		pretend
+		recoup
+		subtract
+		sympathise
+		sympathize
+		take off
+		venture
+		vulgarise
+		vulgarize
+		withhold
+	infer from
+	interpreted
+		construed
+		explained
+		interpretation
+		interpreting
+		misinterpreted
+		seen
+		taken
+		understood
+		viewed
+	larn
+		evolve
+		memorise
+		memorize
+	lean
+		angle
+		angle of dip
+		angle of inclination
+		angular
+		arguing
+		argument
+		bare
+		barren
+		be given
+		bend
+		black market
+		bleed
+		bony
+		break away
+		bung
+		campaign
+		cant
+		cant over
+		careen
+		confide
+		consort
+		contention
+		contestation
+		controversy
+		course
+		depend
+		die hard
+		dip
+		disceptation
+		dispose
+		disposition
+		disputation
+		dull
+		emaciated
+		endure
+		escape
+		execute
+		fallen away
+		fee
+		feed
+		fish
+		flimsy
+		flow
+		fly the coop
+		fragile
+		function
+		gaunt
+		hang
+		have a tendency
+		head for the hills
+		heel
+		heel over
+		hightail it
+		hunt
+		hunt down
+		inadequate
+		inclination
+		inclination of an orbit
+		incline
+		incline for support
+		inclining
+		jejune
+		joust
+		ladder
+		lam
+		lank
+		leaning
+		list
+		listing
+		magnetic dip
+		magnetic inclination
+		marcid
+		meager
+		meagre
+		melt
+		melt down
+		move
+		not ample
+		not enough
+		not full or abundant
+		not plentiful
+		operate
+		pass
+		persist
+		pitch
+		pitiful
+		ply
+		poor
+		proclivity
+		propensity
+		prosy
+		race
+		recline
+		rely
+		repose
+		rest
+		rock
+		run away
+		run for
+		scant
+		scanty
+		scarce
+		scarper
+		scat
+		scraggy
+		scrawny
+		shift
+		shrivelled
+		skimpy
+		skinny
+		slant
+		sleek
+		slender
+		slight
+		slope
+		spare
+		sparse
+		stylized
+		support
+		tabid
+		take to the woods
+		tame
+		tap
+		tend
+		tendency
+		tenuous
+		thin
+		tilt
+		tip
+		tip off
+		tippytoe
+		tiptoe
+		topple
+		track down
+		tumble
+		turn tail
+		unravel
+		weight
+		wobble
+		work
+	learned
+		acquired
+		acquiree
+		conditioned
+		conversant
+		deductions
+		deep-read
+		derived
+		drawn
+		educated
+		erudite
+		experienced
+		extracted
+		fired
+		gained
+		heard
+		iearned
+		in condition(p)
+		informed
+		instructed
+		intentional
+		intimate
+		knowing
+		knowledgeable
+		learnt
+		lessons
+		lettered
+		literary
+		obtained
+		purchased
+		sage
+		scholarly
+		skilled
+		syndrome
+		taught
+		trained
+		versed
+		well-educated
+		well-informed
+		well-read
+		wise
+		wise to(p)
+		wise(p)
+	lee
+		eea
+		eml
+		lee side
+		leeward
+		lei
+		li
+		martin
+		rhee
+		side sheltered from the wind
+		to leeward
+	leen
+		lin
+	leer
+		lear
+		lir
+		look askance
+		sneer
+	lire
+		itl
+		lira
+		liras
+		lit
+		pounds
+	lu
+		annette
+		atomic number 71
+		christine
+		jinro
+		land
+		lo
+		loh
+		lui
+		luk
+		luo
+		lus
+		lutecium
+		lutetium
+		noh
+		roh
+		ruihua
+		xiulian
+		yeo
+	major in
+	make sense of
+	maltese
+		malta
+		maltais
+		non-maltese
+	meditate
+		advise with one's pillow
+		analyse
+		beat or cudgel one's brains
+		canvas
+		canvass
+		chew
+		chew over
+		chew the cud upon
+		cogitate
+		collect one's thoughts
+		compass
+		concoct
+		confer
+		conjecture
+		consult
+		contemplate
+		contrive
+		debate
+		deliberate
+		devise
+		dwell intently upon
+		excogitate
+		forge
+		formulate
+		hit the books
+		hypothecate
+		hypothesise
+		hypothesize
+		intend
+		invent
+		job
+		mull
+		mull over
+		muse
+		plan
+		ponder
+		purpose
+		rack
+		reflect
+		reflect upon
+		reverberate
+		revolve
+		revolve in the mind
+		ruminate
+		scheme
+		shine
+		speculate
+		theorise
+		theorize
+		think
+		think on
+		think over
+		turn over in the mind
+		weigh
+	pack
+		acquit
+		anchor ring
+		annulus
+		ask
+		assemblage
+		assortment
+		assume
+		backpack
+		bag
+		bale
+		band
+		battalion
+		behave
+		bevy
+		bivouac
+		block
+		brood
+		budget
+		bunch
+		bunch up
+		bundle
+		bundle up
+		burden
+		camp
+		cantonment
+		carry
+		channel
+		charter
+		chock up
+		choose
+		claim
+		clan
+		clique
+		close up
+		closed chain
+		clump
+		cluster
+		collection
+		compact
+		company
+		comport
+		compress
+		concourse
+		conduct
+		constrict
+		cook
+		coterie
+		covey
+		cram
+		crew
+		crime syndicate
+		crowd
+		crush
+		deal
+		demand
+		deport
+		direct
+		doughnut
+		dribble
+		drove
+		encampment
+		encumber
+		engage
+		exact
+		expect
+		extend
+		face pack
+		family
+		film
+		flock
+		gang
+		gestate
+		get hold of
+		group
+		guide
+		halo
+		hatch
+		have a bun in the oven
+		heap
+		herd
+		hire
+		hoi polloi
+		hoop
+		impart
+		impede
+		ingroup
+		inner circle
+		involve
+		jam
+		jampack
+		knot
+		large number
+		lead
+		lease
+		litter
+		load
+		load down
+		look at
+		lot
+		mass
+		masses
+		mob
+		multitude
+		necessitate
+		need
+		obstruct
+		obturate
+		occlude
+		occupy
+		pack together
+		package
+		packages
+		packaging
+		packet
+		packets
+		packing
+		packs
+		paquet
+		parcel
+		people
+		persuade
+		pile
+		platoon
+		plurality
+		posse
+		post
+		postulate
+		practice bundling
+		press
+		purse
+		put together
+		quantity
+		rabble
+		ram
+		refugee camp
+		relative majority
+		remove
+		rent
+		require
+		ring
+		ringing
+		roll up
+		rout
+		run
+		select
+		set
+		shook
+		shoot
+		six-pack
+		squad
+		squeeze
+		stack
+		stock
+		stockpile
+		stow
+		strike
+	study
+		clock
+		den
+		essay
+		investigation
+		learning
+		lost in thought
+		miles away
+		mug up
+		mug up on
+		office
+		scrutinize
+		swot
+		swotting
+		subscribe
+		subscribe to
+		summer camp
+		swarm
+		sway
+		syndicate
+		take aim
+		take away
+		tamp
+		tamp down
+		the great unwashed
+		throng
+		tintinnabulation
+		train
+		transmit
+		transport
+		truss
+		use up
+		wad
+		withdraw
+		work party
+	perusal
+	peruse
+		browse through
+	pore over
+	practise reading
+	premeditated
+		elaborated
+		first-degree
+		prepared
+		recited
+		studied
+		wilful
+		written
+	presuppose
+		presume
+	read between the lines
+	read out
+	read-
+	readout
+		indicator
+		reader
+	receive
+		absorb
+		accept
+		acceptance
+		accommodate
+		achieve
+		acquire
+		adjoin
+		adopt
+		aim
+		allow
+		amaze
+		apprehend
+		arrest
+		arrive
+		ask for
+		ask in
+		ask over
+		ask round
+		assemble
+		assent to
+		assimilate
+		attain
+		baffle
+		be
+		bear
+		beat
+		become
+		befool
+		beget
+		begin
+		believe
+		bewilder
+		bid
+		birth
+		bring
+		bring forth
+		bring in
+		bugger off
+		bump
+		buzz off
+		call for
+		capture
+		cause
+		chance
+		clear
+		cod
+		collar
+		collect
+		come
+		come up
+		commence
+		conform to
+		consume
+		contact
+		contain
+		contract
+		converge
+		convey
+		cop
+		cope with
+		deliver
+		derive
+		detect
+		develop
+		draw
+		drive
+		dumbfound
+		dupe
+		earn
+		elate
+		embrace
+		engender
+		enjoy
+		entertain
+		father
+		feature
+		feel
+		fetch
+		fill
+		find oneself
+		fit
+		fix
+		flummox
+		foregather
+		forgather
+		fulfil
+		fulfill
+		gain
+		gain vigor
+		gather
+		gather in
+		gather up
+		generate
+		get
+		get down
+		get hold
+		get together
+		get under one's skin
+		give
+		give birth
+		give credence to
+		go
+		gravel
+		greet
+		grow
+		gull
+		happen
+		have
+		have got
+		hold
+		imbibe
+		incur
+		induce
+		ingest
+		intoxicate
+		invite
+		let
+		lift up
+		line up
+		live
+		make
+		match
+		mother
+		mystify
+		nab
+		nail
+		nonplus
+		not reject
+		not repel
+		notice
+		observe
+		obtain
+		overhear
+		pay back
+		pay for
+		pay off
+		peck
+		perceive
+		percolate
+		perk
+		perk up
+		permit
+		perplex
+		play
+		pose
+		possess
+		prevail
+		procure
+		produce
+		pull in
+		put on
+		put one across
+		put one over
+		puzzle
+		receipt
+		receivable
+		received
+		receives
+		receiving
+		reception
+		recibir
+		recover
+		regain
+		retrieve
+		rule
+		satisfy
+		scram
+		set about
+		set out
+		sire
+		slang
+		soak up
+		sop up
+		start
+		start out
+		stick
+		stimulate
+		stupefy
+		suck
+		suck in
+		suck up
+		suffer
+		sustain
+		take
+		take on
+		take up
+		tempt
+		throw
+		tolerate
+		touch
+		turn around
+		uplift
+		vex
+		welcome
+		win
+	reprimand
+		bollock
+		bollocking
+		call down
+		haul over the coals
+		monster
+		rating
+		rebuke
+		reprehend
+		serve
+		tell off
+		telling-off
+		tick off
+		ticking off
+	run one's eye over
+	skim
+		bat
+		bound off
+		brush
+		clobber
+		conk out
+		cream
+		cream off
+		decamp
+		drub
+		exhaust
+		glance over
+		glide
+		graze
+		grazing
+		hop
+		hop-skip
+		jump
+		lick
+		non-fat
+		nonfat
+		pass lightly or superficially
+		pass over
+		peter out
+		plane
+		play out
+		poop out
+		rake
+		run down
+		run out
+		sap
+		scamper
+		scan
+		scurry
+		scuttle
+		shave
+		shaving
+		skim off
+		skim over
+		skimmed
+		skimmed-milk
+		skimming
+		skip
+		skip over
+		skitter
+		thrash
+		tire
+		vamoose
+	tape
+		audiotape
+		band-aid
+		bands
+		belt
+		bureaucracy
+		cassette
+		cassettes
+		commemorate
+		enter
+		immortalise
+		immortalize
+		mag tape
+		magnetic tape
+		memorialise
+		memorialize
+		paperwork
+		pare
+		put down
+		ribbon
+		ribbons
+		scotch
+		strip
+		tape measure
+		tape recording
+		tape-
+		tape-based
+		tapeline
+		tapes
+		taping
+		video
+		videotape
+		webbing
+	tell
+		acknowledge
+		acquaint
+		advertise
+		advise
+		allege
+		announce
+		apprise
+		arrange
+		articulate
+		assort
+		attest
+		aver
+		be effective
+		bear witness
+		betray
+		branch
+		break
+		break up
+		bruit
+		call over
+		carve up
+		certify
+		circulate
+		class
+		classify
+		come apart
+		communicate
+		communicate to
+		compute
+		confess
+		consecrate
+		count
+		decide
+		declaim
+		declare
+		describe
+		dictate
+		differentiate
+		dis
+		discern
+		disclose
+		disclose to
+		discriminate
+		dissever
+		distinguish
+		disunite
+		divide
+		divulge
+		enjoin
+		enounce
+		enumerate
+		enunciate
+		evidence
+		explain to
+		expose
+		express
+		fall apart
+		fork
+		furcate
+		give account
+		give an account of
+		give notice (of)
+		give out
+		govern
+		grade
+		guarantee
+		herald
+		hit the nail on the head
+		identify
+		inform
+		instruct
+		itemise
+		itemize
+		judge
+		key
+		key out
+		know
+		make known
+		make known to
+		make mention of
+		make out
+		make report
+		mark
+		mean
+		mention
+		name
+		narrate
+		notify
+		number
+		ordain
+		order
+		ordinate
+		own
+		part
+		peach
+		pick out
+		place
+		posit
+		prescribe
+		proclaim
+		promise
+		promulgate
+		pronounce
+		propound
+		prove
+		publish
+		put
+		put forward
+		ramify
+		range
+		rank
+		rate
+		reassure
+		recite
+		recognise
+		recognize
+		recount
+		regularise
+		regularize
+		regulate
+		rehearse
+		relate
+		report
+		retell
+		reveal
+		run over
+		said
+		say
+		saying
+		secern
+		secernate
+		secure
+		separate
+		set up
+		severalise
+		severalize
+		signalise
+		signalize
+		single out
+		sort
+		sort out
+		sound out
+		speak
+		speak of
+		specialise
+		specialize
+		speciate
+		split
+		split up
+		spot
+		spread abroad
+		submit
+		sum up
+		suppose
+		take an account of
+		take effect
+		talk
+		teach
+		teii
+		tell apart
+		telling
+		testify
+		this
+		told
+		utter
+	transform
+		alter
+		change
+		change the form of
+		commute
+		conversion
+		convert
+		diversify
+		exchange
+		make over
+		metamorphose
+		modify
+		processing
+		qualify
+		substitute
+		transfigure
+		transformacion
+		transformation
+		transforming
+		transforms
+		transmogrify
+		transmute
+		transubstantiate
+		turn
+		turning
+		vary
+		veer
+	versed in books
+	wade through
+
