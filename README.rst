@@ -28,3 +28,5 @@ ttl file gives more info. If a word comes from several places it should be a val
 
 .. toctree::
     docs/quickstart.rst
+
+![alt text](docs/quickstart.rst)
