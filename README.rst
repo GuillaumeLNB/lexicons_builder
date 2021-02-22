@@ -26,6 +26,25 @@ ttl file gives more info. If a word comes from several places it should be a val
     ns1:depth 2 .
 
 
+Installation
+------------
+
+To install the module, clone it from gitlab.
+
+
+
+    .. code:: bash
+
+        $ git clone git@gitlab.inria.fr:glenoebi/lexicons_builder.git
+        $ cd lexicons_builder/
+
+Install the requirements:
+
+    .. code:: python
+
+        $ pip install -r requirements.txt
+
+
 QuickStart
 ------------
 
