@@ -9,7 +9,7 @@ BUILDDIR      = ../build/sphinx/
 AUTODOCDIR    = api
 AUTODOCBUILD  = sphinx-apidoc
 PROJECT       = lexicons_builder
-MODULEDIR     = ../src/
+MODULEDIR     = ../lexicons_builder/
 #lexicons_builder
 
 # User-friendly check for sphinx-build
@@ -64,6 +64,8 @@ html: doc-requirements
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+	@echo "Building the README.rst file"
+	cat readme.rst blank_file.rst installation.rst  blank_file.rst quickstart.rst > $(MODULEDIR)../README.rst
 
 dirhtml: doc-requirements
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml

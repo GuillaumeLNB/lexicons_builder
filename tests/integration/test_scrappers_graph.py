@@ -25,17 +25,24 @@ from glob import glob
 from parameterized import parameterized_class
 from touch import touch
 
-sys.path.insert(0, os.path.join("..", "..", "src"))
+sys.path.insert(0, os.path.join("..", ".."))
 
 
-from scrapper.scrappers import get_synonyms_from_scrappers
+from lexicons_builder.scrapper.scrappers import get_synonyms_from_scrappers
 
-sys.path.insert(0, os.path.join("..", "..", "src", "graphs"))
+sys.path.insert(0, os.path.join("..", "..", "lexicons_builder", "graphs"))
 from graphs import Graph
 
 
 @parameterized_class(
-    ("lang", "depth"), [("fr", 1), ("en", 1),],
+    ("lang", "depth", "word"),
+    [
+        ("fr", 1, "test"),
+        ("en", 1, "test"),
+        ("es", 1, "test"),
+        ("it", 1, "test"),
+        ("de", 1, "Test"),
+    ],
 )
 class TestScrapperGraph(unittest.TestCase):
 

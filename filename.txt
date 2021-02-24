@@ -1,0 +1,506 @@
+read
+book
+	PS
+	accept
+	accommodate
+	according to the rules
+	account book
+	accountability
+	accountancy
+	accountant
+	accounting
+	accounts
+	accuse
+	acquire
+	act
+	adjudge
+	admit
+	adopt
+	afl
+	agree
+	aim
+	al-qur'an
+	album
+	allege
+	allocate
+	allow
+	analyse
+	analyze
+	annuaire
+	anthology
+	appear in reading
+	apply
+	appropriate
+	arrange
+	arrange for
+	arrest
+	articulate
+	ascertain
+	ask
+	assume
+	augur
+	aver
+	bag
+	balance sheet
+	be read
+	be studious in books
+	bear
+	bear witness
+	bed
+	bible
+	biblioclast
+	bibliognost
+	bibliography
+	bibliolater
+	bibliomania
+	bibliophilism
+	bibliophobia
+	bind
+	biograph
+	blame
+	bollock
+	bone up on
+	book
+	book of account
+	bookie
+	booklet
+	books
+	bring
+	browse
+	buch
+	bulk
+	cahier
+	call for
+	canvas
+	canvass
+	carnet
+	carry
+	catalogue
+	catch
+	chaillot
+	charge
+	charter
+	check
+	chew out
+	chew someone's ass
+	choose
+	claim
+	claimed
+	collaboration
+	collation
+	commemorate
+	con
+	concord
+	concur
+	conduct
+	confine
+	consider
+	construction
+	construe
+	construed
+	consume
+	contain
+	contemplate
+	contract
+	control
+	convey
+	cookbook
+	countersign
+	cpa
+	criminal record
+	cross-file
+	curb
+	daybook
+	deal
+	decide
+	decipher
+	declare
+	decode
+	deed
+	deem
+	defend
+	defy
+	delivers
+	demand
+	demo
+	demonstrate
+	denote
+	depict
+	describe
+	designate
+	detain
+	determine
+	diary
+	direct
+	directory
+	disc
+	discover
+	discuss
+	discussion
+	disk
+	drafted
+	drive
+	dsl
+	earmark
+	edition
+	editor
+	elaborated
+	elzevir
+	empathise
+	empathize
+	employ
+	engage
+	enjoin
+	enlist
+	enounce
+	enrol
+	enroll
+	enter
+	entertain
+	enunciate
+	establish
+	evidence
+	evince
+	ex libris
+	exact
+	examine
+	exhibit
+	explain
+	explore
+	express
+	facture
+	feel
+	fiction
+	figure out
+	file
+	fill
+	film
+	filofax
+	finalize
+	find out
+	follows
+	foresee
+	format
+	free
+	get
+	get a line
+	get hold of
+	get wind
+	get word
+	give
+	give-and-take
+	glance over
+	go for
+	guard
+	guidance
+	guide
+	guideline
+	halt
+	hand
+	handiwork
+	handwriting
+	harbor
+	harbour
+	have
+	have a go at
+	have got
+	hear
+	hire
+	hit the books
+	hold
+	hold back
+	hold in
+	hold up
+	honestly
+	identify
+	immortalise
+	immortalize
+	imprimatur
+	include
+	indicate
+	indict
+	infer
+	infer from
+	inform
+	ingest
+	inscribe
+	inspect
+	instruct
+	intelligence
+	intensity
+	interpret
+	interpretation
+	interpreted
+	investigate
+	involve
+	issue
+	join
+	jot
+	jot down
+	jotter
+	journal
+	keep
+	keep back
+	know
+	larn
+	lay away
+	lea
+	lead
+	lean
+	learn
+	learn about
+	learned
+	lease
+	lecture
+	ledger
+	lee
+	leen
+	leer
+	leger
+	legible
+	library
+	libretto
+	libro
+	lira
+	lire
+	lis
+	list
+	livre
+	log
+	logbook
+	look
+	look at
+	look through
+	loudness
+	lu
+	lus
+	maintain
+	major in
+	make
+	make of
+	make out
+	make sense of
+	maltese
+	manual
+	mark
+	mass
+	meditate
+	memorialise
+	memorialize
+	memorise
+	memorize
+	mention
+	mentioned
+	moderate
+	monograph
+	mug up on
+	necessitate
+	need
+	news
+	note
+	note down
+	notebook
+	notepad
+	novel
+	nurse
+	obligate
+	oblige
+	obtain
+	occupy
+	on the level
+	order
+	organize
+	outline
+	pack
+	pad
+	paper
+	paperback
+	parole
+	parse
+	password
+	perform
+	perusal
+	peruse
+	phonograph record
+	phonograph recording
+	pick out
+	pick up
+	picture
+	piece of work
+	pin down
+	place
+	platter
+	play
+	playbook
+	player
+	playscript
+	point
+	point out
+	point to
+	polygraph
+	pore
+	pore over
+	postulate
+	pound
+	pounds
+	practise reading
+	premeditated
+	prepared
+	present
+	preserve
+	presuppose
+	prevail
+	procure
+	project
+	pronounce
+	prosecute
+	prove
+	publication
+	publishing
+	purchase
+	put down
+	puzzle out
+	quire
+	rake
+	read
+	read between the lines
+	read out
+	read-
+	readability
+	reader
+	reading
+	reading stage
+	reading up
+	readout
+	realise
+	realize
+	receive
+	received
+	receiving
+	recite
+	recited
+	recognize
+	record
+	record book
+	recruit
+	rede
+	refer
+	refer to
+	reference
+	register
+	registration
+	registry
+	release
+	remove
+	render
+	rent
+	represent
+	reprimand
+	require
+	reread
+	reserve
+	restrain
+	retain
+	review
+	rule book
+	run down
+	run one's eye over
+	sacred scripture
+	said
+	save
+	say
+	scan
+	schedule
+	score
+	scratch pad
+	script
+	search
+	see
+	select
+	set aside
+	shew
+	shoot
+	show
+	show up
+	sign
+	sign on
+	sign up
+	signal
+	skim
+	slate
+	sound out
+	speak
+	specify
+	state
+	stated
+	stichometry
+	stop
+	story
+	strike
+	structure
+	studied
+	study
+	submit
+	subscribe
+	subscribe to
+	suggest
+	support
+	suppose
+	sustain
+	sympathise
+	sympathize
+	take
+	take aim
+	take away
+	take for
+	take hold
+	take in
+	take on
+	take up
+	talking
+	tape
+	teach
+	tell
+	tell off
+	telling
+	testify
+	textbook
+	throw
+	tick off
+	tidings
+	title
+	told
+	tome
+	tome (ponderous)
+	track record
+	train
+	transform
+	translate
+	understand
+	understood
+	unravel
+	unscramble
+	use up
+	usher
+	versed in books
+	view as
+	vol
+	volume
+	wade through
+	watch
+	watchword
+	withdraw
+	withhold
+	withstand
+	word of honor
+	worded
+	work
+	workbook
+	workbooks
+	write
+	write down
+	writers
+	written
+	yearbook
+	yellowback
+

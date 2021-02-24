@@ -6,7 +6,7 @@ from unittest.mock import patch
 
 from bs4 import BeautifulSoup
 
-sys.path.insert(0, os.path.join("..", "..", "src"))
+sys.path.insert(0, os.path.join("..", "..", "lexicons_builder"))
 # sys.path.insert(1, os.path.join("..", "src", "wordnet_explorer"))
 
 # from rdflib import Graph

@@ -3,38 +3,38 @@ import unittest
 import os
 import sys
 
-sys.path.insert(0, os.path.join("..", "..", "src"))
-sys.path.insert(1, os.path.join("..", "..", "src", "wordnet_explorer"))
+from touch import touch
+from parameterized import parameterized_class
 
-# from rdflib import Graph
-# logging.getLogger("transformers").setLevel(logging.CRITICAL + 1)
+sys.path.insert(0, os.path.join("..", ".."))
+import lexicons_builder.wordnet_explorer.explorer as exp
 
-import wordnet_explorer.explorer as exp
-
-sys.path.insert(0, os.path.join("..", "..", "src", "graphs"))
+sys.path.insert(0, os.path.join("..", "..", "lexicons_builder", "graphs"))
 from graphs import Graph
 
 
+@parameterized_class(
+    ("lang", "depth", "word"),
+    [("fra", 1, "test"), ("eng", 1, "test"), ("fra", 2, "test"), ("eng", 2, "test"),],
+)
 class TestExplorer(unittest.TestCase):
 
     langs = ("eng", "fra")
     words = ("test", "poireau")
-    wrong_langs = ("fr", "en", "de", "nl", "it")
+    wrong_langs = ("frgg", "enrr", "depp", "nlhh", "itff")
     word_test_fr = "chaussette"
+    out_file = "_test"
 
     def setUp(self):
-        pass
+        self.g = exp.explore_wordnet(self.word, self.lang, self.depth)
+        touch(self.out_file)
 
     def tearDown(self):
-        pass
+        os.remove(self.out_file)
 
     def test_explore(self):
         for good_lang, word in zip(self.langs, self.words):
             g = exp.explore_wordnet(word, good_lang, 2)
-
-    def test_wrong_languages(self):
-        for wl in self.wrong_langs:
-            self.assertRaises(ValueError, exp.explore_wordnet, self.word_test_fr, wl)
 
     def test_to_list(self):
         for i in range(5):
@@ -45,6 +45,22 @@ class TestExplorer(unittest.TestCase):
     def test_return_graph(self):
         self.assertIsInstance(exp.explore_wordnet(self.word_test_fr, "fra", 1), Graph)
         self.assertIsInstance(exp.explore_wordnet(self.word_test_fr, "fra", 0), Graph)
+
+    # TESTS ADDED FROM GRAPHS
+    def test_to_text_file(self):
+        self.g.to_text_file(self.out_file)
+        with open(self.out_file) as f:
+            words = sorted([line.strip() for line in f if line.strip()])
+        self.assertEqual(words, self.g.to_list())
+
+    def test_add_several_root_words(self):
+        self.g.add_root_word("root_word_string_1")
+        self.g.add_root_word("root_word_string_2")
+        self.g.add_root_word("root_word_string_3")
+        self.g.to_text_file(self.out_file)
+        with open(self.out_file) as f:
+            words = sorted(set([line.strip() for line in f if line.strip()]))
+        self.assertEqual(words, self.g.to_list())
 
 
 class TestWOLF(unittest.TestCase):

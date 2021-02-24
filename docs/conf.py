@@ -25,12 +25,8 @@ __location__ = os.path.join(
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 # print(os.path.join(__location__, "../src"))
-sys.path.insert(0, os.path.join(__location__, "..", "src"))
-sys.path.insert(0, os.path.join(__location__, "..", "src", "wordnet_explorer"))
-sys.path.insert(0, os.path.join(__location__, "..", "src", "scrapper"))
-sys.path.insert(0, os.path.join(__location__, "..", "src", "nlp_model_explorer"))
-sys.path.insert(0, os.path.join(__location__, "..", "src", "graphs"))
-# sys.path.insert(0, os.path.join(__location__, ".."))
+# sys.path.insert(0, os.path.join(__location__, "..", "lexicons_builder"))
+sys.path.insert(0, os.path.join(__location__, ".."))
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
@@ -46,9 +42,9 @@ except ImportError:
     from sphinx import apidoc
 
 output_dir = os.path.join(__location__, "api")
-# module_dir = os.path.join(__location__, "../src/lexicons_builder")
+module_dir = os.path.join(__location__, "../lexicons_builder")
 # changed here
-module_dir = os.path.join(__location__, "../src/")
+# module_dir = os.path.join(__location__, "../src/")
 try:
     shutil.rmtree(output_dir)
 except FileNotFoundError:
@@ -200,7 +196,7 @@ else:
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-# html_logo = ""
+html_logo = "pictures/logo_2.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32

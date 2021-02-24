@@ -9,7 +9,7 @@ from unidecode import unidecode
 from parameterized import parameterized_class
 
 
-sys.path.insert(0, os.path.join("..", "..", "src", "graphs"))
+sys.path.insert(0, os.path.join("..", "..", "lexicons_builder", "graphs"))
 from graphs import Graph
 
 

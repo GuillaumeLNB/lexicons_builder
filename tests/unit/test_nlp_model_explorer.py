@@ -3,13 +3,13 @@ import unittest
 import os
 import sys
 
-sys.path.insert(0, os.path.join("..", "..", "src"))
+sys.path.insert(0, os.path.join("..", ".."))
 # sys.path.insert(1, os.path.join("..", "src", "wordnet_explorer"))
 
 # from rdflib import Graph
 # logging.getLogger("transformers").setLevel(logging.CRITICAL + 1)
 
-import nlp_model_explorer.explorer as exp
+import lexicons_builder.nlp_model_explorer.explorer as exp
 
 
 class TestExplorer(unittest.TestCase):

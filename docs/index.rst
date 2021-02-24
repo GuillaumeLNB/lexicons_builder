@@ -1,25 +1,26 @@
-================
-lexicons_builder
-================
+==============================
+lexicons_builder documentation
+==============================
 
-This is the documentation of **lexicons_builder**.
+The **lexicons_builder** package aims to provide a basic API to create lexicons related to an input word.
+
+
+**Key principle**: Given the input word, it will look for synonyms or neighboors in the dictionnaries or in the NLP model. For each of the new retreiven terms, it will look again for its neighboors or synonyms and so on..
+
+The general method is implemented on 3 different supports:
+
+1) Synonyms dictionnaries (See list of the dictionnaries : ref:`here <list_dictionnaries.rst>`)
+2) NLP language models
+3) `WordNet`_ (or `WOLF`_)
+
+
+Output can be text file, turtle file or a Graph object. See <Quickstart> section for examples.
+
 
 .. note::
-    This is the main page of your project's `Sphinx`_ documentation.
-    It is formatted in `reStructuredText`_. Add additional pages
-    by creating rst-files in ``docs`` and adding them to the `toctree`_ below.
-    Use then `references`_ in order to link them from this page, e.g.
-    :ref:`authors` and :ref:`changes`.
+    The synonyms comming from the web are retreived by scrapping each webpage.
+    Which means that a change in the html might return wrong results.
 
-    It is also possible to refer to the documentation of other Python packages
-    with the `Python domain syntax`_. By default you can reference the
-    documentation of `Sphinx`_, `Python`_, `NumPy`_, `SciPy`_, `matplotlib`_,
-    `Pandas`_, `Scikit-Learn`_. You can add more by extending the
-    ``intersphinx_mapping`` in your Sphinx's ``conf.py``.
-
-    The pretty useful extension `autodoc`_ is activated by default and lets
-    you include documentation from docstrings. Docstrings can be written in
-    `Google style`_ (recommended!), `NumPy style`_ and `classical style`_.
 
 
 Contents
@@ -31,6 +32,9 @@ Contents
    License <license>
    Authors <authors>
    Changelog <changelog>
+   Installation <installation>
+   Quickstart <quickstart>
+
    Module Reference <api/modules>
 
 
@@ -40,6 +44,13 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+
+
+.. note::
+    If there's an issue, feel free to open a ticket or drop me a line at guillaume.le-noe-bienvenu@irisa.fr
+
 
 .. _toctree: http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html
 .. _reStructuredText: http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
@@ -53,6 +64,5 @@ Indices and tables
 .. _Pandas: http://pandas.pydata.org/pandas-docs/stable
 .. _Scikit-Learn: http://scikit-learn.org/stable
 .. _autodoc: http://www.sphinx-doc.org/en/stable/ext/autodoc.html
-.. _Google style: https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings
-.. _NumPy style: https://numpydoc.readthedocs.io/en/latest/format.html
-.. _classical style: http://www.sphinx-doc.org/en/stable/domains.html#info-field-lists
+.. _WordNet: https://wordnet.princeton.edu/
+.. _WOLF: http://alpage.inria.fr/~sagot/
