@@ -9,3 +9,16 @@ do
     wget $model -P nlp_models/;
 
 done
+
+
+for file in nlp_models/*bz2;
+do
+    bzip2 -d $file;
+
+done
+
+for file in nlp_models/*zip;
+do
+    unzip $file;
+
+done
