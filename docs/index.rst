@@ -2,10 +2,10 @@
 lexicons_builder documentation
 ==============================
 
-The **lexicons_builder** package aims to provide a basic API to create lexicons related to an input word.
+The **lexicons_builder** package aims to provide a basic API to create lexicons related to specific words.
 
 
-**Key principle**: Given the input word, it will look for synonyms or neighboors in the dictionnaries or in the NLP model. For each of the new retreiven terms, it will look again for its neighboors or synonyms and so on..
+**Key principle**: Given the input words, it will look for synonyms or neighboors in the dictionnaries or in the NLP model. For each of the new retreiven terms, it will look again for its neighboors or synonyms and so on..
 
 The general method is implemented on 3 different supports:
 
