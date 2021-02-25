@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""The Graph package contains the rdflib.Graph-ish
-class that all of the modules need to output the
-results"""
+"""The Graph package contains the Graph() class
+that carries the results from scrapping/exploring nlp models, ...
+
+"""
 
 
 import logging
@@ -13,7 +14,20 @@ from touch import touch
 
 
 class Graph(rdflib.Graph):
-    """same as a rdflib.Graph object https://rdflib.readthedocs.io/en/stable/intro_to_creating_rdf.html, but with a few additional methods XXX"""
+    """same as a rdflib.Graph object (see https://rdflib.readthedocs.io/en/stable/intro_to_creating_rdf.html), but with a few additional methods
+
+    .. code:: python
+
+        >>> from lexicons_builder.graphs.graphs import Graph
+        >>> g = Graph()
+        >>> # the graph has a __str__ method that serialize itself to ttl
+        >>> print(g)
+        @prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+        @prefix ns2: <urn:default:baseUri:#> .
+        @prefix ns3: <http://www.w3.org/2004/02/skos/core#> .
+        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+    """
 
     local_namespace = "urn:default:baseUri:#"
     base_local = rdflib.Namespace(local_namespace)
@@ -36,8 +50,23 @@ class Graph(rdflib.Graph):
         "return the number of words in the graph"
         return len(self.to_list())
 
-    def word_in_graph(self, word):
-        """return True if the word is in the graph"""
+    def word_in_graph(self, word: str) -> bool:
+        """return :obj:`True` if the word is in the graph
+
+    .. code:: python
+
+        >>> g = Graph()
+        >>> g.add_root_word('dog')
+        >>> g.add_word('hound', 1, 'synonym', 'dog', comesFrom='http://example/com')
+        >>> g.word_in_graph('cat')
+        False
+        >>> g.word_in_graph('dog')
+        True
+        >>> # could be invoked with the in keyword
+        >>> 'dog' in g
+        True
+
+        """
         # checks if the word is already in the graph
         assert isinstance(word, str), f"word is not str it is {type(word)}"
         query_check = (
@@ -59,7 +88,9 @@ class Graph(rdflib.Graph):
         if [_ for _ in self.query(query_check)][0]:
             # print("it is already")
             return True
-        # print("it is not")
+        else:
+            # print("it is not")
+            return False
 
     def _check_word_type(self, word):
         "raise a TypeError if type(word)!=str"
@@ -71,7 +102,41 @@ class Graph(rdflib.Graph):
     def add_word(
         self, word, depth, relation, target_word, synset_uri=None, comesFrom=None
     ):
-        "add the word to the graph XXX"
+        """Add some tripples to the graph that contains the relation between the word and its target.
+
+        Args:
+            word (str): The word to add to the graph
+            deepth (int): The deepth of the reccursion
+            relation (str): The relation of the word to the target word.
+                            Could be "hyponym", "hypernym", "holonym" or "synonym"
+            target_word (str): The word
+
+        .. code:: python
+
+            >>> g = Graph()
+            >>> g.add_root_word('car')
+            >>> print(g)
+            @prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+
+            <urn:default:baseUri:#root_word_uri> a <urn:default:baseUri:#root_word> ;
+                ns1:prefLabel "car" .
+
+            >>> g.add_word('bus', 1, 'synonym', 'car', comesFrom='http://example.com')
+            >>> print(g)
+            @prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+            @prefix ns2: <urn:default:baseUri:#> .
+            @prefix ns3: <http://taxref.mnhn.fr/lod/property/> .
+            @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+            ns2:bus ns3:isSynonymOf ns2:root_word_uri ;
+                ns1:prefLabel "bus" ;
+                ns2:comesFrom <http://example.com> ;
+                ns2:depth 1 .
+
+            ns2:root_word_uri a ns2:root_word ;
+                ns1:prefLabel "car" .
+
+            """
         self._check_word_type(word)
         # to avoid unvalid URI
         # as some wordnet words do have unwanted characters
@@ -136,14 +201,25 @@ class Graph(rdflib.Graph):
                 not in self.serialize(format="ttl").decode()
             )
 
-    def add_root_word(self, word):
-        "add the root word to the graph"
-        # self.root_word = word
-        # self.root_words.append(word)
-        # self.root_word_uri = f"{self.local_namespace}root_word"
-        # self.root_word_uri = f"{self.local_namespace}{self.root_word}"
-        self._check_word_type(word)
+    def add_root_word(self, word: str):
+        """Before searching for related terms, the root word
+        from which all synonyms come from should be added to the graph. This method creates rdf tripples for the root word
 
+        Args:
+          word (str): The root word to add to the graph
+
+        .. code:: python
+
+            >>> g = Graph()
+            >>> g.add_root_word("computer")
+            >>> print(g)
+            @prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+
+            <urn:default:baseUri:#root_word_uri> a <urn:default:baseUri:#root_word> ;
+                ns1:prefLabel "computer" .
+
+        """
+        self._check_word_type(word)
         self.add(
             (
                 rdflib.URIRef(self.root_word_uri),
@@ -160,15 +236,15 @@ class Graph(rdflib.Graph):
         )
         self._set_root_word_attribute()
 
-    def is_empty(self):
-        """return True if the graph is empty (contain no tripples)"""
+    def is_empty(self) -> bool:
+        """return :obj:`True` if the graph is empty (contain no tripples)"""
         for s, o, p in self:
             break
         else:
             return True
 
-    def contains_synonyms(self):
-        """return True if the graph contains at least one synonym"""
+    def contains_synonyms(self) -> bool:
+        """return :obj:`True` if the graph contains at least one synonym"""
         q_check = "ASK {?_ <http://taxref.mnhn.fr/lod/property/isSynonymOf> ?_2}"
         return [r for r in self.query(q_check)][0]
 
@@ -198,9 +274,51 @@ class Graph(rdflib.Graph):
             logging.warning(f"The root words are: {self.root_words}")
 
     def delete_several_depth(self, method="MIN"):
-        """When a word has several depth, this method deletes
-        the depths XXX """
-        # XXX should be implemented using one sparql query
+        """Deletes words with several depths
+
+        Args:
+            word (str): The word to add to the graph
+
+        .. code:: python
+
+            >>> g = Graph()
+            >>> g.add_root_word('car')
+            >>> g.add_word('bus', 1, 'synonym', 'car', comesFrom='http://example/com')
+            >>> g.add_word('bus', 2, 'synonym', 'car', comesFrom='http://example/com')
+            >>> print(g)
+            @prefix ns1: <urn:default:baseUri:#> .
+            @prefix ns2: <http://taxref.mnhn.fr/lod/property/> .
+            @prefix ns3: <http://www.w3.org/2004/02/skos/core#> .
+            @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+            ns1:bus ns2:isSynonymOf ns1:car,
+                    ns1:root_word_uri ;
+                ns3:prefLabel "bus" ;
+                ns1:comesFrom <http://example/com> ;
+                ns1:depth 1,
+                    2 .
+
+            ns1:root_word_uri a ns1:root_word ;
+                ns3:prefLabel "car" .
+
+            >>> g.delete_several_depth()
+            >>> print(g)
+            @prefix ns1: <urn:default:baseUri:#> .
+            @prefix ns2: <http://taxref.mnhn.fr/lod/property/> .
+            @prefix ns3: <http://www.w3.org/2004/02/skos/core#> .
+            @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+            ns1:bus ns2:isSynonymOf ns1:car,
+                    ns1:root_word_uri ;
+                ns3:prefLabel "bus" ;
+                ns1:comesFrom <http://example/com> ;
+                ns1:depth 1 .
+
+            ns1:root_word_uri a ns1:root_word ;
+                ns3:prefLabel "car" .
+
+        """
+        # TODO should be implemented using one sparql query
 
         q_words = """SELECT ?uri ( COUNT(?depth) AS  ?c )
         WHERE {?uri <urn:default:baseUri:#depth> ?depth}
@@ -230,8 +348,18 @@ class Graph(rdflib.Graph):
                     (uri, self.base_local.depth, rdflib.Literal(int(unwanted_tripple)))
                 )
 
-    def to_list(self):
-        """returns all of the terms contained in the graph to a list"""
+    def to_list(self) -> list:
+        """return a list of all the prefLabels in the graph
+
+        >>> g = Graph()
+        >>> g.add_root_word('car')
+        >>> g.add_word('bus', 1, 'synonym', 'car', comesFrom='http://example/com')
+        >>> g.add_word('truck', 1, 'synonym', 'car', comesFrom='http://example/com')
+        >>> g.add_word('vehicle', 1, 'synonym', 'car', comesFrom='http://example/com')
+        >>> g.to_list()
+        ['bus', 'car', 'truck', 'vehicle']
+
+        """
         # getting the maximum depth of the graph
         # q_depth = 'SELECT ?de WHERE { ?_ <urn:default:baseUri:#depth>  ?de} ORDER BY DESC(?de) LIMIT 1'
         q_words = "SELECT ?word WHERE { ?_ <http://www.w3.org/2004/02/skos/core#prefLabel> ?word} ORDER BY ASC (?word)"
@@ -243,36 +371,40 @@ class Graph(rdflib.Graph):
         # return sorted([str(w) for w, in self.query(q_words)])
 
     def to_str(self) -> str:
-        """return a ttl serialize graph
-        if during the serialization, some items have a file:///
+        """return a string containing the serialized graph in the turtle format
+
+        Note that during the serialization, some items might get a file:///
         string in their properties, it means the main graph has been merged
-        from different graph files"""
+        from different graph files
+
+        >>> g = Graph()
+        >>> g.add_root_word('dog')
+        >>> str(g)
+        '@prefix ns1: <http://www.w3.org/2004/02/skos/core#> .\\n\\n<urn:default:baseUri:#root_word_uri> a <urn:default:baseUri:#root_word> ;\\n    ns1:prefLabel "dog" .\\n\\n'
+
+        """
         str_ = self.serialize(format="ttl").decode()
         return str_
 
     def to_text_file(self, out_file=None, indent=True):
-        """return the text with tab indentation
-        book
-            according to the rules
-            account book
-            accounts
-            arrange
-                adapt
-                classify
-                make arrangements for
-                marshal
-                organize
-                put in order
-                settle on
-                triage
-            bag
-                backpack
-                bumbag
-                carrier bag
-                carryall
-                catch
+        """write the graph to the path provided.
 
-        XXX """
+        Args:
+            out_file (str, optional): The outfile path. If None, returns the string
+
+        Example of file:
+
+        .. code:: python
+
+            book                    # the root word
+                Bible               # a 1st rank synonym, linked to 'book'
+                    Holy_Writ       # a 2nd rank synonym, linked to 'Bible'
+                    Scripture       # a 2nd rank synonym, linked to 'Bible'
+                    Word            # a 2nd rank synonym, linked to 'Bible'
+                 Epistle            # a 1st rank synonym, linked to 'book'
+                     letter         # a 2nd rank synonym, linked to 'Epistle'
+                     missive        # a 2nd rank synonym, linked to 'Epistle'
+         """
         # TODO implement the indent option
 
         touch(out_file)  # None can be touch ! ??

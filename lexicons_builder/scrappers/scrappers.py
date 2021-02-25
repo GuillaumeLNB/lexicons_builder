@@ -1,14 +1,47 @@
 # -*- coding: utf-8 -*-
 """
-Each website has its own scrapper that inherit from the main `SynonymsGetter`
-class. The `_get_results_from_website()` is the only method that is diffrent
-from each scrapper (since the html page of their website is different).
+The scrappers package contains the scrappers that are used to retreive synonyms from the web.
 
-Note: this method of scrapping the data should be updated regularly as
-the html code might change on the websites.
-Note (2): the database from these websites should be dumped and the results comming from these
-dumps instead of sending requests to the websites.
+Each website has its own scrapper that inherit from the main :obj:`SynonymsGetter`
+class. The internal method `_get_results_from_website()` is the only method that is diffrent from each scrapper (since the html page of their website is different).
+
+The :meth:`get_synonyms_from_scrappers` function agregate the results comming from all websites.
+
+
+List of the websites where the synonyms are comming from:
+
+**French**
+
+* synonymes.com
+
+* dictionnaire-synonymes.com
+
+* les-synonymes.com
+
+* leconjugueur.lefigaro.fr
+
+* crisco2.unicaen.fr
+
+**English**
+
+* lexico.com
+
+* synonyms.com
+
+.. note::
+    Some websites have locking mechanisms that prevent you from sending them huge amounts of requests. If you are blocked, you might have to wait some time.
+
+.. note::
+    This method of scrapping the data should be updated regularly as the html code might change on the websites.
+
+
+
 """
+# XXX complete list of website scrapped
+# TODO sack the databases from the website directly
+
+# Note (2): the database from these websites should be dumped and the results comming from these
+
 
 import argparse
 import inspect
@@ -39,10 +72,8 @@ class SynonymsGetter:
     """Main class to get synonyms of terms from different websites"""
 
     # faking the user agent
-    ua = (
-        fake_useragent.UserAgent().random
-    )  # TODO remove that thing from sphinx documentation
-    logging.debug(f"user-Agent is '{ua}'")
+    _ua = fake_useragent.UserAgent().random
+    logging.debug(f"user-Agent is '{_ua}'")
 
     def __str__(self):
         if hasattr(self, "website"):
@@ -56,24 +87,18 @@ class SynonymsGetter:
         return []
 
     def explore_reccursively(
-        # self, term_to_look_up: str, previous_terms: dict, deepth: int = 10
-        self,
-        word: str,
-        max_depth: int = 2,
-        current_depth=1,
-        _previous_graph=None,
-    ):
-        """Will search for terms reccursively from the website
-
+        self, word: str, max_depth: int = 2, current_depth=1, _previous_graph=None,
+    ) -> Graph:
+        """Search for terms reccursively from the website
 
         Args:
-            term_to_look_up (str): the word
-            previous_terms (dict): a dict containing the words that were looked up
-                            previously. key=word value=the deepth
-            deepth (int): the deepth of the reccursion
+            word (str): the word
+            max_depth (int): the deepth of the reccursion
         Returns:
             a Graph object with the words that were looked up
-        XXX    """
+
+        """
+
         logging.debug(
             f"Exploring with word '{word}' current depth is '{current_depth}'"
         )
@@ -112,19 +137,19 @@ class SynonymsGetter:
                 )
         return graph
 
-    def download_and_parse_page(self, url: str):
+    def download_and_parse_page(self, url: str) -> BeautifulSoup:
         """return the Beautiful soup of the page
 
         If the http response from the page is not ok,
-        return an empty list
+        return an empty BeautifulSoup
 
         Args:
-            url: the url of the webpage
+            url (str): the url of the webpage
         Returns:
-            BeautifulSoup: the BS of the page
+            BeautifulSoup: the BeautifulSoup of the page parsed with html.parser
         """
         logging.info(f"getting {url}")
-        r = requests.get(url, headers={"User-Agent": self.ua})
+        r = requests.get(url, headers={"User-Agent": self._ua})
         if r.status_code == 429:
             logging.error(f"the website responded to 429 Too Many Requests")
         if not r.ok:
@@ -223,6 +248,32 @@ class SynonymsGetterCrisco2(SynonymsGetter):
         return list(set(words))
 
 
+class SynonymsGetterReverso(SynonymsGetter):
+    """Scrapper of `synonyms.reverso.net <synonyms.reverso.net>`_
+    Website includes synonyms in French, English, German, Spanish, Italian"""
+
+    website = "synonyms.reverso.net"
+    implemented_languages = {"fr", "en", "es", "it", "de"}
+
+    def __init__(self, lang):
+        super().__init__()
+        if lang not in self.implemented_languages:
+            raise ValueError(f"'{lang}' language not implemented")
+        self.lang = lang
+
+    def _get_results_from_website(self, word):
+        word = unidecode(word.lower())
+        url = f"https://synonyms.reverso.net/synonyme/{self.lang}/{word}"
+        soup = self.download_and_parse_page(url)
+        words = []
+        for element in soup.find_all("li", id=True):
+            if not element["id"].startswith("synonym-"):
+                continue
+            words.append(element.text.strip())
+        return list(set(words))
+
+
+# English scrappers
 class SynonymsGetterLexico(SynonymsGetter):
 
     """Scrapper of `lexico.com <https://www.lexico.com>`_"""
@@ -263,37 +314,55 @@ class SynonymsGetterSynonymsCom(SynonymsGetter):
         return list(set(words))
 
 
-scrappers_french = [
-    SynonymsGetterSynonymesCom(),
-    SynonymsGetterDictionnaireSynonymesCom(),
-    SynonymsGetterLesSynonymesCom(),
-    SynonymsGetterLeFigaro(),
-    SynonymsGetterCrisco2(),
-]
+# http://www.synonymy.com/
 
 
-scrappers_english = [
-    SynonymsGetterLexico(),
-    SynonymsGetterSynonymsCom(),
-]
+scrappers = {
+    "en": [
+        SynonymsGetterLexico(),
+        SynonymsGetterSynonymsCom(),
+        SynonymsGetterReverso("en"),
+    ],
+    "fr": [
+        SynonymsGetterSynonymesCom(),
+        SynonymsGetterDictionnaireSynonymesCom(),
+        SynonymsGetterLesSynonymesCom(),
+        SynonymsGetterLeFigaro(),
+        SynonymsGetterCrisco2(),
+        SynonymsGetterReverso("fr"),
+    ],
+    "es": [SynonymsGetterReverso("es")],
+    "it": [SynonymsGetterReverso("it")],
+    "de": [SynonymsGetterReverso("de")],
+}
 
 
-def get_synonyms_from_scrappers(word, lang, depth, merge_graph=True):
+def get_synonyms_from_scrappers(word, lang, depth, merge_graph=True) -> Graph:
+    """Scrap the websites recursively given the input word
+
+    Args:
+        word (str): The word that will be looked up
+        lang (str): The language of the word
+        deepth (int): The deepth of the reccursion
+        merge_graph (bool, optional): by default, returns a merged graph. If set to :obj:`False`, return a list of :obj:`Graph`
+
+    Returns:
+        :obj:`Graph` : the graph containing the synonyms
+
+    .. code:: python
+
+        >>> from lexicons_builder.scrapper.scrappers import get_synonyms_from_scrappers
+        >>> g = get_synonyms_from_scrappers('flute', 'en', 1)
+        >>> g.to_list()
+        ['champagne flute', 'channel', 'corrugation', 'cuss', 'damn', 'dizi', 'fl', 'flauta', 'flautist', 'flute', 'flute glass', 'fluting', 'flutist', 'gosh', 'groove', 'pipe', 'piper', 'recorder', 'rifling', 'tik', 'tin whistle', 'transverse flute']
+
     """
-
-
-    merged graph
-    XXX +threads
-    WARNING: using the scrapping with threads might not work as
-    the rdflib.plugins.sparql.parser.parseQuery function is not thread safe
-    https://github.com/RDFLib/rdflib/issues/765
-    """
-    if lang == "en":
-        scrappers = scrappers_english
-    elif lang == "fr":
-        scrappers = scrappers_french
-    else:
+    if lang not in scrappers:
         raise ValueError(f"lang '{lang}' not implemented yet.")
+
+    # WARNING: using the scrapping with threads might not work as
+    # the rdflib.plugins.sparql.parser.parseQuery function is not thread safe
+    # https://github.com/RDFLib/rdflib/issues/765
 
     # executor = ThreadPoolExecutor()
     # threads = [
@@ -302,10 +371,10 @@ def get_synonyms_from_scrappers(word, lang, depth, merge_graph=True):
     # ]
     # res = [t.result() for t in threads]
 
-    # thread safe version
+    # thread safe version. Takes a while but it works
     res = []
-    for scrapper in scrappers:
-        logging.info(f"scrapping '{scrapper.website}'")
+    for scrapper in scrappers[lang]:
+        logging.info(f"scrapping '{scrapper.website}' lang is '{lang}'")
         res.append(scrapper.explore_reccursively(word, depth))
     if merge_graph:
         main_graph = Graph()

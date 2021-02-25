@@ -94,22 +94,22 @@ With:
   * ``<OUTFILE>`` The file where the results will be stored
   * ``<FORMAT>`` The wanted output format (txt with indentation or ttl)
 At least ONE of the following options is needed:
-  * ``<NLP_MODEL_PATHS>`` The path to the nlp model(s)
+  * ``--nlp-model <NLP_MODEL_PATHS>`` The path to the nlp model(s)
   * ``--web`` Search online for synonyms
   * ``--wordnet`` Search on WordNet using nltk
-  * ``<WOLF_PATH>`` The path to WOLF (French wordnet)
+  * ``--wolf-path <WOLF_PATH>`` The path to WOLF (French wordnet)
 
 **Eg:** if we want to look for related terms linked to 'eat' and 'drink' on wordnet at a depth of 2, excecute:
 
     .. code:: bash
 
         $ python -m lexicons_builder eat drink  \
-              --lang     en                 \
-              --out-file test_en.txt        \
-              --format txt                  \
-              --depth  1                    \
+              --lang        en                  \
+              --out-file    test_en.txt         \
+              --format      txt                 \
+              --depth       1                   \
               --wordnet
-
+        $ Note the indentation is linked to the depth a which the word was found
         $ head test_en.txt
           drink
           eat
@@ -137,7 +137,7 @@ To get related terms interactively through Python, run
     .. code:: python
 
         >>> from lexicons_builder import build_lexicon
-        >>> # Search for related terms of 'book' and 'read' in English at depth 1 online
+        >>> # search for related terms of 'book' and 'read' in English at depth 1 online
         >>> output = build_lexicon(['book', 'read'], 'en', 1, web=True)
         ...
         >>> # we then get a graph object
@@ -161,7 +161,8 @@ To get related terms interactively through Python, run
             ns2:comesFrom <synonyms.com> ;
             ns2:depth 1 .
         ...
-        # Output to an indented file
+
+        >>> # Output to an indented file
         >>> output.to_text_file('filename.txt')
         >>> with open('filename.txt') as f:
         ...     print(f.read(1000))

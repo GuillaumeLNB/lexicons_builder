@@ -1,6 +1,7 @@
 #!/bin/python3
 import unittest
 import os
+import re
 import sys
 from unittest.mock import patch
 
@@ -12,7 +13,7 @@ sys.path.insert(0, os.path.join("..", "..", "lexicons_builder"))
 # from rdflib import Graph
 # logging.getLogger("transformers").setLevel(logging.CRITICAL + 1)
 
-import scrapper.scrappers  # as exp
+import scrappers.scrappers # as exp
 
 
 class TestSynonymsGetter(unittest.TestCase):
@@ -22,7 +23,7 @@ class TestSynonymsGetter(unittest.TestCase):
     word_test = "livre"
 
     def setUp(self):
-        self.scrapper = scrapper.scrappers.SynonymsGetter()
+        self.scrapper = scrappers.scrappers.SynonymsGetter()
 
     def tearDown(self):
         pass
@@ -45,7 +46,7 @@ class TestSynonymsGetter(unittest.TestCase):
         )
 
     def test_download_and_parse_page(self):
-        with patch("scrapper.scrappers.requests.get") as mocked_request:
+        with patch("scrappers.scrappers.requests.get") as mocked_request:
             mocked_request.return_value.ok = False
             self.assertEqual(
                 BeautifulSoup("", "html.parser"),
@@ -57,10 +58,25 @@ class TestSynonymsGetter(unittest.TestCase):
     #     mocked_get.return_value.ok = True
     #     self.scrapper1.scrap()
 
+    def test_number_of_scrapper(self):
+        'assert all scrappers are in the dict'
+        file = '../../lexicons_builder/scrappers/scrappers.py'
+        scrappers_in_file = []
+        with open(file) as f:
+            for line in f:
+                if name:=re.match(r'class (\w+)', line):
+                    scrappers_in_file.append(name.group(1))
+        nb_scrappers_used = 0
+        for lis in scrappers.scrappers.scrappers.values():
+            nb_scrappers_used += len(lis)
+        # -1 because the 1st class is not a real scrapper
+        # -4 because the  SynonymsGetterReverso("en") has several instances
+        self.assertTrue(len(scrappers_in_file) -1, nb_scrappers_used     -4   )
+
 
 class TestSynonymsGetterSynonymesCom(TestSynonymsGetter):
     def setUp(self):
-        self.scrapper = scrapper.scrappers.SynonymsGetterSynonymesCom()
+        self.scrapper = scrappers.scrappers.SynonymsGetterSynonymesCom()
 
     def test_explore_reccursively(self):
         g = self.scrapper.explore_reccursively(self.word_test, max_depth=2)

@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-# Note: This skeleton file can be safely removed if not needed!
-It can export the result to a rdf graph
+The wordnet_explorer package contains the functions that are used to retreive synonyms from `WordNet <https://wordnet.princeton.edu/>`_  and `WOLF <http://pauillac.inria.fr/~sagot/index.html#wolf>`_.
+
+Like the other packages, it outputs a :obj:`Graph` containing the results.
+
+In addition to synonym relations, hypernym, hyponym, holonym relations are added to the graph
+
 """
 
 import argparse
@@ -17,7 +21,7 @@ from languagecodes import iso_639_alpha3
 from nltk.corpus import wordnet as wn
 
 try:
-    from ._frenetic import FreNetic  # .
+    from ._frenetic import FreNetic
 except ImportError:
     from _frenetic import FreNetic  # .
 
@@ -39,7 +43,7 @@ _logger = logging.getLogger(__name__)
 def explore_wordnet(
     word: str, lang: str, max_depth: int = 5, current_depth=1, _previous_graph=None
 ) -> rdflib.Graph:
-    """Explore wordnet reccursively and return a rdf graph
+    """Explore WordNet reccursively and return a rdf graph
     containing the synonyms, hyponyms, hypernyms.
 
     Starting from a word, it will look for its synonyms,
@@ -52,28 +56,32 @@ def explore_wordnet(
         current_depth (int): the depth of the reccursion
 
     Returns:
-        a rdflib.Graph-ish object containing the nearests terms
-    >>> from  wordnet_explorer.explorer import explore_wordnet
-    RDFLib Version: 5.0.0
-    >>> g = explore_wordnet('book', 'eng', 2)
-    >>> g
-    XXX to updage here
-    <Graph identifier=N27894ef24ed34b348830c045489e44b7 (<class 'wordnet_explorer.Graph'>)>
-    >>> print(g.serialize(format="ttl").decode())
-    @prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
-    @prefix ns2: <urn:default:baseUri:#> .
-    @prefix ns3: <http://www.w3.org/2006/03/wn/wn20/schema/> .
-    @prefix ns4: <http://taxref.mnhn.fr/lod/property/> .
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    ns2:78 ns1:prefLabel "78" ;
-        ns3:hyponymOf ns2:record ;
-        ns2:depth 1 ;
-        ns2:synsetLink <http://wordnet-rdf.princeton.edu/pwn30/03924069-n> .
-    ns2:AFISR ns1:prefLabel "AFISR" ;
-        ns3:hyponymOf ns2:authority ;
-        ns2:depth 1 ;
-        ns2:synsetLink <http://wordnet-rdf.princeton.edu/pwn30/08337324-n> .
-    ...
+        a :obj:`Graph` object containing the terms
+
+
+    .. code:: python
+
+        >>> from wordnet_explorer.explorer import explore_wordnet
+        RDFLib Version: 5.0.0
+        >>> g = explore_wordnet('book', 'en', 1)
+        >>> print(g)
+        @prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+        @prefix ns2: <http://www.w3.org/2006/03/wn/wn20/schema/> .
+        @prefix ns3: <urn:default:baseUri:#> .
+        @prefix ns4: <http://taxref.mnhn.fr/lod/property/> .
+        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+        ns3:brochure ns1:prefLabel "brochure" ;
+            ns2:hyponymOf ns3:root_word_uri ;
+            ns3:depth 1 ;
+            ns3:synsetLink <http://wordnet-rdf.princeton.edu/pwn30/06410904-n> .
+
+
+        ns3:album ns1:prefLabel "album" ;
+            ns2:hyponymOf ns3:root_word_uri ;
+            ns3:depth 1 ;
+            ns3:synsetLink <http://wordnet-rdf.princeton.edu/pwn30/02870092-n> .
+
     """
     logging.debug(f"Exploring WORDNET with word '{word}' at depth '{current_depth}'")
     lang = iso_639_alpha3(lang)  # wordnet needs iso-639-2
@@ -168,21 +176,41 @@ def explore_wolf(
 ):
     """Explore the French wordnet WOLF like the `explore_wordnet()` function
 
-    Searches reccursively and return a rdf graph
-    containing the synonyms, hyponyms, hypernyms.
-
-    Starting from a word, it will look for its synonyms,
-    hyponyms and hypernyms. And for each of these word, it
-    will look again until the depth of recursion is reatched.
-
     Args:
         word (str): the word
         path_to_wolf (str): "/path/to/wolf.xml"
         depth (int): the depth of the reccursion
 
     Returns:
-        a rdflib.Graph-ish object containing the nearests terms
-     XXX    """
+        a :obj:`Graph` object containing the terms
+
+    .. code:: python
+
+        >>> from wordnet_explorer.explorer import explore_wolf
+        >>> g = explore_wolf('fromage', '/path/to/wolf', 1)
+        >>> print(g)
+        @prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+        @prefix ns2: <urn:default:baseUri:#> .
+        @prefix ns3: <http://www.w3.org/2006/03/wn/wn20/schema/> .
+        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+        ns2:aliment ns1:prefLabel "aliment" ;
+            ns3:hypernymOf ns2:root_word_uri ;
+            ns2:depth 1 .
+
+        ns2:alimentation ns1:prefLabel "alimentation" ;
+            ns3:hypernymOf ns2:root_word_uri ;
+            ns2:depth 1 .
+
+        ns2:familier ns1:prefLabel "familier" ;
+            ns3:hypernymOf ns2:root_word_uri ;
+            ns2:depth 1 .
+
+        ns2:laitage ns1:prefLabel "laitage" ;
+            ns3:hypernymOf ns2:root_word_uri ;
+            ns2:depth 1 .
+
+    """
     logging.debug(
         f"Exploring WOLF with word '{french_word}' at depth '{current_depth}'"
     )

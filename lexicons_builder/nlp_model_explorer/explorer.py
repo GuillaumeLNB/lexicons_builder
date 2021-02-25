@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-NLP model explorer.
-Given an language model (.vec or .bin) and a term to look up,
-the function, :meth:`nlp_model_explorer.explore`
-will look up reccursively for near words close.
+The nlp_model_explorer package contains the functions that are used to retreive neighbours from NLP models.
+The language model  needs to be in .vec or .bin format.
 
-Non exaustive languages models could be found:
+Like the other packages, it outputs a :obj:`Graph` containing the results.
+
+.. note::
+    Note: A list of languages models could be found at the XXX
+
 
 """
 
@@ -67,11 +69,7 @@ def explore_nlp_model(
     _previous_model=None,
 ):
     """Explore the model reccursively and return a rdf graph
-    containing the close words.
-
-    Starting from a word, it will look for its neighboors,
-    And for each of these word, it will look again until
-    the depth of recursion is reatched.
+    containing the neighbour words.
 
     Args:
         word (str): the word
@@ -79,8 +77,33 @@ def explore_nlp_model(
         current_depth (int): the depth of the reccursion
 
     Returns:
-        a rdflib.Graph object containing the nearests terms
-    XXX TODO add example
+        a :obj:`Graph` object containing the terms
+
+    .. code:: python
+
+        >>> from lexicons_builder.nlp_model_explorer.explorer import explore_nlp_model
+        >>> g = explore_nlp_model('test', '<path/to/model>', 2)
+        >>> print(g)
+        @prefix ns1: <http://taxref.mnhn.fr/lod/property/> .
+        @prefix ns2: <http://www.w3.org/2004/02/skos/core#> .
+        @prefix ns3: <urn:default:baseUri:#> .
+        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+        ns3:annale_corriger ns1:isSynonymOf ns3:qcm ;
+            ns2:prefLabel "annale_corriger" ;
+            ns3:comesFrom </home/k/models/frWac_no_postag_phrase_500_cbow_cut100.bin> ;
+            ns3:depth 2 .
+
+        ns3:applicatif ns1:isSynonymOf ns3:test_unitaire ;
+            ns2:prefLabel "applicatif" ;
+            ns3:comesFrom </home/k/models/frWac_no_postag_phrase_500_cbow_cut100.bin> ;
+            ns3:depth 2 .
+
+        ns3:applications ns1:isSynonymOf ns3:tests ;
+            ns2:prefLabel "applications" ;
+            ns3:comesFrom </home/k/models/frWac_no_postag_phrase_500_cbow_cut100.bin> ;
+            ns3:depth 2 .
+
     """
     logging.debug(
         f"Exploring the model with word '{word}' current depth is '{current_depth}'"
