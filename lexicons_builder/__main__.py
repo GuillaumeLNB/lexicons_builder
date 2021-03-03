@@ -70,7 +70,10 @@ def parse_args(arguments):
         help="search on wordnet using nltk",
     )
     parser.add_argument(
-        "--web", dest="web", help="Search on dictionnaries online", action="store_true",
+        "--web",
+        dest="web",
+        help="Search on dictionnaries online",
+        action="store_true",
     )
     args = parser.parse_args(arguments)
     # print(args.__dict__)

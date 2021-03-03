@@ -23,9 +23,14 @@ class Graph(rdflib.Graph):
         >>> # the graph has a __str__ method that serialize itself to ttl
         >>> print(g)
         @prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
-        @prefix ns2: <urn:default:baseUri:#> .
-        @prefix ns3: <http://www.w3.org/2004/02/skos/core#> .
-        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+        @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+        <urn:default:baseUri:#holonym> a rdfs:Class ;
+            ns1:definition "A term that denotes a whole, a part of which is denoted by a second term. The word \"face\" is a holonym of the word \"eye\"." .
+
+        <urn:default:baseUri:#hypernym> a rdfs:Class ;
+            ns1:definition "a word with a broad meaning constituting a category into which words with more specific meanings fall; a superordinate. For example, colour is a hypernym of red." .
+        ...
 
     """
 
@@ -33,6 +38,88 @@ class Graph(rdflib.Graph):
     base_local = rdflib.Namespace(local_namespace)
     root_words = []
     root_word_uri = f"{local_namespace}root_word_uri"
+    root_word_uriref = rdflib.URIRef(f"{local_namespace}root_word")
+
+    def __init__(
+        self, store="default", identifier=None, namespace_manager=None, base=None
+    ):
+        super().__init__(
+            store=store,
+            identifier=identifier,
+            namespace_manager=namespace_manager,
+            base=base,
+        )
+        # add the root word,
+        self.add(
+            (
+                self.root_word_uriref,
+                rdflib.namespace.RDF.type,
+                rdflib.namespace.RDFS.Class,
+            )
+        )
+        self.add(
+            (
+                self.root_word_uriref,
+                rdflib.namespace.SKOS.definition,
+                rdflib.Literal(
+                    "A root word is the term from which all of the words are fetched"
+                ),
+            )
+        )
+
+        # hyponym
+        self.add(
+            (
+                self.base_local.hyponym,
+                rdflib.namespace.RDF.type,
+                rdflib.namespace.RDFS.Class,
+            )
+        )
+        self.add(
+            (
+                self.base_local.hyponym,
+                rdflib.namespace.SKOS.definition,
+                rdflib.Literal(
+                    "Hyponymy is the converse of hypernymy. For example, red is a hyponym of color."
+                ),
+            )
+        )
+
+        # hypernym
+        self.add(
+            (
+                self.base_local.hypernym,
+                rdflib.namespace.RDF.type,
+                rdflib.namespace.RDFS.Class,
+            )
+        )
+        self.add(
+            (
+                self.base_local.hypernym,
+                rdflib.namespace.SKOS.definition,
+                rdflib.Literal(
+                    "a word with a broad meaning constituting a category into which words with more specific meanings fall; a superordinate. For example, colour is a hypernym of red."
+                ),
+            )
+        )
+
+        # holonym
+        self.add(
+            (
+                self.base_local.holonym,
+                rdflib.namespace.RDF.type,
+                rdflib.namespace.RDFS.Class,
+            )
+        )
+        self.add(
+            (
+                self.base_local.holonym,
+                rdflib.namespace.SKOS.definition,
+                rdflib.Literal(
+                    """A term that denotes a whole, a part of which is denoted by a second term. The word "face" is a holonym of the word "eye"."""
+                ),
+            )
+        )
 
     def __contains__(self, word):
         """quick check to see if there's a word with a prefLabel predicate
@@ -53,18 +140,18 @@ class Graph(rdflib.Graph):
     def word_in_graph(self, word: str) -> bool:
         """return :obj:`True` if the word is in the graph
 
-    .. code:: python
+        .. code:: python
 
-        >>> g = Graph()
-        >>> g.add_root_word('dog')
-        >>> g.add_word('hound', 1, 'synonym', 'dog', comesFrom='http://example/com')
-        >>> g.word_in_graph('cat')
-        False
-        >>> g.word_in_graph('dog')
-        True
-        >>> # could be invoked with the in keyword
-        >>> 'dog' in g
-        True
+            >>> g = Graph()
+            >>> g.add_root_word('dog')
+            >>> g.add_word('hound', 1, 'synonym', 'dog', comesFrom='http://example/com')
+            >>> g.word_in_graph('cat')
+            False
+            >>> g.word_in_graph('dog')
+            True
+            >>> # could be invoked with the in keyword
+            >>> 'dog' in g
+            True
 
         """
         # checks if the word is already in the graph
@@ -136,7 +223,7 @@ class Graph(rdflib.Graph):
             ns2:root_word_uri a ns2:root_word ;
                 ns1:prefLabel "car" .
 
-            """
+        """
         self._check_word_type(word)
         # to avoid unvalid URI
         # as some wordnet words do have unwanted characters
@@ -151,9 +238,13 @@ class Graph(rdflib.Graph):
             rela = base_wn.hypernymOf
         elif relation == "holonym":
             rela = base_wn.holonymOf
-        else:
+        elif relation == "synonym":
             # word is synonym
             rela = rdflib.URIRef("http://taxref.mnhn.fr/lod/property/isSynonymOf")
+        else:
+            raise ValueError(
+                f"The relation '{relation}' is not implemented in the graph"
+            )
 
         if depth == 1:
             # the relation is linked to the root word
@@ -161,7 +252,13 @@ class Graph(rdflib.Graph):
         else:
             target = rdflib.URIRef(self.local_namespace + ss_target_word)
         # adding the relation word is synonym/hyponym/... of target word
-        self.add((rdflib.URIRef(self.local_namespace + ss_word), rela, target,))
+        self.add(
+            (
+                rdflib.URIRef(self.local_namespace + ss_word),
+                rela,
+                target,
+            )
+        )
         # adding the depth information
         self.add(
             (
@@ -237,11 +334,25 @@ class Graph(rdflib.Graph):
         self._set_root_word_attribute()
 
     def is_empty(self) -> bool:
-        """return :obj:`True` if the graph is empty (contain no tripples)"""
-        for s, o, p in self:
-            break
+        """return :obj:`True` if the graph does not contain synonyms, hyponyms, etc
+
+        If the graph contains only root word(s) or no words, return :obj:`False`
+        Note the graph contains some definitions by default"""
+        for _, p, _ in self:
+            if str(p) in (
+                "http://taxref.mnhn.fr/lod/property/isSynonymOf",
+                "http://www.w3.org/2006/03/wn/wn20/schema/hyponymOf",
+                "http://www.w3.org/2006/03/wn/wn20/schema/hypernymOf",
+                "http://www.w3.org/2006/03/wn/wn20/schema/holonymOf",
+            ):
+                return False
         else:
             return True
+
+        # for s, o, p in self:
+        #     break
+        # else:
+        #     return True
 
     def contains_synonyms(self) -> bool:
         """return :obj:`True` if the graph contains at least one synonym"""
@@ -252,8 +363,6 @@ class Graph(rdflib.Graph):
         """set the root_word and root_word_uri attributes
         by looking at the self.graph"""
         self.root_words = []
-        if self.is_empty():
-            raise ValueError(f"graph is empty")
 
         q_root = (
             "SELECT ?uri ?pref WHERE {?uri a <"
@@ -263,10 +372,15 @@ class Graph(rdflib.Graph):
         )
         res = [r for r in self.query(q_root)]
         assert res, "The query to get the root word returned no results."
+        contains_root_word = False
         for i, (uri, pref) in enumerate(res):
             # self.root_word_uri = str(uri)
             # self.root_word = str(pref)
             self.root_words.append(pref)
+            contains_root_word = True
+        if not contains_root_word:
+            raise ValueError(f"The graph does not contain any root word")
+
         if i:
             logging.warning(
                 f"The query to retrive the root word returned several results"
@@ -404,7 +518,7 @@ class Graph(rdflib.Graph):
                  Epistle            # a 1st rank synonym, linked to 'book'
                      letter         # a 2nd rank synonym, linked to 'Epistle'
                      missive        # a 2nd rank synonym, linked to 'Epistle'
-         """
+        """
         # TODO implement the indent option
 
         touch(out_file)  # None can be touch ! ??

@@ -8,25 +8,7 @@ class. The internal method `_get_results_from_website()` is the only method that
 The :meth:`get_synonyms_from_scrappers` function agregate the results comming from all websites.
 
 
-List of the websites where the synonyms are comming from:
-
-**French**
-
-* synonymes.com
-
-* dictionnaire-synonymes.com
-
-* les-synonymes.com
-
-* leconjugueur.lefigaro.fr
-
-* crisco2.unicaen.fr
-
-**English**
-
-* lexico.com
-
-* synonyms.com
+See the :doc:`List of dictionnaries section <../list_dictionaries>` for the list of the websites where the synonyms are comming from.
 
 .. note::
     Some websites have locking mechanisms that prevent you from sending them huge amounts of requests. If you are blocked, you might have to wait some time.
@@ -50,6 +32,7 @@ import requests
 import os
 import sys
 from concurrent.futures import ThreadPoolExecutor
+from requests.utils import quote
 
 import fake_useragent
 from bs4 import BeautifulSoup
@@ -87,7 +70,11 @@ class SynonymsGetter:
         return []
 
     def explore_reccursively(
-        self, word: str, max_depth: int = 2, current_depth=1, _previous_graph=None,
+        self,
+        word: str,
+        max_depth: int = 2,
+        current_depth=1,
+        _previous_graph=None,
     ) -> Graph:
         """Search for terms reccursively from the website
 
@@ -127,7 +114,7 @@ class SynonymsGetter:
                     logging.debug(f"n_word is already in the graph -> skipping it")
                     continue
                 graph.add_word(
-                    n_word, current_depth, "syn", word, comesFrom=self.website
+                    n_word, current_depth, "synonym", word, comesFrom=self.website
                 )
                 graph = self.explore_reccursively(
                     n_word,
@@ -176,23 +163,25 @@ class SynonymsGetterSynonymesCom(SynonymsGetter):
         return words
 
 
-class SynonymsGetterDictionnaireSynonymesCom(SynonymsGetter):
-    """Scrapper of `dictionnaire-synonymes.com <https://www.dictionnaire-synonymes.com>`_"""
+# tough to work with as
+# class SynonymsGetterDictionnaireSynonymesCom(SynonymsGetter):
+#     """Scrapper of `dictionnaire-synonymes.com <https://www.dictionnaire-synonymes.com>`_"""
 
-    website = "dictionnaire-synonymes.com"
-    lang = "fr"
+#     website = "dictionnaire-synonymes.com"
+#     lang = "fr"
 
-    def _get_results_from_website(self, word):
-        word = unidecode(word.lower())
-        url = f"https://www.dictionnaire-synonymes.com/synonyme.php?mot={word}&OK=OK"
-        soup = self.download_and_parse_page(url)
-        words = []
-        for word in soup.find_all("a", class_="lien3"):
-            words.append(word.text.strip().lower())
-        # lien2 contains the domain of the words eg > nature, animal:
-        # for word in soup.find_all("a", class_="lien2"):
-        #     words.append(word.text.strip().lower())
-        return list(set(words))
+#     def _get_results_from_website(self, word):
+#         # ISO 8859-1 percentaged encoded
+#         word = quote(word, encoding='iso-8859-1')
+#         url = f"https://www.dictionnaire-synonymes.com/synonyme.php?mot={word}&OK=OK"
+#         soup = self.download_and_parse_page(url)
+#         words = []
+#         for word in soup.find_all("a", class_="lien3"):
+#             words.append(word.text.strip().lower())
+#         # lien2 contains the domain of the words eg > nature, animal:
+#         # for word in soup.find_all("a", class_="lien2"):
+#         #     words.append(word.text.strip().lower())
+#         return list(set(words))
 
 
 class SynonymsGetterLesSynonymesCom(SynonymsGetter):
@@ -202,7 +191,7 @@ class SynonymsGetterLesSynonymesCom(SynonymsGetter):
     lang = "fr"
 
     def _get_results_from_website(self, word):
-        word = unidecode(word.lower())
+        # word = unidecode(word.lower())
         url = f"http://www.les-synonymes.com/mot/{word}"
         soup = self.download_and_parse_page(url)
         words = []
@@ -219,7 +208,10 @@ class SynonymsGetterLeFigaro(SynonymsGetter):
     lang = "fr"
 
     def _get_results_from_website(self, word):
-        word = unidecode(word.lower())
+        # diacritics are important on that website
+        # but œ should be changed
+        word = word.replace("œ", "oe")
+
         url = f"https://leconjugueur.lefigaro.fr/frsynonymes.php?mot={word}"
         soup = self.download_and_parse_page(url)
         words = []
@@ -238,7 +230,10 @@ class SynonymsGetterCrisco2(SynonymsGetter):
     lang = "fr"
 
     def _get_results_from_website(self, word):
-        word = unidecode(word.lower())
+        # diacritics are important on that website
+        # but œ should be remplaced
+        word = word.replace("œ", "oe")
+
         url = f"https://crisco2.unicaen.fr/des/synonymes/{word}"
         soup = self.download_and_parse_page(url)
         words = []
@@ -262,7 +257,10 @@ class SynonymsGetterReverso(SynonymsGetter):
         self.lang = lang
 
     def _get_results_from_website(self, word):
-        word = unidecode(word.lower())
+        # diacritics are important on that website
+        # but œ should be remplaced
+        word = word.replace("œ", "oe")
+
         url = f"https://synonyms.reverso.net/synonyme/{self.lang}/{word}"
         soup = self.download_and_parse_page(url)
         words = []
@@ -325,7 +323,7 @@ scrappers = {
     ],
     "fr": [
         SynonymsGetterSynonymesCom(),
-        SynonymsGetterDictionnaireSynonymesCom(),
+        # SynonymsGetterDictionnaireSynonymesCom(),
         SynonymsGetterLesSynonymesCom(),
         SynonymsGetterLeFigaro(),
         SynonymsGetterCrisco2(),

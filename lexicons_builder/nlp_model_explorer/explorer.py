@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 The nlp_model_explorer package contains the functions that are used to retreive neighbours from NLP models.
-The language model  needs to be in .vec or .bin format.
+The language model needs to be in .vec or .bin format.
+Works with FastText and word2vec.
 
 Like the other packages, it outputs a :obj:`Graph` containing the results.
+
+
+
 
 .. note::
     Note: A list of languages models could be found at the XXX
