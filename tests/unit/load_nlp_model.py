@@ -10,4 +10,4 @@ from lexicons_builder.nlp_model_explorer.explorer import _load_model as load_mod
 model = load_model(sys.argv[1])
 
 assert len(model.vocab)
-print('ok', file=sys.stderr)
+print("ok", file=sys.stderr)

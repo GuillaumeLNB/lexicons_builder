@@ -15,7 +15,12 @@ from graphs import Graph
 
 @parameterized_class(
     ("lang", "depth", "word"),
-    [("fra", 1, "test"), ("eng", 1, "test"), ("fra", 2, "test"), ("eng", 2, "test"),],
+    [
+        ("fra", 1, "test"),
+        ("eng", 1, "test"),
+        ("fra", 2, "test"),
+        ("eng", 2, "test"),
+    ],
 )
 class TestExplorer(unittest.TestCase):
 

@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join("..", "..", "lexicons_builder"))
 # from rdflib import Graph
 # logging.getLogger("transformers").setLevel(logging.CRITICAL + 1)
 
-import scrappers.scrappers # as exp
+import scrappers.scrappers  # as exp
 
 
 class TestSynonymsGetter(unittest.TestCase):
@@ -59,19 +59,19 @@ class TestSynonymsGetter(unittest.TestCase):
     #     self.scrapper1.scrap()
 
     def test_number_of_scrapper(self):
-        'assert all scrappers are in the dict'
-        file = '../../lexicons_builder/scrappers/scrappers.py'
+        "assert all scrappers are in the dict"
+        file = "../../lexicons_builder/scrappers/scrappers.py"
         scrappers_in_file = []
         with open(file) as f:
             for line in f:
-                if name:=re.match(r'class (\w+)', line):
+                if name := re.match(r"class (\w+)", line):
                     scrappers_in_file.append(name.group(1))
         nb_scrappers_used = 0
         for lis in scrappers.scrappers.scrappers.values():
             nb_scrappers_used += len(lis)
         # -1 because the 1st class is not a real scrapper
         # -4 because the  SynonymsGetterReverso("en") has several instances
-        self.assertTrue(len(scrappers_in_file) -1, nb_scrappers_used     -4   )
+        self.assertEqual(len(scrappers_in_file) - 1, nb_scrappers_used - 4)
 
 
 class TestSynonymsGetterSynonymesCom(TestSynonymsGetter):

@@ -28,7 +28,7 @@ from touch import touch
 sys.path.insert(0, os.path.join("..", ".."))
 
 
-from lexicons_builder.scrapper.scrappers import get_synonyms_from_scrappers
+from lexicons_builder.scrappers.scrappers import get_synonyms_from_scrappers, scrappers
 
 sys.path.insert(0, os.path.join("..", "..", "lexicons_builder", "graphs"))
 from graphs import Graph
@@ -37,10 +37,22 @@ from graphs import Graph
 @parameterized_class(
     ("lang", "depth", "word"),
     [
+        # fr
         ("fr", 1, "test"),
+        ("fr", 1, "coïncidence"),
+        ("fr", 1, "crâne"),
+        ("fr", 1, "maître"),
+        ("fr", 1, "être"),
+        ("fr", 1, "élève"),
+        ("fr", 1, "cœur"),
+        ("fr", 1, "élégant")
+        # en
         ("en", 1, "test"),
+        # es
         ("es", 1, "test"),
+        # it
         ("it", 1, "test"),
+        # de
         ("de", 1, "Test"),
     ],
 )
@@ -50,14 +62,18 @@ class TestScrapperGraph(unittest.TestCase):
     out_ttl_file = "_.ttl"
     out_ttl_file_2 = "_2.ttl"
 
-    def setUp(self):
-        try:
-            self.res = get_synonyms_from_scrappers(
-                "test", self.lang, self.depth, merge_graph=False
-            )
-        except Exception as e:
-            raise e
+    @classmethod
+    def setUpClass(cls):
 
+        cls.res = get_synonyms_from_scrappers(
+            cls.word, cls.lang, cls.depth, merge_graph=False
+        )
+        cls.scrapper_names = [scr.website for scr in scrappers[cls.lang]]
+
+    def setUp(self):
+        # self.res = get_synonyms_from_scrappers(
+        #     "test", self.lang, self.depth, merge_graph=False
+        # )
         self.merged_graph = Graph()
 
         for g in self.res:
@@ -109,10 +125,16 @@ class TestScrapperGraph(unittest.TestCase):
             print(self.merged_graph, file=f)
 
     def test_all_scrappers_return_rest(self):
-        for graph in self.res:
-            # with self.subTest(graph.)
-            self.assertFalse(graph.is_empty())
-            self.assertTrue(graph.contains_synonyms())
+        for graph, scrapper_name in zip(self.res, self.scrapper_names):
+            with self.subTest():
+                self.assertFalse(
+                    graph.is_empty(),
+                    msg=f"Error with scrapper of '{scrapper_name}'. lang is '{self.lang}'. word is '{self.word}'",
+                )
+                self.assertTrue(
+                    graph.contains_synonyms(),
+                    msg=f"Error with scrapper of '{scrapper_name}'. lang is '{self.lang}'. word is '{self.word}'",
+                )
 
 
 unittest.main()

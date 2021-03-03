@@ -32,21 +32,21 @@ class TestGraph(unittest.TestCase):
         os.remove(self.out_file)
 
     def test_add_word(self):
-        self.g.add_word("test", 5, "relation1", "target_word")
+        self.g.add_word("test", 5, "synonym", "target_word")
 
     def test___contains(self):
-        self.g.add_word("test", 5, "relation1", "target_word")
+        self.g.add_word("test", 5, "synonym", "target_word")
         self.assertTrue("test" in self.g)
         self.assertFalse("notest" in self.g)
 
     def test_str(self):
-        self.g.add_word("test", 5, "relation1", "target_word")
+        self.g.add_word("test", 5, "synonym", "target_word")
         self.assertIsInstance(self.g.to_str(), str)
         g2 = rdflib.Graph()
         g2.parse(data=str(self.g), format="ttl")
 
     def test_word_in_graph(self):
-        self.g.add_word("test", 5, "relation1", "target_word")
+        self.g.add_word("test", 5, "synonym", "target_word")
         self.assertTrue(self.g.word_in_graph("test"))
         self.assertFalse(self.g.word_in_graph("tfdfdfest"))
 
@@ -65,11 +65,11 @@ class TestGraph(unittest.TestCase):
 
     def test_is_empty(self):
         self.assertTrue(self.g.is_empty())
-        self.assertRaises(ValueError, self.g._set_root_word_attribute)
+        self.assertRaises(AssertionError, self.g._set_root_word_attribute)
         rw_strings = ["root_word_string_1", "root_word_string_2", "root_word_string_3"]
         for w in rw_strings:
             self.g.add_root_word(w)
-            self.assertFalse(self.g.is_empty())
+            self.assertTrue(self.g.is_empty())
         self.assertTrue(rw_strings == self.g.to_list())
 
     def test_add_several_root_words(self):
@@ -101,8 +101,23 @@ class TestGraph(unittest.TestCase):
         for i in range(1, 10):
             self.g.add_root_word(f"test_{i}")
             self.assertEqual(len(self.g), i)
-        self.g.add_word("test", 5, "relation1", "target_word")
+        self.g.add_word("test", 5, "synonym", "target_word")
         self.assertEqual(len(self.g), i + 1)
+
+    def test_add_relation(self):
+        self.g.add_root_word("root_word_string_1")
+        self.g.add_word("test", 1, "synonym", "root_word_string_1")
+        self.g.add_word("test", 1, "hyponym", "root_word_string_1")
+        self.g.add_word("test", 1, "hypernym", "root_word_string_1")
+        self.g.add_word("test", 1, "holonym", "root_word_string_1")
+        self.assertRaises(
+            ValueError,
+            self.g.add_word,
+            "test",
+            1,
+            "thing_that_ends_with_nym",
+            "root_word_string_1",
+        )
 
 
 unittest.main()
