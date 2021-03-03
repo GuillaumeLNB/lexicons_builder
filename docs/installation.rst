@@ -1,7 +1,7 @@
 Installation
 ------------
-From git
-~~~~~~~~
+From source
+~~~~~~~~~~~
 To install the module, clone it from gitlab.
 
 
@@ -10,11 +10,8 @@ To install the module, clone it from gitlab.
 
         $ git clone git@gitlab.inria.fr:glenoebi/lexicons_builder.git
         $ cd lexicons_builder/
+        $ pip install .
 
-        # download WOLF (French wordnet if needed)
-        wget https://gforge.inria.fr/frs/download.php/file/33496/wolf-1.0b4.xml.bz2
-        # (and extract it)
-        bzip2 -d wolf-1.0b4.xml.bz2
 
 Install the requirements:
 
@@ -29,10 +26,30 @@ XXX
 Download NLP models (optionnal)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Here's a list of models you can download manually. This list is not exhaustive.
-The models should be in word2vec format
-https://fauconnier.github.io/#data
+Here's a non exhaustive list of models you can download manually.
+The models should be in word2vec format.
+
++-----------------------------------------------------------+------------------------+
+| Link                                                      | Language(s)            |
++===========================================================+========================+
+| https://fauconnier.github.io/#data                        | French                 |
++-----------------------------------------------------------+------------------------+
+| https://wikipedia2vec.github.io/wikipedia2vec/pretrained/ | Multilingual           |
++-----------------------------------------------------------+------------------------+
+| http://vectors.nlpl.eu/repository/                        | Multilingual           |
++-----------------------------------------------------------+------------------------+
+| https://github.com/alexandres/lexvec#pre-trained-vectors  | Multilingual           |
++-----------------------------------------------------------+------------------------+
+| https://fasttext.cc/docs/en/english-vectors.html          | English / Multilingual |
++-----------------------------------------------------------+------------------------+
+
+Download WOLF (French WordNet) (optionnal)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    .. code:: bash
 
 
-
-tested Yes/no
+        $ # download WOLF (French wordnet if needed)
+        $ wget https://gforge.inria.fr/frs/download.php/file/33496/wolf-1.0b4.xml.bz2
+        $ # (and extract it)
+        $ bzip2 -d wolf-1.0b4.xml.bz2

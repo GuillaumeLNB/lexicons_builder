@@ -5,16 +5,16 @@ lexicons_builder documentation
 The **lexicons_builder** package aims to provide a basic API to create lexicons related to specific words.
 
 
-**Key principle**: Given the input words, it will look for synonyms or neighboors in the dictionnaries or in the NLP model. For each of the new retreiven terms, it will look again for its neighboors or synonyms and so on..
+**Key principle**: Given the input words, the main algorithm will look for synonyms and neighboors in the synonym dictionaries, in the NLP model(s) provided and in WordNet. For each of the new retreiven terms, it will look again for its neighboors or synonyms and so on..
 
 The general method is implemented on 3 different supports:
 
-1) Synonyms dictionnaries (See list of the dictionnaries : ref:`here <list_dictionnaries.rst>`)
-2) NLP language models
+1) Synonyms dictionaries (See complete list of the dictionaries :doc:`here <list_dictionaries>`)
+2) NLP language models (Word2Vec format)
 3) `WordNet`_ (or `WOLF`_)
 
 
-Output can be text file, turtle file or a Graph object. See <Quickstart> section for examples.
+Output can be text file, turtle file or a Graph object. See :doc:`Quickstart <quickstart>` section for examples.
 
 
 .. note::
@@ -36,7 +36,7 @@ Contents
    Quickstart <quickstart>
 
    Module Reference <api/modules>
-
+   List of dictionaries <list_dictionaries>
 
 Indices and tables
 ==================
