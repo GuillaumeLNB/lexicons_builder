@@ -45,7 +45,7 @@ from graphs import Graph
         ("fr", 1, "être"),
         ("fr", 1, "élève"),
         ("fr", 1, "cœur"),
-        ("fr", 1, "élégant")
+        ("fr", 1, "élégant"),
         # en
         ("en", 1, "test"),
         # es
