@@ -17,16 +17,11 @@ The general method is implemented on 3 different supports:
 
 Output can be text file, turtle file or a Graph object. See <Quickstart> section for examples.
 
-Description
-===========
-
-A longer description of your project goes here...
-
 
 Note
 ====
 
-If you encounter any issues, you can drop me a line at guillaume.le-noe-bienvenu@irisa.fr
+Feel free to raise an issue or drop me a line at guillaume.le-noe-bienvenu@irisa.fr if something isn't working for you.
 
 
 .. _toctree: http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html
