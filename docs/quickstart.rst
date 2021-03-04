@@ -110,13 +110,6 @@ To get related terms interactively through Python, run
 
 
 
-
-
-
-More options/examples at:
- LINK Examples XXX
-
-
 .. note::
     If the depth parameter is too high (higher than 3), the words found could seem unrelated to the root words. It can take also a long time to compute too.
 
