@@ -8,9 +8,8 @@ Like the other packages, it outputs a :obj:`Graph` containing the results.
 
 
 
-
 .. note::
-    Note: A list of languages models could be found at the XXX
+    Note: See the :doc:`installation section <../installation>` for a list of languages models
 
 
 """
@@ -40,7 +39,9 @@ __license__ = "mit"
 
 def _load_model(model_path: str):
     """Try different way of loading the model
-    Returns XXX"""
+    Returns the loaded model
+    """
+
     try:
         logging.info(f"Trying to load '{model_path}' with KeyedVectors binary=True")
         model = KeyedVectors.load_word2vec_format(

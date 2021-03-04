@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 """
-# TODO make module appears first in documentation
 
 
 from pkg_resources import get_distribution, DistributionNotFound

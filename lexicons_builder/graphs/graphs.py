@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""The Graph package contains the Graph() class
-that carries the results from scrapping/exploring nlp models, ...
-
+"""The Graph package contains the Graph class
+that carries the results from scrapping/exploring nlp models etc...
+The class inherit from :obj:`rdflib.Graph`.
 """
 
 
@@ -14,11 +14,12 @@ from touch import touch
 
 
 class Graph(rdflib.Graph):
-    """same as a rdflib.Graph object (see https://rdflib.readthedocs.io/en/stable/intro_to_creating_rdf.html), but with a few additional methods
+    """same as a :obj:`rdflib.Graph` object (see https://rdflib.readthedocs.io/en/stable/intro_to_creating_rdf.html), but with a few additional methods
 
     .. code:: python
 
         >>> from lexicons_builder.graphs.graphs import Graph
+        RDFLib Version: 5.0.0
         >>> g = Graph()
         >>> # the graph has a __str__ method that serialize itself to ttl
         >>> print(g)
@@ -35,10 +36,10 @@ class Graph(rdflib.Graph):
     """
 
     local_namespace = "urn:default:baseUri:#"
-    base_local = rdflib.Namespace(local_namespace)
     root_words = []
-    root_word_uri = f"{local_namespace}root_word_uri"
     root_word_uriref = rdflib.URIRef(f"{local_namespace}root_word")
+    base_local = rdflib.Namespace(local_namespace)
+    root_word_uri = f"{local_namespace}root_word_uri"
 
     def __init__(
         self, store="default", identifier=None, namespace_manager=None, base=None
@@ -49,6 +50,7 @@ class Graph(rdflib.Graph):
             namespace_manager=namespace_manager,
             base=base,
         )
+
         # add the root word,
         self.add(
             (
@@ -337,7 +339,22 @@ class Graph(rdflib.Graph):
         """return :obj:`True` if the graph does not contain synonyms, hyponyms, etc
 
         If the graph contains only root word(s) or no words, return :obj:`False`
-        Note the graph contains some definitions by default"""
+        Note the graph contains some definitions by default
+
+        .. code:: python
+
+            >>> g = Graph()
+            >>> g.is_empty()
+            True
+            >>> g.add_root_word("new")
+            >>> g.is_empty()
+            True
+            >>> g.add_word("young", 1, "synonym", "new")
+            >>> g.is_empty()
+            False
+
+        """
+
         for _, p, _ in self:
             if str(p) in (
                 "http://taxref.mnhn.fr/lod/property/isSynonymOf",
@@ -355,7 +372,19 @@ class Graph(rdflib.Graph):
         #     return True
 
     def contains_synonyms(self) -> bool:
-        """return :obj:`True` if the graph contains at least one synonym"""
+        """return :obj:`True` if the graph contains at least one synonym
+
+        .. code:: python
+
+            >>> g = Graph()
+            >>> g.add_root_word("new")
+            >>> g.contains_synonyms()
+            False
+            >>> g.add_word("young", 1, "synonym", "new")
+            >>> g.contains_synonyms()
+            True
+        """
+
         q_check = "ASK {?_ <http://taxref.mnhn.fr/lod/property/isSynonymOf> ?_2}"
         return [r for r in self.query(q_check)][0]
 
@@ -500,7 +529,7 @@ class Graph(rdflib.Graph):
         str_ = self.serialize(format="ttl").decode()
         return str_
 
-    def to_text_file(self, out_file=None, indent=True):
+    def to_text_file(self, out_file=None):
         """write the graph to the path provided.
 
         Args:
@@ -519,12 +548,10 @@ class Graph(rdflib.Graph):
                      letter         # a 2nd rank synonym, linked to 'Epistle'
                      missive        # a 2nd rank synonym, linked to 'Epistle'
         """
-        # TODO implement the indent option
 
         touch(out_file)  # None can be touch ! ??
 
         def rec_search(uri, str_=None, dep=None, uri_used=[]):
-            # print(f"LOOKING FOR {uri} DEP IS {dep} STR STARTSWITH {str(str_)[:10]}") # XXX
             q_words = (
                 """SELECT ?uri ?pref ?dep WHERE {
             ?uri <http://www.w3.org/2004/02/skos/core#prefLabel>  ?pref ;

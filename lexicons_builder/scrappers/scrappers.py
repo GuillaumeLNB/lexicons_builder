@@ -16,13 +16,7 @@ See the :doc:`List of dictionnaries section <../list_dictionaries>` for the list
 .. note::
     This method of scrapping the data should be updated regularly as the html code might change on the websites.
 
-
-
 """
-# XXX complete list of website scrapped
-# TODO sack the databases from the website directly
-
-# Note (2): the database from these websites should be dumped and the results comming from these
 
 
 import argparse
