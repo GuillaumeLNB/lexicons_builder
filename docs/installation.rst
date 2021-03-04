@@ -2,16 +2,12 @@ Installation
 ------------
 From source
 ~~~~~~~~~~~
-To install the module, clone it from gitlab.
-
+To install the module from github:
 
 
     .. code:: bash
 
-        $ git clone git@github.com:GuillaumeLNB/lexicons_builder.git
-        $ cd lexicons_builder/
-        $ pip install .
-
+        $ pip install git+git://github.com/GuillaumeLNB/lexicons_builder
 
 With pip
 ~~~~~~~~
