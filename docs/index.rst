@@ -10,7 +10,7 @@ The **lexicons_builder** package aims to provide a basic API to create lexicons 
 The general method is implemented on 3 different supports:
 
 1) Synonyms dictionaries (See complete list of the dictionaries :doc:`here <list_dictionaries>`)
-2) NLP language models (Word2Vec format)
+2) NLP language models (Word2Vec or FastText format)
 3) `WordNet`_ (or `WOLF`_)
 
 

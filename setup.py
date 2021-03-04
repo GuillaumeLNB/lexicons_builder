@@ -15,5 +15,5 @@ setup(
     author="GLNB",
     author_email="glnb@gmail.com",
     description="lexicons_builder, a tool to create lexicons",
-    install_requires=["gensim"],
+    install_requires=["gensim", "languagecodes", "banal", "nltk", "rdflib"],
 )

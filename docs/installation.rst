@@ -8,20 +8,14 @@ To install the module, clone it from gitlab.
 
     .. code:: bash
 
-        $ git clone git@gitlab.inria.fr:glenoebi/lexicons_builder.git
+        $ git clone git@github.com:GuillaumeLNB/lexicons_builder.git
         $ cd lexicons_builder/
         $ pip install .
 
 
-Install the requirements:
-
-    .. code:: bash
-
-        $ pip install -r requirements.txt
-
 With pip
 ~~~~~~~~
-XXX
+Coming soon XXX
 
 Download NLP models (optionnal)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,7 +41,6 @@ Download WOLF (French WordNet) (optionnal)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     .. code:: bash
-
 
         $ # download WOLF (French wordnet if needed)
         $ wget https://gforge.inria.fr/frs/download.php/file/33496/wolf-1.0b4.xml.bz2

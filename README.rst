@@ -59,15 +59,9 @@ To install the module, clone it from gitlab.
         $ pip install .
 
 
-Install the requirements:
-
-    .. code:: bash
-
-        $ pip install -r requirements.txt
-
 With pip
 ~~~~~~~~
-XXX
+Coming soon XXX
 
 Download NLP models (optionnal)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -93,7 +87,6 @@ Download WOLF (French WordNet) (optionnal)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     .. code:: bash
-
 
         $ # download WOLF (French wordnet if needed)
         $ wget https://gforge.inria.fr/frs/download.php/file/33496/wolf-1.0b4.xml.bz2
@@ -210,13 +203,6 @@ To get related terms interactively through Python, run
           account book
           accountability
 
-
-
-
-
-
-More options/examples at:
- LINK Examples XXX
 
 
 .. note::
