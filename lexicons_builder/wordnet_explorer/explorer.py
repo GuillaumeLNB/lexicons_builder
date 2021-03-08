@@ -113,8 +113,7 @@ def explore_wordnet(
             if graph.word_in_graph(new_word):
                 continue
             assert new_word != word
-            # print(f"newword __explore__ is : '{new_word}', word is '{word}'")
-            graph.add_word(new_word, current_depth, "", word, ss_uri)
+            graph.add_word(new_word, current_depth, "synonym", word, ss_uri)
             # exit()
             graph = explore_wordnet(
                 new_word,
@@ -228,7 +227,7 @@ def explore_wolf(
         return graph
 
     if not _wolf_object:
-        # to avoid reading the file each time the function is invoked
+        # to avoid reading the file each time the function is called
         _wolf_object = FreNetic(path_to_wolf)
 
     for synset in _wolf_object.synsets(french_word):
@@ -244,8 +243,7 @@ def explore_wolf(
             if graph.word_in_graph(word):
                 continue
             assert word != french_word
-            # print(f"newword __explore__ is : '{new_word}', word is '{word}'")
-            graph.add_word(word, current_depth, "", french_word)
+            graph.add_word(word, current_depth, "synonym", french_word)
             # exit()
             graph = explore_wolf(
                 word,

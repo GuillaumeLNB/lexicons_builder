@@ -6,6 +6,7 @@ graph merging etc
 
 
 """
+import html
 import logging
 
 logging.basicConfig(
@@ -14,7 +15,7 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()],
 )
 
-
+import re
 import pickle
 import os
 import sys
@@ -54,6 +55,11 @@ from graphs import Graph
         ("it", 1, "test"),
         # de
         ("de", 1, "Test"),
+        # cz
+        ("cz", 2, "knížka"),  # book
+        ("cz", 2, "sníst"),  # eat
+        ("cz", 2, "auto"),  # cat
+        ("cz", 2, "jíst"),  # eat
     ],
 )
 class TestScrapperGraph(unittest.TestCase):
@@ -69,6 +75,8 @@ class TestScrapperGraph(unittest.TestCase):
             cls.word, cls.lang, cls.depth, merge_graph=False
         )
         cls.scrapper_names = [scr.website for scr in scrappers[cls.lang]]
+        # print(cls.word)
+        # print(cls.res[0].to_text_file())
 
     def setUp(self):
         # self.res = get_synonyms_from_scrappers(
@@ -135,6 +143,18 @@ class TestScrapperGraph(unittest.TestCase):
                     graph.contains_synonyms(),
                     msg=f"Error with scrapper of '{scrapper_name}'. lang is '{self.lang}'. word is '{self.word}'",
                 )
+
+    def test_no_W_in_words(self):
+        for word in self.merged_graph.to_list():
+            with self.subTest(msg=f"test failed with word '{word}'"):
+                # no parenthesis
+                self.assertFalse(re.search(r"[\(\)]", word))
+                # htm escaped
+                self.assertTrue(html.unescape(word) == word)
+                # no html tag
+                self.assertFalse(re.search(r"[<>]", word))
+                # no space
+                self.assertTrue(word.strip() == word)
 
 
 unittest.main()

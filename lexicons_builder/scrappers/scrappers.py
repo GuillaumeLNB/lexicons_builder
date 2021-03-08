@@ -22,6 +22,7 @@ See the :doc:`List of dictionnaries section <../list_dictionaries>` for the list
 import argparse
 import inspect
 import logging
+import re
 import requests
 import os
 import sys
@@ -306,7 +307,65 @@ class SynonymsGetterSynonymsCom(SynonymsGetter):
         return list(set(words))
 
 
-# http://www.synonymy.com/
+# class (SynonymsGetter):
+# """Scrapper of `synonyma-online.cz <http://www.synonyma-online.cz>`_"""
+
+# website = "synonyma-online.cz"
+# lang = "cz"
+
+# def _get_results_from_website(self, word):
+#     # word = unidecode(word.lower())
+#     url = f"https://www.synonyms.com/synonym/{word}"
+#     soup = self.download_and_parse_page(url)
+#     words = []
+#     for p in soup.find_all("p", class_="syns"):
+#         for link in p.find_all("a", href=True):
+#             if not link["href"].startswith("/synonym/"):
+#                 continue
+#             words.append(link.text.strip())
+#     return list(set(words))
+
+
+class SynonymsGetterNechybujtem(SynonymsGetter):
+    """Scrapper of `nechybujte.cz <https://www.nechybujte.cz/slovnik-ceskych-synonym>`_"""
+
+    website = "nechybujte.cz"
+    lang = "cz"
+
+    def _get_results_from_website(self, word):
+        # word = unidecode(word.lower())
+        url = f"https://www.nechybujte.cz/slovnik-ceskych-synonym/{word}?"
+        soup = self.download_and_parse_page(url)
+        words = []
+        for span in soup.find_all("span", class_="ths_syns1"):
+            text = re.sub(r"\(.*?\)", "", span.text)
+            for w in re.split(r"\s*,?\s+", text):
+                words.append(w.strip())
+        return list(set(words))
+
+
+class SynonymsSynonymus(SynonymsGetter):
+    """Scrapper of `synonymus.cz <https://www.synonymus.cz/>`_"""
+
+    website = "synonymus.cz"
+    lang = "cz"
+
+    def _get_results_from_website(self, word):
+        # word = unidecode(word.lower())
+        url = f"https://synonymus.cz/search?query={word}"
+        soup = self.download_and_parse_page(url)
+        words = []
+        for w in soup.find("ul", class_="list-group").find_all("a"):
+            # some words have parenthesis and tags eg: sníst <čeho> (hodně)
+            word = w.text
+            word = re.sub(r"\(.*?\)", "", word)
+            word = re.sub(r"<.*?>", "", word)
+            word = word.strip()
+            words.append(word)
+        return list(set(words))
+
+
+# slovak :https://slovnik.aktuality.sk/synonyma/?q=kniha
 
 
 scrappers = {
@@ -326,6 +385,7 @@ scrappers = {
     "es": [SynonymsGetterReverso("es")],
     "it": [SynonymsGetterReverso("it")],
     "de": [SynonymsGetterReverso("de")],
+    "cz": [SynonymsGetterNechybujtem(), SynonymsSynonymus()],
 }
 
 
