@@ -113,7 +113,14 @@ def explore_wordnet(
             if graph.word_in_graph(new_word):
                 continue
             assert new_word != word
-            graph.add_word(new_word, current_depth, "synonym", word, ss_uri)
+            graph.add_word(
+                new_word,
+                current_depth,
+                "synonym",
+                word,
+                ss_uri,
+                comesFrom="http://wordnet-rdf.princeton.edu/",
+            )
             # exit()
             graph = explore_wordnet(
                 new_word,
@@ -127,7 +134,14 @@ def explore_wordnet(
                 if graph.word_in_graph(new_word):
                     continue
                 assert new_word != word
-                graph.add_word(new_word, current_depth, "hypernym", word, ss_uri)
+                graph.add_word(
+                    new_word,
+                    current_depth,
+                    "hypernym",
+                    word,
+                    ss_uri,
+                    comesFrom="http://wordnet-rdf.princeton.edu/",
+                )
                 graph = explore_wordnet(
                     new_word,
                     lang,
@@ -140,7 +154,14 @@ def explore_wordnet(
                 if graph.word_in_graph(new_word):
                     continue
                 assert new_word != word
-                graph.add_word(new_word, current_depth, "hyponym", word, ss_uri)
+                graph.add_word(
+                    new_word,
+                    current_depth,
+                    "hyponym",
+                    word,
+                    ss_uri,
+                    comesFrom="http://wordnet-rdf.princeton.edu/",
+                )
                 graph = explore_wordnet(
                     new_word,
                     lang,
@@ -153,7 +174,14 @@ def explore_wordnet(
                 if graph.word_in_graph(new_word):
                     continue
                 assert new_word != word
-                graph.add_word(new_word, current_depth, "holonym", word, ss_uri)
+                graph.add_word(
+                    new_word,
+                    current_depth,
+                    "holonym",
+                    word,
+                    ss_uri,
+                    comesFrom="http://wordnet-rdf.princeton.edu/",
+                )
                 graph = explore_wordnet(
                     new_word,
                     lang,
@@ -239,12 +267,12 @@ def explore_wolf(
         # )
         for word in synset.literals():
             word = str(word)
-            # print(word)
             if graph.word_in_graph(word):
                 continue
             assert word != french_word
-            graph.add_word(word, current_depth, "synonym", french_word)
-            # exit()
+            graph.add_word(
+                word, current_depth, "synonym", french_word, comesFrom=path_to_wolf
+            )
             graph = explore_wolf(
                 word,
                 path_to_wolf,
@@ -259,7 +287,13 @@ def explore_wolf(
                 if graph.word_in_graph(new_word):
                     continue
                 assert new_word != french_word
-                graph.add_word(new_word, current_depth, "hypernym", french_word)
+                graph.add_word(
+                    new_word,
+                    current_depth,
+                    "hypernym",
+                    french_word,
+                    comesFrom=path_to_wolf,
+                )
                 graph = explore_wolf(
                     word,
                     path_to_wolf,
@@ -272,15 +306,16 @@ def explore_wolf(
 
 
 if __name__ == "__main__":
-    g = explore_wordnet("book", "eng", 2)
-    print("graph is")
-    print(g.serialize(format="ttl").decode())
-    print("list is:")
-    print(g.to_list())
+    # g = explore_wordnet("book", "eng", 2)
+    # print("graph is")
+    # print(g.serialize(format="ttl").decode())
+    # print("list is:")
+    # print(g.to_list())
 
-    g = explore_wolf("livre", "/home/k/models/wolf-1.0b4.xml", 3)
-    print("graph is")
-    print(g.serialize(format="ttl").decode())
-    print("list is:")
-    print(g.to_list())
-    g.to_text_file("_.txt")
+    g = explore_wolf("livre", "/home/k/models/wolf-1.0b4.xml", 2)
+    # print("graph is")
+    # print(g.serialize(format="ttl").decode())
+    # print("list is:")
+    # print(g.to_list())
+    # g.to_text_file("_.txt")
+    g.to_xlsx_file("_test.xlsx")

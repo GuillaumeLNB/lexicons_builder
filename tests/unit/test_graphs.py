@@ -71,6 +71,9 @@ class TestGraph(unittest.TestCase):
             self.g.add_root_word(w)
             self.assertTrue(self.g.is_empty())
         self.assertTrue(rw_strings == self.g.to_list())
+        self.g._set_root_word_attribute()
+        for w in self.g.root_words:
+            self.assertTrue(isinstance(w, str))
 
     def test_add_several_root_words(self):
         self.g.add_root_word("root_word_string_1")

@@ -9,6 +9,7 @@ import logging
 from requests.utils import quote
 
 import rdflib
+import xlsxwriter
 from rdflib.plugins.sparql.parser import parseQuery
 from touch import touch
 
@@ -405,7 +406,7 @@ class Graph(rdflib.Graph):
         for i, (uri, pref) in enumerate(res):
             # self.root_word_uri = str(uri)
             # self.root_word = str(pref)
-            self.root_words.append(pref)
+            self.root_words.append(str(pref))
             contains_root_word = True
         if not contains_root_word:
             raise ValueError(f"The graph does not contain any root word")
@@ -586,6 +587,29 @@ class Graph(rdflib.Graph):
                 print(text, file=f)
         else:
             return text
+        logging.info(f"out file is: '{out_file}'")
+
+    def to_xlsx_file(self, out_file: str):
+        """Save the graph to an excel file
+
+        Args:
+            out_file (str): The outfile path
+
+        """
+
+        self._set_root_word_attribute()
+        workbook = xlsxwriter.Workbook(out_file)
+        worksheet = workbook.add_worksheet()
+        worksheet.write(0, 0, "root word(s)")
+        worksheet.write(0, 1, ", ".join(self.root_words))
+
+        q_words_depth = """SELECT ?word ?depth
+                    WHERE { ?_ <http://www.w3.org/2004/02/skos/core#prefLabel> ?word ;
+                    <urn:default:baseUri:#depth> ?depth } ORDER BY ASC (?word)"""
+        for i, (word, depth) in enumerate(self.query(q_words_depth), start=2):
+            worksheet.write(i, 0, word)
+            worksheet.write(i, 1, depth)
+        workbook.close()
         logging.info(f"out file is: '{out_file}'")
 
 

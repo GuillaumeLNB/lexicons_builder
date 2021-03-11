@@ -16,8 +16,8 @@ from graphs import Graph
 @parameterized_class(
     ("lang", "depth", "word"),
     [
-        ("fra", 1, "test"),
-        ("eng", 1, "test"),
+        # ("fra", 1, "test"),
+        # ("eng", 1, "test"),
         ("fra", 2, "test"),
         ("eng", 2, "test"),
     ],
@@ -29,13 +29,16 @@ class TestExplorer(unittest.TestCase):
     wrong_langs = ("frgg", "enrr", "depp", "nlhh", "itff")
     word_test_fr = "chaussette"
     out_file = "_test"
+    out_file_xlsx = "_test.xlsx"
 
     def setUp(self):
         self.g = exp.explore_wordnet(self.word, self.lang, self.depth)
         touch(self.out_file)
+        touch(self.out_file_xlsx)
 
     def tearDown(self):
         os.remove(self.out_file)
+        os.remove(self.out_file_xlsx)
 
     def test_explore(self):
         for good_lang, word in zip(self.langs, self.words):
@@ -66,6 +69,9 @@ class TestExplorer(unittest.TestCase):
         with open(self.out_file) as f:
             words = sorted(set([line.strip() for line in f if line.strip()]))
         self.assertEqual(words, self.g.to_list())
+
+    def test_to_xlsx(self):
+        self.g.to_xlsx_file(self.out_file_xlsx)
 
 
 class TestWOLF(unittest.TestCase):

@@ -1,5 +1,11 @@
 import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s] -[%(name)s] - [%(levelname)s] - %(message)s",
+    handlers=[logging.StreamHandler()],
+)
+
 from lexicons_builder.nlp_model_explorer.explorer import explore_nlp_model
 from lexicons_builder.scrappers.scrappers import get_synonyms_from_scrappers
 from lexicons_builder.wordnet_explorer.explorer import explore_wordnet, explore_wolf
@@ -105,4 +111,6 @@ def build_lexicon(
         main_graph += g
     # setting the root words attributes
     main_graph._set_root_word_attribute()
+    main_graph.delete_several_depth()
+
     return main_graph

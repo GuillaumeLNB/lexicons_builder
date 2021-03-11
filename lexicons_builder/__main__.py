@@ -9,11 +9,13 @@ import sys
 
 from touch import touch
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="[%(asctime)s] -[%(name)s] - [%(levelname)s] - %(message)s",
-    handlers=[logging.StreamHandler()],
-)
+
+# logging.basicConfig(
+#     level=logging.DEBUG,
+#     format="[%(asctime)s] -[%(name)s] - [%(levelname)s] - %(message)s",
+#     handlers=[logging.StreamHandler()],
+# )
+
 
 from lexicons_builder import build_lexicon
 
@@ -52,9 +54,9 @@ def parse_args(arguments):
         "-f",
         "--format",
         dest="format",
-        choices=("ttl", "txt"),
+        choices=("ttl", "txt", "xlsx"),
         default="txt",
-        help="The wanted output format (txt with indentation or ttl)",
+        help="The wanted output format (txt with indentation, ttl or xlsx)",
     )
     parser.add_argument(
         "-o",
@@ -119,6 +121,8 @@ def main(arguments):
 
     if args.format == "txt":
         main_graph.to_text_file(args.out_file)
+    elif args.format == "xlsx":
+        main_graph.to_xlsx_file(args.out_file)
     elif args.format == "ttl":
         with open(args.out_file, "w") as f:
             print(main_graph, file=f)

@@ -140,7 +140,7 @@ def explore_nlp_model(
         if graph.word_in_graph(new_word):
             continue
         assert new_word != word
-        graph.add_word(new_word, current_depth, "", word, comesFrom=model_path)
+        graph.add_word(new_word, current_depth, "synonym", word, comesFrom=model_path)
         graph = explore_nlp_model(
             new_word,
             model_path,
