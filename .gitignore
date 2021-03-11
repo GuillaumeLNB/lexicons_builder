@@ -2,6 +2,10 @@
 nlp_models/
 _*py
 
+*.xlsx
+
+
+
 # Temporary and binary files
 *~
 *.py[cod]
