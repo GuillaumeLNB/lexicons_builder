@@ -10,3 +10,4 @@ rdflib==5.0.0
 requests==2.18.4
 beautifulsoup4==4.9.3
 banal
+xlsxwriter
