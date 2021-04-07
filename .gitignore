@@ -5,6 +5,7 @@ nlp_models/
 *.xlsx
 *.txt
 *download_nlp_models.sh
+_*.sh
 _model_urls
 _original_setup.py
 
