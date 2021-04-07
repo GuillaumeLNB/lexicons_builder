@@ -9,6 +9,9 @@ import xml.etree.cElementTree as et
 
 from collections import defaultdict
 
+# glnb added here as unicode is not defined
+from unidecode import unidecode as unicode
+
 
 # POS constants.
 ADJ, ADJ_SAT, ADV, NOUN, VERB = "a", "s", "r", "n", "v"
@@ -164,13 +167,18 @@ class FreNetic(object):
             for lit_el in synset_el.iter(FreNetic._LIT_TAG_NAME):
                 if lit_el.text and lit_el.text.strip() != FreNetic._EMPTY_LIT:
                     span = lit_el.text.strip()
+                    # glnb
                     # changed here by GLNB to avoind the uninteresting parts
                     # eg: syn id: (lrec12mllexwn(1.354))
                     # lnote = lit_el.get("lnote")
                     lnote = ""
                     literals.append(Literal(span, lnote))
-
-            defn = synset_el.find(FreNetic._DEF_TAG_NAME).text.strip()
+            # glnb added the try block here
+            # to make it work on the cz wn
+            try:
+                defn = synset_el.find(FreNetic._DEF_TAG_NAME).text.strip()
+            except AttributeError:
+                defn = ""
             usages = [
                 usage_el.text.strip()
                 for usage_el in synset_el.iter(FreNetic._USAGE_TAG_NAME)

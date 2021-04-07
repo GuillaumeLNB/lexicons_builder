@@ -1,9 +1,9 @@
 # perso
 nlp_models/
-_*py
+# _*py
 
 *.xlsx
-
+*.txt
 
 
 # Temporary and binary files

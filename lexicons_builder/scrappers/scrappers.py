@@ -330,7 +330,7 @@ class SynonymsGetterNechybujtem(SynonymsGetter):
     """Scrapper of `nechybujte.cz <https://www.nechybujte.cz/slovnik-ceskych-synonym>`_"""
 
     website = "nechybujte.cz"
-    lang = "cz"
+    lang = "cs"
 
     def _get_results_from_website(self, word):
         # word = unidecode(word.lower())
@@ -348,7 +348,7 @@ class SynonymsSynonymus(SynonymsGetter):
     """Scrapper of `synonymus.cz <https://www.synonymus.cz/>`_"""
 
     website = "synonymus.cz"
-    lang = "cz"
+    lang = "cs"
 
     def _get_results_from_website(self, word):
         # word = unidecode(word.lower())
@@ -385,7 +385,7 @@ scrappers = {
     "es": [SynonymsGetterReverso("es")],
     "it": [SynonymsGetterReverso("it")],
     "de": [SynonymsGetterReverso("de")],
-    "cz": [SynonymsGetterNechybujtem(), SynonymsSynonymus()],
+    "cs": [SynonymsGetterNechybujtem(), SynonymsSynonymus()],
 }
 
 

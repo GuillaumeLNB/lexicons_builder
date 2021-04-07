@@ -16,23 +16,22 @@ from graphs import Graph
 @parameterized_class(
     ("lang", "depth", "word"),
     [
-        # ("fra", 1, "test"),
-        # ("eng", 1, "test"),
         ("fra", 2, "test"),
-        ("eng", 2, "test"),
+        ("eng", 1, "test"),
     ],
 )
 class TestExplorer(unittest.TestCase):
 
-    langs = ("eng", "fra")
-    words = ("test", "poireau")
     wrong_langs = ("frgg", "enrr", "depp", "nlhh", "itff")
     word_test_fr = "chaussette"
     out_file = "_test"
     out_file_xlsx = "_test.xlsx"
 
+    @classmethod
+    def setUpClass(cls):
+        cls.g = exp.explore_wordnet(cls.word, cls.lang, cls.depth)
+
     def setUp(self):
-        self.g = exp.explore_wordnet(self.word, self.lang, self.depth)
         touch(self.out_file)
         touch(self.out_file_xlsx)
 
@@ -40,12 +39,8 @@ class TestExplorer(unittest.TestCase):
         os.remove(self.out_file)
         os.remove(self.out_file_xlsx)
 
-    def test_explore(self):
-        for good_lang, word in zip(self.langs, self.words):
-            g = exp.explore_wordnet(word, good_lang, 2)
-
     def test_to_list(self):
-        for i in range(5):
+        for i in range(0, 2):
             g = exp.explore_wordnet(self.word_test_fr, "fra", i)
             self.assertEqual(len(g.to_list()), len(set(g.to_list())))
             self.assertEqual(g.to_list(), sorted(g.to_list()))
@@ -76,19 +71,15 @@ class TestExplorer(unittest.TestCase):
 
 class TestWOLF(unittest.TestCase):
 
-    words = ("chien", "livre", "rire")
+    words = ("chien",)  # "livre", "rire")
     path_2_wolf = "/home/k/models/wolf-1.0b4.xml"  # change here if needed
+    fake_word = "adsfadsfasdfdsf"
 
     def test_explore(self):
         for word in self.words:
             g = exp.explore_wolf(word, self.path_2_wolf, 2)
-
-    def test_to_list(self):
-        for word in self.words:
-            for i in range(3):
-                g = exp.explore_wolf(word, self.path_2_wolf, i)
-                self.assertEqual(len(g.to_list()), len(set(g.to_list())))
-                self.assertEqual(g.to_list(), sorted(g.to_list()))
+            self.assertEqual(len(g.to_list()), len(set(g.to_list())))
+            self.assertEqual(g.to_list(), sorted(g.to_list()))
 
     def test_return_graph(self):
         for word in self.words:
@@ -98,6 +89,11 @@ class TestWOLF(unittest.TestCase):
     def test_wrong_path(self):
         self.assertRaises(
             FileNotFoundError, exp.explore_wolf, self.words[0], "/wrong/path/2/wolf", 42
+        )
+
+    def test_fake_word(self):
+        self.assertTrue(
+            exp.explore_wolf(self.fake_word, self.path_2_wolf, 42).is_empty()
         )
 
 

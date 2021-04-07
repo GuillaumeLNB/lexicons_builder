@@ -102,6 +102,12 @@ def explore_wordnet(
         # reccursion ends
         return graph
 
+    if not word in wn.words():
+        logging.error(
+            f"The word '{word}' is not contained in Wordnet. Returning an empty graph"
+        )
+        return graph
+
     for synset in wn.synsets(word, lang=lang):
         ss_uri = (
             "http://wordnet-rdf.princeton.edu/pwn30/"
@@ -121,7 +127,6 @@ def explore_wordnet(
                 ss_uri,
                 comesFrom="http://wordnet-rdf.princeton.edu/",
             )
-            # exit()
             graph = explore_wordnet(
                 new_word,
                 lang,
@@ -130,6 +135,7 @@ def explore_wordnet(
                 _previous_graph=graph,
             )
         for hypernyms in synset.hypernyms():
+            # colour is a hypernym of red
             for new_word in hypernyms.lemma_names(lang):
                 if graph.word_in_graph(new_word):
                     continue
@@ -150,6 +156,7 @@ def explore_wordnet(
                     _previous_graph=graph,
                 )
         for hyponyms in synset.hyponyms():
+            # spoon is a hyponym of cutlery
             for new_word in hyponyms.lemma_names(lang):
                 if graph.word_in_graph(new_word):
                     continue
@@ -170,7 +177,8 @@ def explore_wordnet(
                     _previous_graph=graph,
                 )
         for holonyms in synset.member_holonyms():
-            for new_word in hypernyms.lemma_names(lang):
+            # word "face" is a holonym of the word "eye".
+            for new_word in holonyms.lemma_names(lang):
                 if graph.word_in_graph(new_word):
                     continue
                 assert new_word != word
@@ -257,6 +265,12 @@ def explore_wolf(
     if not _wolf_object:
         # to avoid reading the file each time the function is called
         _wolf_object = FreNetic(path_to_wolf)
+
+    if not _wolf_object.synsets(french_word):
+        logging.error(
+            f"The word '{french_word}' is not contained in '{path_to_wolf}'. Returning an empty graph"
+        )
+        return graph
 
     for synset in _wolf_object.synsets(french_word):
         # ss_uri = (

@@ -22,14 +22,17 @@ class TestGraph(unittest.TestCase):
     words = ("test", "poireau", "lire")
     wrong_words = ("TedsfdfsSt", "f5sdaf5df5")
     out_file = "_.txt"
+    xlsx_out_file = "_.xlsx"
 
     def setUp(self):
         self.g = Graph()
         touch(self.out_file)
+        touch(self.xlsx_out_file)
 
     def tearDown(self):
         # return
         os.remove(self.out_file)
+        os.remove(self.xlsx_out_file)
 
     def test_add_word(self):
         self.g.add_word("test", 5, "synonym", "target_word")
@@ -121,6 +124,10 @@ class TestGraph(unittest.TestCase):
             "thing_that_ends_with_nym",
             "root_word_string_1",
         )
+
+    def test_to_xlsx(self):
+        self.g.add_root_word("dog")
+        self.g.to_xlsx_file(self.xlsx_out_file)
 
 
 unittest.main()

@@ -49,8 +49,9 @@ def _load_model(model_path: str):
         )
         logging.info("success")
         return model
-    except EOFError:
+    except EOFError as e:
         # the model is in a text format
+        logging.error(e)
         logging.warning(
             f"Cannot load '{model_path}' with KeyedVectors binary=True. Trying another method"
         )

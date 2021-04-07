@@ -157,4 +157,14 @@ class TestScrapperGraph(unittest.TestCase):
                 self.assertTrue(word.strip() == word)
 
 
+# class TestSynonymsGetterSynonymesCom(TestSynonymsGetter):
+#     def setUp(self):
+#         self.scrapper = scrappers.scrappers.SynonymsGetterSynonymesCom()
+
+#     def test_explore_reccursively(self):
+#         g = self.scrapper.explore_reccursively(self.word_test, max_depth=2)
+#         self.assertTrue(g)
+#         self.assertTrue(len(g) > 2)
+
+
 unittest.main()

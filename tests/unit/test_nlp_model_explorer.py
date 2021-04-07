@@ -4,10 +4,6 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join("..", ".."))
-# sys.path.insert(1, os.path.join("..", "src", "wordnet_explorer"))
-
-# from rdflib import Graph
-# logging.getLogger("transformers").setLevel(logging.CRITICAL + 1)
 
 import lexicons_builder.nlp_model_explorer.explorer as exp
 
@@ -19,9 +15,9 @@ class TestExplorer(unittest.TestCase):
     wrong_types = (0, type, str)
     model_paths = [
         "~/models/frWac_non_lem_no_postag_no_phrase_200_skip_cut100.bin",  # smallest
-        "~/models/frWac_no_postag_phrase_500_cbow_cut100.bin",
-        "~/models/cz_law.word2vec.model.txt",
-        "~/models/nlwiki_20180420_100d.txt",
+        # "~/models/frWac_no_postag_phrase_500_cbow_cut100.bin",
+        # "~/models/cz_law.word2vec.model.txt",
+        # "~/models/nlwiki_20180420_100d.txt",
     ]
 
     def setUp(self):
