@@ -10,6 +10,7 @@ from parameterized import parameterized_class
 
 
 sys.path.insert(0, os.path.join("..", "..", "lexicons_builder", "graphs"))
+
 from graphs import Graph
 
 
@@ -19,19 +20,17 @@ from graphs import Graph
 )
 class TestGraph(unittest.TestCase):
 
-    words = ("test", "poireau", "lire")
-    wrong_words = ("TedsfdfsSt", "f5sdaf5df5")
-    out_file = "_.txt"
+    txt_out_file = "_.txt"
     xlsx_out_file = "_.xlsx"
 
     def setUp(self):
         self.g = Graph()
-        touch(self.out_file)
+        touch(self.txt_out_file)
         touch(self.xlsx_out_file)
 
     def tearDown(self):
         # return
-        os.remove(self.out_file)
+        os.remove(self.txt_out_file)
         os.remove(self.xlsx_out_file)
 
     def test_add_word(self):
@@ -55,8 +54,8 @@ class TestGraph(unittest.TestCase):
 
     def test_to_text_file(self):
         self.g.parse(self.graph_test_path, format="ttl")
-        self.g.to_text_file(self.out_file)
-        with open(self.out_file) as f:
+        self.g.to_text_file(self.txt_out_file)
+        with open(self.txt_out_file) as f:
             words = sorted([line.strip() for line in f if line.strip()])
         self.assertEqual(words, self.g.to_list())
 
@@ -82,8 +81,8 @@ class TestGraph(unittest.TestCase):
         self.g.add_root_word("root_word_string_1")
         self.g.add_root_word("root_word_string_2")
         self.g.add_root_word("root_word_string_3")
-        self.g.to_text_file(self.out_file)
-        with open(self.out_file) as f:
+        self.g.to_text_file(self.txt_out_file)
+        with open(self.txt_out_file) as f:
             words = sorted([line.strip() for line in f if line.strip()])
         self.assertEqual(words, self.g.to_list())
 
@@ -93,8 +92,8 @@ class TestGraph(unittest.TestCase):
         self.g.add_root_word("root_word_string_2")
         self.g.add_root_word("root_word_string_3")
 
-        self.g.to_text_file(self.out_file)
-        with open(self.out_file) as f:
+        self.g.to_text_file(self.txt_out_file)
+        with open(self.txt_out_file) as f:
             words = sorted([line.strip() for line in f if line.strip()])
         self.assertEqual(words, self.g.to_list())
         self.test_list_is_sorted()
@@ -128,6 +127,5 @@ class TestGraph(unittest.TestCase):
     def test_to_xlsx(self):
         self.g.add_root_word("dog")
         self.g.to_xlsx_file(self.xlsx_out_file)
-
 
 unittest.main()

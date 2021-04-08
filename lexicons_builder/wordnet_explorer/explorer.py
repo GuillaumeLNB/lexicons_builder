@@ -317,19 +317,3 @@ def explore_wolf(
                     _previous_graph=graph,
                 )
     return graph
-
-
-if __name__ == "__main__":
-    # g = explore_wordnet("book", "eng", 2)
-    # print("graph is")
-    # print(g.serialize(format="ttl").decode())
-    # print("list is:")
-    # print(g.to_list())
-
-    g = explore_wolf("livre", "/home/k/models/wolf-1.0b4.xml", 2)
-    # print("graph is")
-    # print(g.serialize(format="ttl").decode())
-    # print("list is:")
-    # print(g.to_list())
-    # g.to_text_file("_.txt")
-    g.to_xlsx_file("_test.xlsx")
