@@ -309,7 +309,7 @@ def explore_wolf(
                     comesFrom=path_to_wolf,
                 )
                 graph = explore_wolf(
-                    word,
+                    new_word,
                     path_to_wolf,
                     _wolf_object=_wolf_object,
                     current_depth=current_depth + 1,
