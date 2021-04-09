@@ -277,7 +277,7 @@ def explore_wolf(
         )
         return graph
 
-    if graph.root_words[0] in new_seeds:
+    if graph.root_words[0] in new_seeds and len(graph.root_words) > 1:
         new_seeds.remove(graph.root_words[0])
 
     for synset in _wolf_object.synsets(french_word):
