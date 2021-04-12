@@ -250,7 +250,7 @@ def explore_wolf(
     logging.debug(
         f"Exploring WOLF with word '{french_word}' at depth '{current_depth}'"
     )
-    print('seeds are', seeds)
+    logging.debug(f"seeds are '{seeds}'")
     new_seeds = seeds[:]
 
     if not _previous_graph:
@@ -261,7 +261,7 @@ def explore_wolf(
     else:
         graph = _previous_graph
 
-    print('graph root words = ', graph.root_words)
+    logging.debug(f"graph root words: {graph.root_words}")
 
     if current_depth - 1 == max_depth:
         # reccursion ends
