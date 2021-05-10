@@ -49,7 +49,7 @@ Indices and tables
 
 
 .. note::
-    If there's an issue, feel free to open a ticket or drop me a line at guillaume.le-noe-bienvenu@irisa.fr
+    If you encounter an issue, feel free raise it on `GitHub`_
 
 
 .. _toctree: http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html
@@ -66,3 +66,4 @@ Indices and tables
 .. _autodoc: http://www.sphinx-doc.org/en/stable/ext/autodoc.html
 .. _WordNet: https://wordnet.princeton.edu/
 .. _WOLF: http://alpage.inria.fr/~sagot/
+.. _GitHub: https://github.com/GuillaumeLNB/lexicons_builder/issues

@@ -45,18 +45,21 @@ Feel free to raise an issue or drop me a line at guillaume.le-noe-bienvenu@irisa
 
 Installation
 ------------
+
+With pip
+~~~~~~~~
+    .. code:: bash
+
+        $ pip install lexicons-builder
+
+
 From source
 ~~~~~~~~~~~
-To install the module from github:
-
+To install the module from source:
 
     .. code:: bash
 
         $ pip install git+git://github.com/GuillaumeLNB/lexicons_builder
-
-With pip
-~~~~~~~~
-Coming soon XXX
 
 Download NLP models (optionnal)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
