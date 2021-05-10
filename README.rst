@@ -23,7 +23,7 @@ Full documentation available on `readthedocs`_
 Note
 ====
 
-Feel free to raise an issue or drop me a line at guillaume.le-noe-bienvenu@irisa.fr if something isn't working for you.
+Feel free to raise an issue on `GitHub`_ if something isn't working for you.
 
 
 .. _toctree: http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html
@@ -41,6 +41,7 @@ Feel free to raise an issue or drop me a line at guillaume.le-noe-bienvenu@irisa
 .. _WordNet: https://wordnet.princeton.edu/
 .. _WOLF: http://alpage.inria.fr/~sagot/
 .. _readthedocs: https://lexicons-builder.readthedocs.io/en/latest/index.html
+.. _GitHub: https://github.com/GuillaumeLNB/lexicons_builder/issues
 
 
 Installation
