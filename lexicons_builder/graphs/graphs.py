@@ -603,16 +603,19 @@ class Graph(rdflib.Graph):
         worksheet.write(0, 0, "root word(s)")
         worksheet.write(0, 1, ", ".join(self.root_words))
 
-        q_words_depth = """SELECT ?word ?depth ?origin
+
+        # ?origin
+        # <urn:default:baseUri:#comesFrom> ?origin ;
+
+        q_words_depth = """SELECT ?word ?depth
                     WHERE { ?_ <http://www.w3.org/2004/02/skos/core#prefLabel> ?word ;
                     <urn:default:baseUri:#depth> ?depth ;
-                    <urn:default:baseUri:#comesFrom> ?origin ;
                     }
                     ORDER BY ASC (?word)"""
-        for i, (word, depth, origin) in enumerate(self.query(q_words_depth), start=2):
+        for i, (word, depth, ) in enumerate(self.query(q_words_depth), start=2): #origin
             worksheet.write(i, 0, word)
             worksheet.write(i, 1, depth)
-            worksheet.write(i, 2, origin)
+            # worksheet.write(i, 2, origin)
         workbook.close()
         logging.info(f"out file is: '{out_file}'")
 
