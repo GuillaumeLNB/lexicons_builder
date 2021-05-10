@@ -1,7 +1,7 @@
 gensim
 languagecodes
 touch
-Unidecode
+unidecode
 sphinx_rtd_theme
 parameterized
 fake_useragent
@@ -11,3 +11,4 @@ requests
 beautifulsoup4
 banal
 xlsxwriter
+bs4

@@ -3,6 +3,9 @@ from setuptools import setup
 with open("README.rst") as f:
     long_description = f.read()
 
+with open("requirements.txt") as f:
+    install_requires = f.read().splitlines()
+
 setup(
     name="lexicons_builder",
     version="0.1.2",
@@ -19,7 +22,7 @@ setup(
     author_email="glnb@gmail.com",
     description="lexicons_builder, a tool to create lexicons",
     long_description=long_description,
-    install_requires=["gensim", "languagecodes", "banal", "nltk", "rdflib"],
+    install_requires=install_requires,
     project_urls={
         'Documentation': 'https://lexicons-builder.readthedocs.io',
         'Source': 'https://github.com/GuillaumeLNB/lexicons_builder',
