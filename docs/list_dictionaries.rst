@@ -24,3 +24,7 @@ Here's the list of the synonyms dictionaries the algorithm looks up at.
 +--------------------------+-------------+
 | synonyms.com             | English     |
 +--------------------------+-------------+
+| mijnwoordenboek.nl       | Dutch       |
++--------------------------+-------------+
+| synonyme.de              | German      |
++--------------------------+-------------+
