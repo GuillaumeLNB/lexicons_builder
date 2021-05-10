@@ -53,7 +53,6 @@ class TestLexiconBuilder(unittest.TestCase):
             web=True,
         )
 
-
     # def test_args(self):
     #     print(self.args_list)
 

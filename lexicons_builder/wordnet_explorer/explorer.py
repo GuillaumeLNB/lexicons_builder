@@ -298,7 +298,7 @@ def explore_wolf(
             for synset_to_check in _wolf_object.synsets(word):
                 for word_synset in synset_to_check.literals():
                     if str(word_synset) in new_seeds:
-                        is_relevant=True
+                        is_relevant = True
                         break
                 if is_relevant:
                     break
@@ -326,7 +326,7 @@ def explore_wolf(
                 for synset_to_check in _wolf_object.synsets(new_word):
                     for word_synset in synset_to_check.literals():
                         if str(word_synset) in new_seeds:
-                            is_relevant=True
+                            is_relevant = True
                             break
                     if is_relevant:
                         break

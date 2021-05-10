@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="lexicons_builder",
-    version="0.1.2",
+    version="0.1.3",
     packages=[
         "lexicons_builder",
         "lexicons_builder.graphs",
@@ -24,7 +24,7 @@ setup(
     long_description=long_description,
     install_requires=install_requires,
     project_urls={
-        'Documentation': 'https://lexicons-builder.readthedocs.io',
-        'Source': 'https://github.com/GuillaumeLNB/lexicons_builder',
-    }
+        "Documentation": "https://lexicons-builder.readthedocs.io",
+        "Source": "https://github.com/GuillaumeLNB/lexicons_builder",
+    },
 )

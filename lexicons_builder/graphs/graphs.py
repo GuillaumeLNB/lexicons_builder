@@ -603,7 +603,6 @@ class Graph(rdflib.Graph):
         worksheet.write(0, 0, "root word(s)")
         worksheet.write(0, 1, ", ".join(self.root_words))
 
-
         # ?origin
         # <urn:default:baseUri:#comesFrom> ?origin ;
 
@@ -612,7 +611,9 @@ class Graph(rdflib.Graph):
                     <urn:default:baseUri:#depth> ?depth ;
                     }
                     ORDER BY ASC (?word)"""
-        for i, (word, depth, ) in enumerate(self.query(q_words_depth), start=2): #origin
+        for i, (word, depth,) in enumerate(
+            self.query(q_words_depth), start=2
+        ):  # origin
             worksheet.write(i, 0, word)
             worksheet.write(i, 1, depth)
             # worksheet.write(i, 2, origin)

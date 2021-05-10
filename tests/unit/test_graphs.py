@@ -128,4 +128,5 @@ class TestGraph(unittest.TestCase):
         self.g.add_root_word("dog")
         self.g.to_xlsx_file(self.xlsx_out_file)
 
+
 unittest.main()
