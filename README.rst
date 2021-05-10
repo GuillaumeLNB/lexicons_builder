@@ -17,6 +17,8 @@ The general method is implemented on 3 different supports:
 
 Output can be text file, turtle file or a Graph object. See <Quickstart> section for examples.
 
+Full documentation available on `readthedocs`_
+
 
 Note
 ====
@@ -38,6 +40,8 @@ Feel free to raise an issue or drop me a line at guillaume.le-noe-bienvenu@irisa
 .. _autodoc: http://www.sphinx-doc.org/en/stable/ext/autodoc.html
 .. _WordNet: https://wordnet.princeton.edu/
 .. _WOLF: http://alpage.inria.fr/~sagot/
+.. _readthedocs: https://lexicons-builder.readthedocs.io/en/latest/index.html
+
 
 Installation
 ------------
