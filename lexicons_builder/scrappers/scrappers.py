@@ -344,6 +344,9 @@ class SynonymsGetterNechybujtem(SynonymsGetter):
         return list(set(words))
 
 
+# slovak :https://slovnik.aktuality.sk/synonyma/?q=kniha
+
+
 class SynonymsSynonymus(SynonymsGetter):
     """Scrapper of `synonymus.cz <https://www.synonymus.cz/>`_"""
 
@@ -365,7 +368,50 @@ class SynonymsSynonymus(SynonymsGetter):
         return list(set(words))
 
 
-# slovak :https://slovnik.aktuality.sk/synonyma/?q=kniha
+class SynonymsMijnwoordenboek(SynonymsGetter):
+    """Scrapper of `mijnwoordenboek.nl <https://www.mijnwoordenboek.nl/synoniem.php>`_"""
+
+    website = "mijnwoordenboek.nl"
+    lang = "nl"
+
+    def _get_results_from_website(self, word):
+        # word = unidecode(word.lower())
+        url = f"https://www.mijnwoordenboek.nl/synoniem.php?woord={word}&lang=NL"
+        soup = self.download_and_parse_page(url)
+        words = []
+        for div in soup.find_all("ul", class_="icons-ul"):
+            for link in div.find_all("a", href=True):
+                if not re.match(
+                    "https://www.mijnwoordenboek.nl/(synoniemen|puzzelwoordenboek)/",
+                    link["href"],
+                ):
+                    continue
+                # some words have parenthesis and tags eg: sníst <čeho> (hodně)
+                word = link.text.lower()
+                # word = re.sub(r"\(.*?\)", "", word)
+                # word = re.sub(r"<.*?>", "", word)
+                word = word.strip()
+                words.append(word)
+        return list(set(words))
+
+
+class SynonymsSynonymeDe(SynonymsGetter):
+    """Scrapper of `https://www.synonyme.de <https://www.synonyme.de>`_"""
+
+    website = "https://www.synonyme.de"
+    lang = "de"
+
+    def _get_results_from_website(self, word):
+        # word = unidecode(word.lower())
+        url = f"https://www.synonyme.de/{word}/"
+        soup = self.download_and_parse_page(url)
+        words = []
+        for syn in soup.find_all("div", class_="synonymes"):
+            word = syn.text.strip().lower()
+            # word = re.sub(r"\(.*?\)", "", word)
+            # word = re.sub(r"<.*?>", "", word)
+            words.append(word)
+        return list(set(words))
 
 
 scrappers = {
@@ -386,6 +432,8 @@ scrappers = {
     "it": [SynonymsGetterReverso("it")],
     "de": [SynonymsGetterReverso("de")],
     "cs": [SynonymsGetterNechybujtem(), SynonymsSynonymus()],
+    "nl": [SynonymsMijnwoordenboek()],
+    "de": [SynonymsSynonymeDe()],
 }
 
 
@@ -442,7 +490,9 @@ if __name__ == "__main__":
     # print(g.to_str(), file=open("test.ttl", "w"))
     # g.to_text_file("_.txt")
 
-    scrapper = SynonymsGetterLexico()
-    g = scrapper.explore_reccursively("book", 2)
-    print(g, file=open("_test.ttl", "w"))
-    g.to_text_file("_.txt")
+    # scrapper = SynonymsGetterLexico()
+    # g = scrapper.explore_reccursively("book", 2)
+    # print(g, file=open("_test.ttl", "w"))
+    # g.to_text_file("_.txt")
+    # print(get_synonyms_from_scrappers("boek", "nl", 2).to_list())
+    print(get_synonyms_from_scrappers("buch", "de", 2).to_list())

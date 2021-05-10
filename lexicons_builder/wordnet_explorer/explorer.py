@@ -205,6 +205,7 @@ def explore_wolf(
     french_word: str,
     path_to_wolf: str,
     max_depth: int = 5,
+    seeds=[],
     current_depth=1,
     _previous_graph=None,
     _wolf_object=None,
@@ -249,6 +250,8 @@ def explore_wolf(
     logging.debug(
         f"Exploring WOLF with word '{french_word}' at depth '{current_depth}'"
     )
+    logging.debug(f"seeds are '{seeds}'")
+    new_seeds = seeds[:]
 
     if not _previous_graph:
         # initializing the Graph for the 1st time
@@ -257,6 +260,8 @@ def explore_wolf(
         graph.add_root_word(french_word)
     else:
         graph = _previous_graph
+
+    logging.debug(f"graph root words: {graph.root_words}")
 
     if current_depth - 1 == max_depth:
         # reccursion ends
@@ -272,6 +277,9 @@ def explore_wolf(
         )
         return graph
 
+    if graph.root_words[0] in new_seeds and len(graph.root_words) > 1:
+        new_seeds.remove(graph.root_words[0])
+
     for synset in _wolf_object.synsets(french_word):
         # ss_uri = (
         #     "http://wordnet-rdf.princeton.edu/pwn30/"
@@ -283,37 +291,60 @@ def explore_wolf(
             word = str(word)
             if graph.word_in_graph(word):
                 continue
-            assert word != french_word
-            graph.add_word(
-                word, current_depth, "synonym", french_word, comesFrom=path_to_wolf
-            )
-            graph = explore_wolf(
-                word,
-                path_to_wolf,
-                _wolf_object=_wolf_object,
-                current_depth=current_depth + 1,
-                max_depth=max_depth,
-                _previous_graph=graph,
-            )
+            assert word != french_word, f"word: '{word}'\tcurrent_depth {current_depth}"
+
+            # testing if synsets of the new word is in the seeds
+            is_relevant = False
+            for synset_to_check in _wolf_object.synsets(word):
+                for word_synset in synset_to_check.literals():
+                    if str(word_synset) in new_seeds:
+                        is_relevant=True
+                        break
+                if is_relevant:
+                    break
+            if is_relevant:
+                graph.add_word(
+                    word, current_depth, "synonym", french_word, comesFrom=path_to_wolf
+                )
+                graph = explore_wolf(
+                    new_word,
+                    path_to_wolf,
+                    seeds=new_seeds,
+                    _wolf_object=_wolf_object,
+                    current_depth=current_depth + 1,
+                    max_depth=max_depth,
+                    _previous_graph=graph,
+                )
         for hyp in synset.hypernyms():
             for new_word in hyp.literals():
                 new_word = str(new_word)
                 if graph.word_in_graph(new_word):
                     continue
                 assert new_word != french_word
-                graph.add_word(
-                    new_word,
-                    current_depth,
-                    "hypernym",
-                    french_word,
-                    comesFrom=path_to_wolf,
-                )
-                graph = explore_wolf(
-                    new_word,
-                    path_to_wolf,
-                    _wolf_object=_wolf_object,
-                    current_depth=current_depth + 1,
-                    max_depth=max_depth,
-                    _previous_graph=graph,
-                )
+                # testing if synsets of the new word is in the seeds
+                is_relevant = False
+                for synset_to_check in _wolf_object.synsets(new_word):
+                    for word_synset in synset_to_check.literals():
+                        if str(word_synset) in new_seeds:
+                            is_relevant=True
+                            break
+                    if is_relevant:
+                        break
+                if is_relevant:
+                    graph.add_word(
+                        new_word,
+                        current_depth,
+                        "hypernym",
+                        french_word,
+                        comesFrom=path_to_wolf,
+                    )
+                    graph = explore_wolf(
+                        new_word,
+                        path_to_wolf,
+                        seeds=new_seeds,
+                        _wolf_object=_wolf_object,
+                        current_depth=current_depth + 1,
+                        max_depth=max_depth,
+                        _previous_graph=graph,
+                    )
     return graph

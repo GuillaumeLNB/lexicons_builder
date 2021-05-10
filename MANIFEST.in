@@ -1,0 +1,9 @@
+include *.rst
+include *.txt
+include .coveragerc
+recursive-include docs *.png
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile
+recursive-include tests *.py
+recursive-include tests *.ttl

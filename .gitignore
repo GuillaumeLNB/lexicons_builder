@@ -9,6 +9,9 @@ _*.sh
 _model_urls
 _original_setup.py
 
+*.ttl
+*.ipynb
+
 # Temporary and binary files
 *~
 *.py[cod]

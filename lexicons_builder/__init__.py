@@ -1,7 +1,8 @@
 import logging
 
 logging.basicConfig(
-    level=logging.INFO,
+    # level=logging.INFO,
+    level=logging.DEBUG,
     format="[%(asctime)s] -[%(name)s] - [%(levelname)s] - %(message)s",
     handlers=[logging.StreamHandler()],
 )
@@ -99,7 +100,7 @@ def build_lexicon(
             logging.info(
                 f"exploring WOLF with word '{word}' at depth {depth} WOLF PATH IS '{wolf_path}'"
             )
-            graphs.append(explore_wolf(word, wolf_path, depth))
+            graphs.append(explore_wolf(word, wolf_path, depth, seeds=words))
         # looking for word with WORDNET
         if wordnet:
             logging.info(f"exploring WORNET with word '{word}' at depth {depth}")
