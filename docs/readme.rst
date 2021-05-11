@@ -15,7 +15,7 @@ The general method is implemented on 3 different supports:
 3) `WordNet`_ (or `WOLF`_)
 
 
-Output can be text file, turtle file or a Graph object. See <Quickstart> section for examples.
+Output can be text file, xlsx file, turtle file or a Graph object. See <Quickstart> section for examples.
 
 Full documentation available on `readthedocs`_
 

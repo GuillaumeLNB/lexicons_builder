@@ -19,8 +19,8 @@ To install the module from source:
 Download NLP models (optionnal)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Here's a non exhaustive list of models you can download manually.
-The models should be in word2vec format.
+Here's a non exhaustive list of websites where you can download NLP models manually.
+The models should be in word2vec or fasttext format.
 
 +-----------------------------------------------------------+------------------------+
 | Link                                                      | Language(s)            |
@@ -35,6 +35,9 @@ The models should be in word2vec format.
 +-----------------------------------------------------------+------------------------+
 | https://fasttext.cc/docs/en/english-vectors.html          | English / Multilingual |
 +-----------------------------------------------------------+------------------------+
+| https://github.com/mmihaltz/word2vec-GoogleNews-vectors   | English                |
++-----------------------------------------------------------+------------------------+
+
 
 Download WOLF (French WordNet) (optionnal)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
