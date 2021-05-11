@@ -307,7 +307,7 @@ def explore_wolf(
                     word, current_depth, "synonym", french_word, comesFrom=path_to_wolf
                 )
                 graph = explore_wolf(
-                    new_word,
+                    word,
                     path_to_wolf,
                     seeds=new_seeds,
                     _wolf_object=_wolf_object,
