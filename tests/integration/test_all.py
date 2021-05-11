@@ -16,9 +16,9 @@ import lexicons_builder
     ("lang", "depth", "word"),
     [
         ("fr", "1", "test", "ttl"),
-        # ("nl", "1", "test", "ttl"),
+        ("nl", "1", "test", "ttl"),
         # ("de", "1", "test", "ttl"),
-        # ("cz", "1", "test", "ttl"),
+        # ("cs", "1", "test", "ttl"),
     ],
 )
 class TestLexiconBuilder(unittest.TestCase):
@@ -54,29 +54,6 @@ class TestLexiconBuilder(unittest.TestCase):
         )
         cls.graph._set_root_word_attribute()
 
-    # def setUp(self):
-    #     touch(self.out_file_txt)
-    #     touch(self.out_file_ttl)
-    #     self.args_list = [
-    #         self.word,
-    #         "--depth",
-    #         self.depth,
-    #         "--format",
-    #         "ttl",
-    #         "--out-file",
-    #         self.out_file_ttl,
-    #         "--lang",
-    #         self.lang,
-    #     ]
-    #     # print(self.args_list)
-    #     self.graph = lexicon_builder.main(self.args_list)
-
-    # def tearDown(self):
-    #     os.remove(self.out_file_txt)
-    #     os.remove(self.out_file_ttl)
-
-    # def test_parser(self):
-    #     lexicon_builder.parse_args(self.args_list)
 
     def test___contains(self):
         self.assertTrue("test" in self.graph)
@@ -91,9 +68,6 @@ class TestLexiconBuilder(unittest.TestCase):
         # we want more than 10 words
         self.assertTrue(len(self.graph) > 10)
 
-    # def test_print(self):
-    #     print(self.graph.to_list())
-    #     print(self.graph, file=open('test.ttl', 'w'))
 
     def test_list_words(self):
         "test all words are in the graph, have a depth and a comes from properties"

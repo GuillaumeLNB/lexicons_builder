@@ -13,6 +13,10 @@ sys.path.insert(0, os.path.join("..", "..", "lexicons_builder", "graphs"))
 
 from graphs import Graph
 
+assert (
+    int(rdflib.__version__.split(".")[0]) >= 5
+), "This test script needs a version 5 or later of rdflib. Yours is {rdflib.__version__}"
+
 
 @parameterized_class(
     ("graph_test_path",),

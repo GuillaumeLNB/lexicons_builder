@@ -35,12 +35,12 @@ class TestExplorer(unittest.TestCase):
     def test_wrong_word(self):
         for wrong_w in self.wrong_types:
             self.assertRaises(
-                TypeError, exp.explore_nlp_model, wrong_w, self.model_paths[0], 5
+                TypeError, exp.explore_nlp_model, wrong_w, self.model_paths[0], 2
             )
 
     def test_list_uniq(self):
         word = "news"
-        g1 = exp.explore_nlp_model(word, self.model_paths[0], 5)
+        g1 = exp.explore_nlp_model(word, self.model_paths[0], 2)
         self.assertEqual(len(g1.to_list()), len(set(g1.to_list())))
 
     def test_graph_is_empty(self):

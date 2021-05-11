@@ -55,11 +55,11 @@ from graphs import Graph
         ("it", 1, "test"),
         # de
         ("de", 1, "Test"),
-        # cz
-        ("cz", 2, "knížka"),  # book
-        ("cz", 2, "sníst"),  # eat
-        ("cz", 2, "auto"),  # cat
-        ("cz", 2, "jíst"),  # eat
+        # cs
+        ("cs", 2, "knížka"),  # book
+        ("cs", 2, "sníst"),  # eat
+        ("cs", 2, "auto"),  # cat
+        ("cs", 2, "jíst"),  # eat
     ],
 )
 class TestScrapperGraph(unittest.TestCase):
