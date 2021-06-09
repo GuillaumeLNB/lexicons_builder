@@ -414,6 +414,27 @@ class SynonymsSynonymeDe(SynonymsGetter):
         return list(set(words))
 
 
+class SynonymsVirgilio(SynonymsGetter):
+    """Scrapper of `https://sapere.virgilio.it <https://sapere.virgilio.it>`_"""
+
+    website = "https://sapere.virgilio.it"
+    lang = "it"
+
+    def _get_results_from_website(self, word):
+        # word = unidecode(word.lower())
+        url = f"https://sapere.virgilio.it/parole/sinonimi-e-contrari/{word}"
+        soup = self.download_and_parse_page(url)
+        words = []
+        for par in soup.find("div", class_="sct-descr").find_all("p"):
+            if par.text == "Sinonimi":
+                continue
+            elif par.text == "Contrari":
+                break
+            for syn in par.find_all("b"):
+                words.appen(syn.text)
+        return list(set(words))
+
+
 scrappers = {
     "en": [
         SynonymsGetterLexico(),
@@ -434,6 +455,7 @@ scrappers = {
     "cs": [SynonymsGetterNechybujtem(), SynonymsSynonymus()],
     "nl": [SynonymsMijnwoordenboek()],
     "de": [SynonymsSynonymeDe()],
+    "it": [SynonymsVirgilio()],
 }
 
 

@@ -28,3 +28,5 @@ Here's the list of the synonyms dictionaries the algorithm looks up at.
 +--------------------------+-------------+
 | synonyme.de              | German      |
 +--------------------------+-------------+
+| sapere.virgilio.it       | Italian     |
++--------------------------+-------------+
