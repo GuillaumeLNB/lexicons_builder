@@ -54,7 +54,6 @@ class TestLexiconBuilder(unittest.TestCase):
         )
         cls.graph._set_root_word_attribute()
 
-
     def test___contains(self):
         self.assertTrue("test" in self.graph)
         self.assertFalse("notest" in self.graph)
@@ -67,7 +66,6 @@ class TestLexiconBuilder(unittest.TestCase):
     def test___len__(self):
         # we want more than 10 words
         self.assertTrue(len(self.graph) > 10)
-
 
     def test_list_words(self):
         "test all words are in the graph, have a depth and a comes from properties"
