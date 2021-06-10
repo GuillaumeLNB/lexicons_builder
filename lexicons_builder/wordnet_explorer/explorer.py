@@ -40,6 +40,15 @@ __license__ = "mit"
 _logger = logging.getLogger(__name__)
 
 
+def assert_lang_supported_by_wordnet(lang):
+    lang = iso_639_alpha3(lang)  # wordnet needs iso-639-2
+    if lang in wn.langs():
+        return True
+    raise ValueError(
+        f"Language '{lang}' not implemented in WordNet. Implemented languages are : {sorted(wn.langs())}"
+    )
+
+
 def explore_wordnet(
     word: str, lang: str, max_depth: int = 5, current_depth=1, _previous_graph=None
 ) -> rdflib.Graph:
@@ -84,11 +93,8 @@ def explore_wordnet(
 
     """
     logging.debug(f"Exploring WORDNET with word '{word}' at depth '{current_depth}'")
-    lang = iso_639_alpha3(lang)  # wordnet needs iso-639-2
-    if lang not in wn.langs():
-        raise ValueError(
-            f"Language '{lang}' not implemented. Implemented languages are : {sorted(wn.langs())}"
-        )
+
+    assert_lang_supported_by_wordnet(lang)
 
     if not _previous_graph:
         # initializing the Graph for the 1st time

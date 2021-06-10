@@ -18,6 +18,7 @@ from touch import touch
 
 
 from lexicons_builder import build_lexicon
+from wordnet_explorer.explorer import assert_lang_supported_by_wordnet
 
 
 def parse_args(arguments):
@@ -106,6 +107,9 @@ def parse_args(arguments):
 def main(arguments):
 
     args = parse_args(arguments)
+
+    if args.wordnet:
+        assert_lang_supported_by_wordnet(args.lang)
 
     touch(args.out_file)
 

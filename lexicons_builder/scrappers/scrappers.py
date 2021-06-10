@@ -431,7 +431,7 @@ class SynonymsVirgilio(SynonymsGetter):
             elif par.text == "Contrari":
                 break
             for syn in par.find_all("b"):
-                words.appen(syn.text)
+                words.append(syn.text)
         return list(set(words))
 
 
