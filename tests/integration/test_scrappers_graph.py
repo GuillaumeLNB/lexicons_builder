@@ -60,6 +60,8 @@ from graphs import Graph
         ("cs", 2, "sníst"),  # eat
         ("cs", 2, "auto"),  # cat
         ("cs", 2, "jíst"),  # eat
+        ("it", 1, "libro"),  # book
+        ("ru", 1, "книга"),  # книга
     ],
 )
 class TestScrapperGraph(unittest.TestCase):
@@ -132,7 +134,7 @@ class TestScrapperGraph(unittest.TestCase):
         with open(self.out_ttl_file_2, "w") as f:
             print(self.merged_graph, file=f)
 
-    def test_all_scrappers_return_rest(self):
+    def test_all_scrappers_return_results(self):
         for graph, scrapper_name in zip(self.res, self.scrapper_names):
             with self.subTest():
                 self.assertFalse(
