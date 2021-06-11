@@ -435,6 +435,25 @@ class SynonymsVirgilio(SynonymsGetter):
         return list(set(words))
 
 
+class SynonymsSinonim(SynonymsGetter):
+    """Scrapper of `https://sinonim.org <https://sinonim.org>`_"""
+
+    website = "https://sinonim.org"
+    lang = "ru"
+
+    def _get_results_from_website(self, word):
+        # word = unidecode(word.lower())
+        url = f"https://sinonim.org/s/{word}"
+        soup = self.download_and_parse_page(url)
+        words = []
+        for syn in soup.find_all('td', class_='nach'):
+            for w in syn.text.strip(' https://sinonim.org/').split(', '):
+                w=w.strip()
+                if w:
+                    words.append(w)
+        return list(set(words))
+
+
 scrappers = {
     "en": [
         SynonymsGetterLexico(),
@@ -456,6 +475,7 @@ scrappers = {
     "nl": [SynonymsMijnwoordenboek()],
     "de": [SynonymsSynonymeDe()],
     "it": [SynonymsVirgilio()],
+    "ru": [SynonymsSinonim()],
 }
 
 
