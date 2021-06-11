@@ -30,3 +30,5 @@ Here's the list of the synonyms dictionaries the algorithm looks up at.
 +--------------------------+-------------+
 | sapere.virgilio.it       | Italian     |
 +--------------------------+-------------+
+| sinonim.org              | Russian     |
++--------------------------+-------------+
