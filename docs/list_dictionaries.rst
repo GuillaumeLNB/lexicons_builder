@@ -32,3 +32,5 @@ Here's the list of the synonyms dictionaries the algorithm looks up at.
 +--------------------------+-------------+
 | sinonim.org              | Russian     |
 +--------------------------+-------------+
+| synonymonline.ru         | Russian     |
++--------------------------+-------------+
