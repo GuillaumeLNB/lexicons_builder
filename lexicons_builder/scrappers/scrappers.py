@@ -52,6 +52,8 @@ class SynonymsGetter:
     # faking the user agent
     _ua = fake_useragent.UserAgent().random
     logging.debug(f"user-Agent is '{_ua}'")
+    # The word will be converted to ASCII
+    unidecode_word = True
 
     def __str__(self):
         if hasattr(self, "website"):
@@ -104,7 +106,10 @@ class SynonymsGetter:
             new_words = [w for w in self._get_results_from_website(word) if w]
             logging.info(f"{len(new_words)} found")
             for n_word in new_words:
-                n_word = unidecode(n_word.lower())
+                if self.unidecode_word:
+                    n_word = unidecode(n_word.lower())
+                else:
+                    n_word = n_word.lower()
                 if n_word in graph:
                     logging.debug(f"n_word is already in the graph -> skipping it")
                     continue
@@ -436,10 +441,13 @@ class SynonymsVirgilio(SynonymsGetter):
 
 
 class SynonymsSinonim(SynonymsGetter):
-    """Scrapper of `https://sinonim.org <https://sinonim.org>`_"""
+    """Scrapper of `https://sinonim.org <https://sinonim.org>`_
+    Often blocks the requests if they are too many"""
 
     website = "https://sinonim.org"
     lang = "ru"
+    unidecode_word = False
+
 
     def _get_results_from_website(self, word):
         # word = unidecode(word.lower())
@@ -452,6 +460,27 @@ class SynonymsSinonim(SynonymsGetter):
                 if w:
                     words.append(w)
         return list(set(words))
+
+
+
+class SynonymsSynonymonline(SynonymsGetter):
+    """Scrapper of `synonymonline.ru <synonymonline.ru>`_"""
+
+    website = "synonymonline.ru"
+    lang = "ru"
+    unidecode_word = False
+
+    def _get_results_from_website(self, word):
+        # word = word.strip('ь') # removing the 'ь' character at the end
+        url = f'https://synonymonline.ru/{word[0].upper()}/{word}'
+        logging.debug(f"url is '{url}'")
+        soup = self.download_and_parse_page(url)
+        words = []
+        for ol in soup.find_all('ol', class_='synonyms-list'):
+            for span in ol.find_all('span'):
+                words.append(span.text.strip())
+        return list(set(words))
+
 
 
 scrappers = {
@@ -475,7 +504,8 @@ scrappers = {
     "nl": [SynonymsMijnwoordenboek()],
     "de": [SynonymsSynonymeDe()],
     "it": [SynonymsVirgilio()],
-    "ru": [SynonymsSinonim()],
+    "ru": [SynonymsSinonim(),
+    SynonymsSynonymonline()],
 }
 
 
