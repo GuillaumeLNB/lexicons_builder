@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software for academic research, please cite it as below."
+authors:
+- family-names: "Le Noé-Bienvenu"
+  given-names: "Guillaume"
+  orcid: "https://orcid.org/0000-0003-2894-0515"
+- family-names: "Gravier"
+  given-names: "Guillaume"
+  orcid: "https://orcid.org/0000-0002-2266-5682"
+- family-names: "Sébillot"
+  given-names: "Pascale"
+  orcid: "https://orcid.org/0000-0002-5429-4302"
+title: "Lexicons builder"
+version: 0.1.6
+doi: https://github.com/GuillaumeLNB/lexicons_builder
+date-released: 2021-05-25
+url: "https://github.com/GuillaumeLNB/lexicons_builder"
