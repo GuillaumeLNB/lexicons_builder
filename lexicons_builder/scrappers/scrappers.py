@@ -31,7 +31,6 @@ from requests.utils import quote
 
 import fake_useragent
 from bs4 import BeautifulSoup
-from touch import touch
 from unidecode import unidecode
 
 __author__ = "GLNB"
@@ -50,8 +49,10 @@ class SynonymsGetter:
     """Main class to get synonyms of terms from different websites"""
 
     # faking the user agent
-    _ua = fake_useragent.UserAgent().random
-    logging.debug(f"user-Agent is '{_ua}'")
+    try:
+        _ua = fake_useragent.UserAgent().random
+    except Exception:
+        _ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
     # The word will be converted to ASCII
     unidecode_word = True
 
@@ -448,19 +449,17 @@ class SynonymsSinonim(SynonymsGetter):
     lang = "ru"
     unidecode_word = False
 
-
     def _get_results_from_website(self, word):
         # word = unidecode(word.lower())
         url = f"https://sinonim.org/s/{word}"
         soup = self.download_and_parse_page(url)
         words = []
-        for syn in soup.find_all('td', class_='nach'):
-            for w in syn.text.strip(' https://sinonim.org/').split(', '):
-                w=w.strip()
+        for syn in soup.find_all("td", class_="nach"):
+            for w in syn.text.strip(" https://sinonim.org/").split(", "):
+                w = w.strip()
                 if w:
                     words.append(w)
         return list(set(words))
-
 
 
 class SynonymsSynonymonline(SynonymsGetter):
@@ -472,15 +471,14 @@ class SynonymsSynonymonline(SynonymsGetter):
 
     def _get_results_from_website(self, word):
         # word = word.strip('ь') # removing the 'ь' character at the end
-        url = f'https://synonymonline.ru/{word[0].upper()}/{word}'
+        url = f"https://synonymonline.ru/{word[0].upper()}/{word}"
         logging.debug(f"url is '{url}'")
         soup = self.download_and_parse_page(url)
         words = []
-        for ol in soup.find_all('ol', class_='synonyms-list'):
-            for span in ol.find_all('span'):
+        for ol in soup.find_all("ol", class_="synonyms-list"):
+            for span in ol.find_all("span"):
                 words.append(span.text.strip())
         return list(set(words))
-
 
 
 scrappers = {
@@ -504,8 +502,7 @@ scrappers = {
     "nl": [SynonymsMijnwoordenboek()],
     "de": [SynonymsSynonymeDe()],
     "it": [SynonymsVirgilio()],
-    "ru": [SynonymsSinonim(),
-    SynonymsSynonymonline()],
+    "ru": [SynonymsSinonim(), SynonymsSynonymonline()],
 }
 
 

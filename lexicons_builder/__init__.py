@@ -1,8 +1,8 @@
 import logging
 
 logging.basicConfig(
-    # level=logging.INFO,
-    level=logging.DEBUG,
+    level=logging.INFO,
+    # level=logging.DEBUG,
     format="[%(asctime)s] -[%(name)s] - [%(levelname)s] - %(message)s",
     handlers=[logging.StreamHandler()],
 )
@@ -20,6 +20,7 @@ def build_lexicon(
     wolf_path: str = None,
     wordnet: bool = False,
     web: bool = True,
+    strict=False,
 ):
     """This is the main function to build lexicons.
 
@@ -31,6 +32,7 @@ def build_lexicon(
       wolf_path (str, optional): The path to WOLF
       wordnet (bool, optional): Retrieve related terms using WordNet
       web (bool, optional): Retrieve related terms looking online
+      strict (bool, optional): Delete words that are less relevant
 
     Returns:
         :obj:`lexicons_builder.Graph`: a :py:meth:`lexicons_builder.Graph` object that contains the results.
@@ -113,5 +115,8 @@ def build_lexicon(
     # setting the root words attributes
     main_graph._set_root_word_attribute()
     main_graph.delete_several_depth()
+
+    if strict:
+        main_graph.pop_non_relevant_words()
 
     return main_graph

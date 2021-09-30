@@ -14,7 +14,6 @@ Like the other packages, it outputs a :obj:`Graph` containing the results.
 
 """
 
-import argparse
 import inspect
 import os
 import sys

@@ -3,7 +3,6 @@ A very simple API for the WOLF French WordNet: http://alpage.inria.fr/~sagot/wol
 """
 
 import os
-import sys
 
 import xml.etree.cElementTree as et
 

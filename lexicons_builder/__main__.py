@@ -70,12 +70,18 @@ def parse_args(arguments):
         "--wordnet",
         dest="wordnet",
         action="store_true",
-        help="search on wordnet using nltk",
+        help="Search on wordnet using nltk",
     )
     parser.add_argument(
         "--web",
         dest="web",
         help="Search on dictionnaries online",
+        action="store_true",
+    )
+    parser.add_argument(
+        "--strict",
+        dest="strict",
+        help="Delete non relevant words",
         action="store_true",
     )
     args = parser.parse_args(arguments)
@@ -121,6 +127,7 @@ def main(arguments):
         wolf_path=args.wolf_path,
         wordnet=args.wordnet,
         web=args.web,
+        strict=args.strict,
     )
 
     if args.format == "txt":
@@ -132,9 +139,8 @@ def main(arguments):
             print(main_graph, file=f)
             logging.info(f"{args.out_file}")
 
-    logging.info(f"done. {len(main_graph)} unique synonyms found")
+    logging.info(f"done. {len(main_graph)} related words found")
 
 
 if __name__ == "__main__":
-
     sys.exit(main(sys.argv[1:]))

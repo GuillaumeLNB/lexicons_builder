@@ -67,7 +67,7 @@ class TestGraph(unittest.TestCase):
         self.g.parse(self.graph_test_path, format="ttl")
         for word in self.g.to_list():
             self.assertTrue(word)  # no empty words
-            self.assertTrue(unidecode(word.lower().strip()) == word)  # no
+            self.assertEqual(unidecode(word.lower().strip()), word)
 
     def test_is_empty(self):
         self.assertTrue(self.g.is_empty())
@@ -76,7 +76,7 @@ class TestGraph(unittest.TestCase):
         for w in rw_strings:
             self.g.add_root_word(w)
             self.assertTrue(self.g.is_empty())
-        self.assertTrue(rw_strings == self.g.to_list())
+        self.assertEqual(rw_strings, self.g.to_list())
         self.g._set_root_word_attribute()
         for w in self.g.root_words:
             self.assertTrue(isinstance(w, str))
@@ -103,7 +103,7 @@ class TestGraph(unittest.TestCase):
         self.test_list_is_sorted()
 
     def test_list_is_sorted(self):
-        self.assertTrue(sorted(self.g.to_list()) == self.g.to_list())
+        self.assertEqual(sorted(self.g.to_list()), self.g.to_list())
 
     def test___len__(self):
         self.assertFalse(len(self.g))
@@ -131,6 +131,27 @@ class TestGraph(unittest.TestCase):
     def test_to_xlsx(self):
         self.g.add_root_word("dog")
         self.g.to_xlsx_file(self.xlsx_out_file)
+
+    def test__get_maximum_origin(self):
+        self.assertFalse(self.g._get_maximum_origin())
+        for i in range(1, 5):
+            self.g.add(
+                (
+                    rdflib.Literal("node_uri"),
+                    rdflib.URIRef("urn:default:baseUri:#comesFrom"),
+                    rdflib.Literal(f"test-{i}"),
+                )
+            )
+            self.assertEqual(self.g._get_maximum_origin(), i)
+
+    def test_pop_non_relevant_words(self):
+        self.assertFalse(len(self.g))
+        for i in range(10):
+            self.g.add_word("test", 1, "synonym", "target_word", comesFrom=f"test-{i}")
+        self.g.add_word("test2", 1, "synonym", "target_word_2", comesFrom=f"test-x")
+        self.assertEqual(len(self.g), 2)
+        self.g.pop_non_relevant_words()
+        self.assertEqual(len(self.g), 1)
 
 
 unittest.main()
