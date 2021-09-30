@@ -1,7 +1,7 @@
 Complete list of synonyms dictionaries
 =======================================
 
-Here's the list of the synonyms dictionaries the algorithm looks up at.
+Here's the list of the synonyms dictionaries the scrappers look up.
 
 +--------------------------+-------------+
 | Website                  | Language(s) |
