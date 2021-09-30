@@ -140,6 +140,16 @@ class Graph(rdflib.Graph):
         "return the number of words in the graph"
         return len(self.to_list())
 
+    # did not implement __iter__ as some methods needs
+    # the default rdflib.Graph.__iter__()
+    # such as for s, p, o in self:
+
+    # def __iter__(self):
+    #     "return the words in the graph"
+    #     q_words = "SELECT ?word WHERE { ?_ <http://www.w3.org/2004/02/skos/core#prefLabel> ?word} ORDER BY ASC (?word)"
+    #     for (w,) in self.query(q_words):
+    #         yield str(w)
+
     def word_in_graph(self, word: str) -> bool:
         """return :obj:`True` if the word is in the graph
 
@@ -411,11 +421,11 @@ class Graph(rdflib.Graph):
         if not contains_root_word:
             raise ValueError(f"The graph does not contain any root word")
 
-        if i:
-            logging.warning(
-                f"The query to retrive the root word returned several results"
-            )
-            logging.warning(f"The root words are: {self.root_words}")
+        # if i:
+        #     logging.warning(
+        #         f"The query to retrive the root word returned several results"
+        #     )
+        #     logging.warning(f"The root words are: {self.root_words}")
 
     def delete_several_depth(self, method="MIN"):
         """Deletes words with several depths
@@ -492,6 +502,86 @@ class Graph(rdflib.Graph):
                     (uri, self.base_local.depth, rdflib.Literal(int(unwanted_tripple)))
                 )
 
+    def _get_maximum_origin(self) -> int:
+        """return the number maximum of <comesFrom>
+        predicate for a graph
+
+        :return: number
+        :rtype: int
+
+        >>> print(g)
+        ns1:article ns3:isSynonymOf ns1:paper,
+                ns1:piece ;
+            ns2:prefLabel "article" ;
+            ns4:hypernymOf ns1:paper ;
+            ns4:hyponymOf ns1:section ;
+            ns1:comesFrom <file:///lexicons_builder/synonyms.com>,
+                <file:///lexicons_builder/synonyms.reverso.net>,
+                <http://wordnet-rdf.princeton.edu/> ;
+            ns1:depth 2 ;
+            ns1:synsetLink <http://wordnet-rdf.princeton.edu/pwn30/06269956-n>,
+                <http://wordnet-rdf.princeton.edu/pwn30/06392001-n> .
+
+        >>> g._get_maximum_origin()
+        3
+        """
+
+        query_max = """
+        SELECT (COUNT(?origin) as ?oCount)
+        WHERE
+        {
+        ?uri ?origin ?_ .
+            FILTER (strEnds(str(?origin), 'comesFrom'))
+        }
+        GROUP BY ?uri
+        """
+        max_ = 0
+        for (count,) in self.query(query_max):
+            if int(count) > max_:
+                max_ = int(count)
+        return max_
+
+    def pop_non_relevant_words(self):
+        """Delete from the graph the words might not be relevant.
+
+        To do this, the method will search for the highest number
+        of `<urn:default:baseUri:#comesFrom>` predicates per word
+        and remove from the graph all words whose number of `<urn:default:baseUri:#comesFrom>`
+        predicates are lower than the maximum found before.
+
+
+
+        .. code:: python
+
+            >>> # the graph was constructed using the words "book" and "newspaper"
+            >>> # searching on different resources (wordnet and synonyms dictionaries)
+            >>> len(g)
+            3904
+            >>> g.to_list()
+            ['(catholic) douay bible', '(mohammedan) koran', '78', 'AFISR', 'AI', 'ARDA', 'Apocrypha', 'Aramaic', 'Aramaic_script' ...
+            >>> # most of the word are not relevant
+            >>> g.pop_non_relevant_words()
+            >>> len(g)
+            106
+            >>> g.to_list()
+            ['account', 'allow', 'arrange', 'article', 'assign', 'authorisation', 'batch', 'book', 'booklet', 'brochure', 'cahier', 'capture', 'card', 'classify', 'collection', ...
+            >>> # much more relevant words
+
+        """
+        max_ = self._get_maximum_origin()
+        query_number_of_origins = """
+        SELECT ?uri ?word (COUNT(?origin) as ?oCount)
+        WHERE {
+            ?uri  <http://www.w3.org/2004/02/skos/core#prefLabel> ?word ;
+                <urn:default:baseUri:#comesFrom> ?origin
+        }
+        GROUP BY ?uri
+        """
+
+        for uri, word, count in self.query(query_number_of_origins):
+            if int(count) < max_ - 1:
+                self.remove((uri, None, None))
+
     def to_list(self) -> list:
         """return a list of all the prefLabels in the graph
 
@@ -504,13 +594,10 @@ class Graph(rdflib.Graph):
         ['bus', 'car', 'truck', 'vehicle']
 
         """
-        # getting the maximum depth of the graph
-        # q_depth = 'SELECT ?de WHERE { ?_ <urn:default:baseUri:#depth>  ?de} ORDER BY DESC(?de) LIMIT 1'
         q_words = "SELECT ?word WHERE { ?_ <http://www.w3.org/2004/02/skos/core#prefLabel> ?word} ORDER BY ASC (?word)"
-        # max_ = [int(x) for x, in self.query(q_depth)][0]
         return [str(w) for w, in self.query(q_words)]
         # note that even that's less elegant, python's sorted function
-        # works faster that asking sparql engine's ORDER BY
+        # works faster than sparql engine's ORDER BY
         # q_words = "SELECT ?word WHERE { ?_ <http://www.w3.org/2004/02/skos/core#prefLabel> ?word}"
         # return sorted([str(w) for w, in self.query(q_words)])
 
@@ -602,9 +689,6 @@ class Graph(rdflib.Graph):
         worksheet = workbook.add_worksheet()
         worksheet.write(0, 0, "root word(s)")
         worksheet.write(0, 1, ", ".join(self.root_words))
-
-        # ?origin
-        # <urn:default:baseUri:#comesFrom> ?origin ;
 
         q_words_depth = """SELECT ?word ?depth
                     WHERE { ?_ <http://www.w3.org/2004/02/skos/core#prefLabel> ?word ;

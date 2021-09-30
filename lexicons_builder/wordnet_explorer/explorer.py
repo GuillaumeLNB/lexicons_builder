@@ -8,12 +8,10 @@ In addition to synonym relations, hypernym, hyponym, holonym relations are added
 
 """
 
-import argparse
 import inspect
 import logging
 import os
 import sys
-from requests.utils import quote
 
 
 import rdflib
@@ -95,6 +93,7 @@ def explore_wordnet(
     logging.debug(f"Exploring WORDNET with word '{word}' at depth '{current_depth}'")
 
     assert_lang_supported_by_wordnet(lang)
+    lang = iso_639_alpha3(lang)
 
     if not _previous_graph:
         # initializing the Graph for the 1st time

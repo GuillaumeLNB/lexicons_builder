@@ -5,7 +5,7 @@ lexicons_builder documentation
 The **lexicons_builder** package aims to provide a basic API to create lexicons related to specific words.
 
 
-**Key principle**: Given the input words, the main algorithm will look for synonyms and neighboors in the synonym dictionaries, in the NLP model(s) provided and in WordNet. For each of the new retreiven terms, it will look again for its neighboors or synonyms and so on..
+**Key principle**: Given the input words, the main algorithm will look for synonyms and neighboors in the synonym dictionaries, in the NLP model(s) provided and in WordNet. For each of the new retrieved terms, it will look again for its neighboors or synonyms and so on..
 
 The general method is implemented on 3 different supports:
 
@@ -37,6 +37,7 @@ Contents
 
    Module Reference <api/modules>
    List of dictionaries <list_dictionaries>
+   Issues <issues>
 
 Indices and tables
 ==================

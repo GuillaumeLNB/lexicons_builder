@@ -4,7 +4,8 @@ import os
 import sys
 
 import rdflib
-from touch import touch
+
+# from touch import touch
 from parameterized import parameterized_class
 
 sys.path.insert(0, os.path.join("..", ".."))
@@ -12,16 +13,13 @@ sys.path.insert(0, os.path.join("..", ".."))
 import lexicons_builder
 
 
-# couple de mots similaire: rire amuser
-# rire avion
-
-
 @parameterized_class(
     ("lang", "depth", "word", "format"),
     [
-        ("fr", "1", "test", "ttl"),
         ("en", "1", "test", "ttl"),
-        # ("nl", "1", "test", "ttl"),
+        ("fr", "1", "test", "ttl"),
+        ("it", "1", "test", "ttl"),
+        ("nl", "1", "test", "ttl"),
         # ("de", "1", "test", "ttl"),
         # ("cz", "1", "test", "ttl"),
     ],
@@ -49,7 +47,7 @@ class TestLexiconBuilder(unittest.TestCase):
             depth=cls.args["depth"],
             nlp_model_paths=None,
             wolf_path=None,
-            wordnet=False,
+            wordnet=True,
             web=True,
         )
 
