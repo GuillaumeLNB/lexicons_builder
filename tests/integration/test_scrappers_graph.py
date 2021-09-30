@@ -1,6 +1,6 @@
 #!/bin/python3
 """
-will search for synonyms in French and English and assert
+will search for synonyms in several languages and assert
 there's no duplicate,
 graph merging etc
 
@@ -16,18 +16,14 @@ logging.basicConfig(
 )
 
 import re
-import pickle
 import os
 import sys
 import unittest
-from unittest.mock import patch
 
-from glob import glob
 from parameterized import parameterized_class
 from touch import touch
 
 sys.path.insert(0, os.path.join("..", ".."))
-
 
 from lexicons_builder.scrappers.scrappers import get_synonyms_from_scrappers, scrappers
 
@@ -152,11 +148,11 @@ class TestScrapperGraph(unittest.TestCase):
                 # no parenthesis
                 self.assertFalse(re.search(r"[\(\)]", word))
                 # htm escaped
-                self.assertTrue(html.unescape(word) == word)
+                self.assertEqual(html.unescape(word), word)
                 # no html tag
                 self.assertFalse(re.search(r"[<>]", word))
                 # no space
-                self.assertTrue(word.strip() == word)
+                self.assertEqual(word.strip(), word)
 
 
 # class TestSynonymsGetterSynonymesCom(TestSynonymsGetter):
