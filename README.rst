@@ -114,7 +114,8 @@ To get words from input words through CLI, run
               --nlp-model <NLP_MODEL_PATHS> \
               --web                         \
               --wordnet                     \
-              --wolf-path <WOLF_PATH>
+              --wolf-path <WOLF_PATH>       \
+              --strict
 
 With:
   * ``<words>`` The word(s) we want to get synonyms from
@@ -127,6 +128,8 @@ At least ONE of the following options is needed:
   * ``--web`` Search online for synonyms
   * ``--wordnet`` Search on WordNet using nltk
   * ``--wolf-path <WOLF_PATH>`` The path to WOLF (French wordnet)
+Optional
+  * ``--strict`` remove non relevant words
 
 **Eg:** if we want to look for related terms linked to 'eat' and 'drink' on wordnet at a depth of 2, excecute:
 
@@ -220,6 +223,10 @@ To get related terms interactively through Python, run
         >>> # can take a while
         >>> len(output.to_list())
         614
+        >>> # deleting non relevant words
+        >>> output.pop_non_relevant_words()
+        >>> len(output.to_list())
+        57
 
 
 
