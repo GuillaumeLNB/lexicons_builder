@@ -19,7 +19,7 @@ setup(
     url="https://lexicons-builder.readthedocs.io",
     license="MIT",
     author="GLNB",
-    author_email="glnb@gmail.com",
+    author_email="glnb.dev@gmail.com",
     description="lexicons_builder, a tool to create lexicons",
     long_description=long_description,
     install_requires=install_requires,
