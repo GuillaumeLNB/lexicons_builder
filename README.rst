@@ -84,6 +84,14 @@ The models should be in word2vec or fasttext format.
 | https://github.com/mmihaltz/word2vec-GoogleNews-vectors   | English                |
 +-----------------------------------------------------------+------------------------+
 
+Download wordnet
+~~~~~~~~~~~~~~~~
+
+    .. code:: python
+
+        >>> import nltk
+        >>> nltk.download()
+
 
 Download WOLF (French WordNet) (optionnal)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
