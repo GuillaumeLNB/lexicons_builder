@@ -3,8 +3,12 @@ Installation
 
 With pip
 ~~~~~~~~
+It is recommanded to use a virtual environment.
+
     .. code:: bash
 
+        $ python -m venv env
+        $ source env/bin/activate
         $ pip install lexicons-builder
 
 
