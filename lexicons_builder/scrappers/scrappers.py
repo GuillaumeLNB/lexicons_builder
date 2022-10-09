@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 The scrappers package contains the scrappers that are used to retreive synonyms from the web.
 
@@ -19,7 +18,6 @@ See the :doc:`List of dictionnaries section <../list_dictionaries>` for the list
 """
 
 
-import argparse
 import inspect
 import logging
 import re
@@ -27,9 +25,9 @@ import requests
 import os
 import sys
 from concurrent.futures import ThreadPoolExecutor
+from random import choice
 from requests.utils import quote
 
-import fake_useragent
 from bs4 import BeautifulSoup
 from unidecode import unidecode
 
@@ -44,15 +42,27 @@ __location__ = os.path.join(
 sys.path.insert(0, os.path.join(__location__, "..", "graphs"))
 from graphs import Graph
 
+UA = choice(
+    [
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/4E423F",
+        "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36",
+        "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36 Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10",
+        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36",
+        "Mozilla/5.0 (Windows NT 6.1; rv:6.0) Gecko/20100101 Firefox/19.0",
+        "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.14 (KHTML, like Gecko) Chrome/24.0.1292.0 Safari/537.14",
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36",
+        "Mozilla/5.0 (X11; CrOS i686 3912.101.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36",
+        "Mozilla/5.0 (Windows; U; Windows NT 6.0; ja-JP) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27",
+        "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:21.0) Gecko/20100101 Firefox/21.0",
+    ]
+)
+
 
 class SynonymsGetter:
     """Main class to get synonyms of terms from different websites"""
 
     # faking the user agent
-    try:
-        _ua = fake_useragent.UserAgent().random
-    except Exception:
-        _ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+    _ua = UA
     # The word will be converted to ASCII
     unidecode_word = True
 

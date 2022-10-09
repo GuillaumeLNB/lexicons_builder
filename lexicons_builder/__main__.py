@@ -7,7 +7,7 @@ import argparse
 import logging
 import sys
 
-from touch import touch
+from lexicons_builder.touch_file import touch
 
 
 # logging.basicConfig(

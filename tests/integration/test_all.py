@@ -4,11 +4,11 @@ import os
 import sys
 
 import rdflib
-from touch import touch
 from parameterized import parameterized_class
 
 sys.path.insert(0, os.path.join("..", ".."))
 
+from touch_file import touch
 import lexicons_builder
 
 

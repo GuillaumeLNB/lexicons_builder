@@ -4,7 +4,6 @@ touch
 unidecode
 sphinx_rtd_theme
 parameterized
-fake_useragent
 nltk
 rdflib
 requests
