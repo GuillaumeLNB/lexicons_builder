@@ -4,13 +4,26 @@ that carries the results from scrapping/exploring nlp models etc...
 The class inherit from :obj:`rdflib.Graph`.
 """
 
-
+import inspect
 import logging
+import os
+import sys
 from requests.utils import quote
 
 import rdflib
 import xlsxwriter
 from rdflib.plugins.sparql.parser import parseQuery
+
+__location__ = os.path.join(
+    os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe()))
+)
+sys.path.insert(
+    0,
+    os.path.join(
+        __location__,
+        "..",
+    ),
+)
 from lexicons_builder.touch_file import touch
 
 
