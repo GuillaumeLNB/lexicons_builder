@@ -8,10 +8,11 @@ with open("requirements.txt") as f:
 
 setup(
     name="lexicons_builder",
-    version="0.3.0",
+    version="0.3.1",
     packages=[
         "lexicons_builder",
         "lexicons_builder.graphs",
+        "lexicons_builder.touch_file",
         "lexicons_builder.scrappers",
         "lexicons_builder.wordnet_explorer",
         "lexicons_builder.nlp_model_explorer",
