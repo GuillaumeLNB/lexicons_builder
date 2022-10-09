@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="lexicons_builder",
-    version="0.2.0",
+    version="0.3.0",
     packages=[
         "lexicons_builder",
         "lexicons_builder.graphs",
@@ -20,7 +20,7 @@ setup(
     license="MIT",
     author="GLNB",
     author_email="glnb@gmail.com",
-    description="lexicons_builder, a tool to create lexicons",
+    description="lexicons_builder, a tool to help creating lexicons",
     long_description=long_description,
     install_requires=install_requires,
     project_urls={
