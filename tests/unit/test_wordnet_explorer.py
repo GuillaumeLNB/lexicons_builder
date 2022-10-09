@@ -3,7 +3,6 @@ import unittest
 import os
 import sys
 
-from touch import touch
 from parameterized import parameterized_class
 
 sys.path.insert(0, os.path.join("..", ".."))
@@ -11,6 +10,10 @@ import lexicons_builder.wordnet_explorer.explorer as exp
 
 sys.path.insert(0, os.path.join("..", "..", "lexicons_builder", "graphs"))
 from graphs import Graph
+
+sys.path.insert(0, os.path.join("..", "..", "lexicons_builder"))
+# print(sys.path)
+from touch_file import touch
 
 
 @parameterized_class(

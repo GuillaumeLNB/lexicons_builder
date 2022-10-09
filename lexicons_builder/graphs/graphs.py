@@ -11,7 +11,7 @@ from requests.utils import quote
 import rdflib
 import xlsxwriter
 from rdflib.plugins.sparql.parser import parseQuery
-from touch import touch
+from lexicons_builder.touch_file import touch
 
 
 class Graph(rdflib.Graph):
@@ -306,10 +306,7 @@ class Graph(rdflib.Graph):
                     rdflib.URIRef(comesFrom),
                 )
             )
-            assert (
-                "<file:///home/k/Documents/lexicons_builder/"
-                not in self.serialize(format="ttl").decode()
-            )
+            # assert "lexicons_builder" not in str(self)
 
     def add_root_word(self, word: str):
         """Before searching for related terms, the root word
@@ -614,7 +611,13 @@ class Graph(rdflib.Graph):
         '@prefix ns1: <http://www.w3.org/2004/02/skos/core#> .\\n\\n<urn:default:baseUri:#root_word_uri> a <urn:default:baseUri:#root_word> ;\\n    ns1:prefLabel "dog" .\\n\\n'
 
         """
-        str_ = self.serialize(format="ttl").decode()
+        try:
+            str_ = self.serialize(
+                format="ttl"
+            ).decode()  # works for previous version of rdflib
+        except AttributeError:
+            str_ = self.serialize(format="ttl")
+
         return str_
 
     def to_text_file(self, out_file=None):

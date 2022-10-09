@@ -4,10 +4,12 @@ import os
 import sys
 
 import rdflib
-from touch import touch
 from unidecode import unidecode
 from parameterized import parameterized_class
 
+
+sys.path.insert(0, os.path.join("..", "..", "lexicons_builder"))
+from touch_file import touch
 
 sys.path.insert(0, os.path.join("..", "..", "lexicons_builder", "graphs"))
 

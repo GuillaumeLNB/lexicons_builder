@@ -21,10 +21,10 @@ import sys
 import unittest
 
 from parameterized import parameterized_class
-from touch import touch
 
 sys.path.insert(0, os.path.join("..", ".."))
 
+from touch_file import touch
 from lexicons_builder.scrappers.scrappers import get_synonyms_from_scrappers, scrappers
 
 sys.path.insert(0, os.path.join("..", "..", "lexicons_builder", "graphs"))
